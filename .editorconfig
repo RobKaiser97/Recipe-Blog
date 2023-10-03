@@ -1,0 +1,52 @@
+# Editor configuration, see http://editorconfig.org
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+# Use LF or CRLF based on the system
+[*.js]
+end_of_line = lf
+[*.jsx]
+end_of_line = lf
+[*.ts]
+end_of_line = lf
+[*.tsx]
+end_of_line = lf
+[*.bat]
+end_of_line = crlf
+[*.cmd]
+end_of_line = crlf
+[*.css]
+end_of_line = lf
+[*.html]
+end_of_line = lf
+[*.ini]
+end_of_line = crlf
+[*.json]
+end_of_line = lf
+[*.md]
+end_of_line = lf
+[*.php]
+end_of_line = lf
+[*.py]
+end_of_line = lf
+[*.rb]
+end_of_line = lf
+[*.scss]
+end_of_line = lf
+[*.sh]
+end_of_line = lf
+[*.sql]
+end_of_line = lf
+[*.txt]
+end_of_line = lf
+[*.yml]
+end_of_line = lf
