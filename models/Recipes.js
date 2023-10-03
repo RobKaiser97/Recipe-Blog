@@ -22,13 +22,23 @@ Recipe.init(
     ingredients: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        isAlphanumeric: true,
+      },
+    },
+    instructions: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isAlphanumeric: true,
+      },
     },
     author_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'user',
-        key: 'id',
+        key: 'user_id',
       },
     },
     category_id: {
@@ -36,7 +46,7 @@ Recipe.init(
       allowNull: false,
       references: {
         model: 'category',
-        key: 'id',
+        key: 'category_id',
       },
     },
     created_at: {
