@@ -31,7 +31,7 @@ const categoryData = [
   },
   {
     category_id: 8,
-    name: 'Desert',
+    name: 'Dessert',
   },
 ];
 
