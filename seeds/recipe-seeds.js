@@ -1,4 +1,10 @@
 const { Recipe } = require('../models');
+const path = require('path');
+const spaghettiBolognese = path.join(__dirname, '../public/assets/recipe-images/spaghetti-bolognese.jpeg')
+const chickenAlfredo = path.join(__dirname, '../public/assets/recipe-images/Chicken-Alfredo.jpg')
+const capreseSalad = path.join(__dirname, '../public/assets/recipe-images/Caprese-Salad.jpg')
+const vegeStirFry = path.join(__dirname, '../public/assets/recipe-images/vegetable-stir-fry.jpg')
+const chocoChipCookie = path.join(__dirname, '../public/assets/recipe-images/chocolate-chip-cookie.jpg')
 
 const recipeData = [
   {
@@ -12,7 +18,7 @@ const recipeData = [
     category_id: 1,
     created_at: new Date(),
     updated_at: new Date(),
-    image: null,
+    image: spaghettiBolognese,
   },
   {
     title: 'Chicken Alfredo',
@@ -24,7 +30,7 @@ const recipeData = [
     category_id: 2,
     created_at: new Date(),
     updated_at: new Date(),
-    image: null,
+    image: chickenAlfredo,
   },
   {
     title: 'Caprese Salad',
@@ -38,7 +44,7 @@ const recipeData = [
     category_id: 3,
     created_at: new Date(),
     updated_at: new Date(),
-    image: null,
+    image: capreseSalad,
   },
   {
     title: 'Vegetable Stir-Fry',
@@ -52,7 +58,7 @@ const recipeData = [
     category_id: 4,
     created_at: new Date(),
     updated_at: new Date(),
-    image: null,
+    image: vegeStirFry,
   },
   {
     title: 'Chocolate Chip Cookies',
@@ -65,7 +71,7 @@ const recipeData = [
     category_id: 5,
     created_at: new Date(),
     updated_at: new Date(),
-    image: null,
+    image: chocoChipCookie,
   },
 ];
 
