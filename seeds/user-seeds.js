@@ -1,6 +1,9 @@
 const { User } = require('../models');
 const path = require('path');
-const defaultImage = path.join(__dirname, '../public/assets/profile-images/default-profile.jpg')
+const defaultImage = path.join(
+  __dirname,
+  '../public/assets/profile-images/default-profile.jpg'
+);
 
 const userData = [
   {

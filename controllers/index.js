@@ -16,7 +16,7 @@ router.use('/api', require('./api'));
 
 // If no routes are hit, respond with a 404
 router.use((req, res) => {
-    res.status(404).end();
+  res.status(404).end();
 });
 
 module.exports = router;

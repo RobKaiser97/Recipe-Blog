@@ -21,25 +21,29 @@ const profileImageUpload = multer({
 });
 
 // Endpoint for user signup
-router.post('/signup', profileImageUpload.single('profile_picture'), async (req, res) => {
-  try {
-    const userData = {
-      ...req.body,
-      profile_picture: req.file ? req.file.buffer : null,
-    };
-    const createdUser = await User.create(userData);
-    req.session.save(() => {
-      (req.session.user_id = createdUser.id),
-        (req.session.username = createdUser.username),
-        (req.session.loggedIn = true);
-      res.json(createdUser);
-    });
-  } catch (error) {
-    res.status(500).json(error);
+router.post(
+  '/signup',
+  profileImageUpload.single('profile_picture'),
+  async (req, res) => {
+    try {
+      const userData = {
+        ...req.body,
+        profile_picture: req.file ? req.file.buffer : null,
+      };
+      const createdUser = await User.create(userData);
+      req.session.save(() => {
+        (req.session.user_id = createdUser.id),
+          (req.session.username = createdUser.username),
+          (req.session.loggedIn = true);
+        res.json(createdUser);
+      });
+    } catch (error) {
+      res.status(500).json(error);
+    }
   }
-});
+);
 
-router.post("/login", async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({
       where: {
@@ -47,12 +51,12 @@ router.post("/login", async (req, res) => {
       },
     });
     if (!userData) {
-      res.status(404).json({ message: "No user found" });
+      res.status(404).json({ message: 'No user found' });
       return;
     }
     const validPassword = userData.checkPassword(req.body.password);
     if (!validPassword) {
-      res.status(404).json({ message: "No user found" });
+      res.status(404).json({ message: 'No user found' });
       return;
     }
     req.session.save(() => {
@@ -66,7 +70,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/logout", (req, res) => {
+router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -75,21 +79,25 @@ router.post("/logout", (req, res) => {
 });
 
 // Put route to update User model, used for updating profile picture, username, email, and password
-router.put('/profile/:id', profileImageUpload.single('profile_picture'), async (req, res) => {
-  try {
-    const updatedUserData = {
-      ...req.body,
-      profile_picture: req.file ? req.file.buffer : null,
-    };
-    const userData = await User.update(updatedUserData, {
-      where: {
-        user_id: req.params.id,
-      },
-    });
-    res.status(200).json(userData);
-  } catch (error) {
-    res.status(500).json(error);
+router.put(
+  '/profile/:id',
+  profileImageUpload.single('profile_picture'),
+  async (req, res) => {
+    try {
+      const updatedUserData = {
+        ...req.body,
+        profile_picture: req.file ? req.file.buffer : null,
+      };
+      const userData = await User.update(updatedUserData, {
+        where: {
+          user_id: req.params.id,
+        },
+      });
+      res.status(200).json(userData);
+    } catch (error) {
+      res.status(500).json(error);
+    }
   }
-});
+);
 
 module.exports = router;
