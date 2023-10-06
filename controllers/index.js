@@ -1,12 +1,18 @@
 const router = require('express').Router();
-const apiRoutes = require('./api');
-const homeRoutes = require('./home-routes');
-const profileRoutes = require('./profile-routes');
 
-// Here you're defining the path for each set of routes
-router.use('/', homeRoutes);
-router.use('/profile', profileRoutes);
-router.use('/api', apiRoutes); // All API routes will be prefixed with '/api'
+const homeRoutes = require('./home-routes.js');
+const categoryRoutes = require('./api/categoryRoutes.js');
+const recipeRoutes = require('./api/recipeRoutes.js');
+const userRoutes = require('./api/userRoutes.js');
+
+// Define routes for each URL
+router.use('/', homeRoutes); // http://www.sample.com/
+router.use('/:category', categoryRoutes); // http://www.sample.com/:category
+router.use('/:category/recipe/:id', recipeRoutes); // http://www.sample.com/:category/recipe/:id
+router.use('/', userRoutes); // This will include /login, /signup, and /profile/:user_id
+
+// Use the API routes for all requests to /api
+router.use('/api', require('./api'));
 
 // If no routes are hit, respond with a 404
 router.use((req, res) => {
