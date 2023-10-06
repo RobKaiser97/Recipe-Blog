@@ -1,19 +1,34 @@
 const { Recipe } = require('../models');
 const path = require('path');
-const spaghettiBolognese = path.join(__dirname, '../public/assets/recipe-images/spaghetti-bolognese.jpeg')
-const chickenAlfredo = path.join(__dirname, '../public/assets/recipe-images/Chicken-Alfredo.jpg')
-const capreseSalad = path.join(__dirname, '../public/assets/recipe-images/Caprese-Salad.jpg')
-const vegeStirFry = path.join(__dirname, '../public/assets/recipe-images/vegetable-stir-fry.jpg')
-const chocoChipCookie = path.join(__dirname, '../public/assets/recipe-images/chocolate-chip-cookie.jpg')
+const spaghettiBolognese = path.join(
+  __dirname,
+  '../public/assets/recipe-images/spaghetti-bolognese.jpeg'
+);
+const chickenAlfredo = path.join(
+  __dirname,
+  '../public/assets/recipe-images/Chicken-Alfredo.jpg'
+);
+const capreseSalad = path.join(
+  __dirname,
+  '../public/assets/recipe-images/Caprese-Salad.jpg'
+);
+const vegeStirFry = path.join(
+  __dirname,
+  '../public/assets/recipe-images/vegetable-stir-fry.jpg'
+);
+const chocoChipCookie = path.join(
+  __dirname,
+  '../public/assets/recipe-images/chocolate-chip-cookie.jpg'
+);
 
 const recipeData = [
   {
     title: 'Spaghetti Bolognese',
-    description: 'Classic Italian pasta dish with a rich meat sauce.',
+    description: 'Classic Italian pasta with a rich meat sauce.',
     ingredients:
-      'Ground beef, onion, garlic, tomato sauce, spaghetti, salt, pepper, Parmesan cheese',
+      '1 lb Ground beef, 1 Onion, 2 cloves Garlic, 1 can Tomato sauce, 8 oz Spaghetti, Salt, Pepper, Parmesan cheese',
     instructions:
-      '1. Heat oil in a large skillet. 2. Add chopped onion and garlic. 3. Brown ground beef.',
+      '1. Heat 1 tbsp oil in skillet. 2. Sauté chopped onion and minced garlic. 3. Add ground beef and brown. 4. Pour in tomato sauce, let it simmer. 5. Cook spaghetti. 6. Serve topped with Parmesan cheese.',
     author_id: 1,
     category_id: 1,
     created_at: new Date(),
@@ -22,10 +37,11 @@ const recipeData = [
   },
   {
     title: 'Chicken Alfredo',
-    description: 'Creamy pasta dish with grilled chicken and Alfredo sauce.',
+    description: 'Creamy pasta with grilled chicken and Alfredo sauce.',
     ingredients:
-      'Chicken breast, fettuccine pasta, heavy cream, butter, Parmesan cheese, salt, pepper',
-    instructions: '1. Grill chicken. 2. Cook pasta. 3. Heat cream and butter.',
+      '2 Chicken breasts, 8 oz Fettuccine pasta, 1 cup Heavy cream, 4 tbsp Butter, 1 cup Parmesan cheese, Salt, Pepper',
+    instructions:
+      '1. Grill chicken until cooked. 2. Cook pasta. 3. Heat cream and butter, add Parmesan. 4. Combine with pasta. 5. Top with sliced chicken.',
     author_id: 2,
     category_id: 2,
     created_at: new Date(),
@@ -34,10 +50,9 @@ const recipeData = [
   },
   {
     title: 'Caprese Salad',
-    description:
-      'A refreshing Italian salad featuring tomatoes, mozzarella, and basil.',
+    description: 'Refreshing salad with tomatoes, mozzarella, and basil.',
     ingredients:
-      'Tomatoes, fresh mozzarella cheese, fresh basil leaves, balsamic glaze, olive oil, salt, pepper',
+      '4 Tomatoes, 8 oz Fresh mozzarella cheese, Fresh basil leaves, Balsamic glaze, Olive oil, Salt, Pepper',
     instructions:
       '1. Slice tomatoes and mozzarella. 2. Arrange on a plate with basil leaves. 3. Drizzle with balsamic glaze and olive oil.',
     author_id: 3,
@@ -48,12 +63,11 @@ const recipeData = [
   },
   {
     title: 'Vegetable Stir-Fry',
-    description:
-      'A quick and healthy stir-fry with a variety of colorful vegetables.',
+    description: 'Quick and healthy stir-fry with colorful vegetables.',
     ingredients:
-      'Broccoli, bell peppers, carrots, snap peas, tofu, soy sauce, ginger, garlic, rice',
+      '1 cup Broccoli florets, 1 Red bell pepper, 1 Carrot, 1 cup Snap peas, 8 oz Tofu, 2 tbsp Soy sauce, 1 tsp Ginger (minced), 2 cloves Garlic (minced), Cooked rice',
     instructions:
-      '1. Heat oil in a wok. 2. Add tofu and stir-fry until golden. 3. Add vegetables, soy sauce, ginger, and garlic.',
+      '1. Heat 2 tbsp oil. 2. Add cubed tofu, stir-fry. 3. Add chopped veggies, soy sauce, ginger, and garlic. 4. Serve over cooked rice.',
     author_id: 4,
     category_id: 4,
     created_at: new Date(),
@@ -62,11 +76,11 @@ const recipeData = [
   },
   {
     title: 'Chocolate Chip Cookies',
-    description: 'Classic homemade cookies with gooey chocolate chips.',
+    description: 'Classic cookies with gooey chocolate chips.',
     ingredients:
-      'Butter, sugar, brown sugar, eggs, flour, baking soda, salt, chocolate chips',
+      '1 cup Butter, 1 cup Sugar, 1 cup Brown sugar, 2 Eggs, 3 cups Flour, 1 tsp Baking soda, 1/2 tsp Salt, 2 cups Chocolate chips',
     instructions:
-      '1. Cream butter and sugars. 2. Add eggs and beat. 3. Mix in dry ingredients and chocolate chips.',
+      '1. Cream butter, sugar, and brown sugar. 2. Add eggs and beat. 3. Mix in flour, baking soda, and salt. 4. Stir in chocolate chips. 5. Drop spoonfuls onto baking sheet. 6. Bake at 350°F for 10-12 minutes.',
     author_id: 5,
     category_id: 5,
     created_at: new Date(),
