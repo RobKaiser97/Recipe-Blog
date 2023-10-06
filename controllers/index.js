@@ -10,7 +10,7 @@ router.use('/api', apiRoutes); // All API routes will be prefixed with '/api'
 
 // If no routes are hit, respond with a 404
 router.use((req, res) => {
-    res.status(404).end();
+  res.status(404).end();
 });
 
 module.exports = router;
