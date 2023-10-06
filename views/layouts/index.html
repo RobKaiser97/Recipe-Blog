@@ -62,8 +62,7 @@
     <title>Cooking Website</title>
 </head>
 <body class="bg-gray-100">
-    <!-- Navigation Bar -->
-    <nav class="p-4">
+     <nav class="p-4">
         <div class="container mx-auto flex justify-between items-center">
             <!-- Oval Title -->
             <div class="flex items-center">
@@ -74,19 +73,58 @@
             </div>
             <ul class="flex space-x-4">
                 <li><a href="#" class="text-white">Home</a></li>
-                <li><a href="#" class="text-white">Profile</a></li>
-                <li><a href="#" class="text-white">Recipes</a></li>
-                <li><a href="#" class="text-white">Login</a></li>
+                <li class="relative group">
+                    <a href="#" class="text-white group-hover:text-blue-200">Categories</a>
+                    <!-- Dropdown menu for Categories -->
+                    <ul class="absolute hidden bg-white text-gray-800 pt-2 group-hover:block" id="categoriesDropdown">
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Breakfast</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Lunch</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Dinner</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Dessert</a></li>
+                    </ul>
+                </li>
+                <li class="relative group">
+                    <a href="#" class="text-white group-hover:text-blue-200">
+                        <i class="fas fa-user-circle text-lg"></i> <!-- Font Awesome user icon -->
+                    </a>
+                    <!-- Dropdown menu for Profile -->
+                    <ul class="absolute hidden bg-white text-gray-800 pt-2 group-hover:block" id="profileDropdown">
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Login</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Profile</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
+
+   <!-- Custom JavaScript to toggle dropdown visibility -->
+   <script>
+    const categoriesDropdown = document.getElementById('categoriesDropdown');
+    const profileDropdown = document.getElementById('profileDropdown');
+
+    document.querySelector('.group:nth-child(2)').addEventListener('mouseenter', () => {
+        categoriesDropdown.classList.remove('hidden');
+    });
+
+    document.querySelector('.group:nth-child(2)').addEventListener('mouseleave', () => {
+        categoriesDropdown.classList.add('hidden');
+    });
+
+    document.querySelector('.group:nth-child(3)').addEventListener('mouseenter', () => {
+        profileDropdown.classList.remove('hidden');
+    });
+
+    document.querySelector('.group:nth-child(3)').addEventListener('mouseleave', () => {
+        profileDropdown.classList.add('hidden');
+    });
+</script>
 
     <!-- Content Section -->
     <div class="container mx-auto p-6 mt-8">
         <div class="flex space-x-6">
             <!-- Highlighted Recipe Card -->
             <div class="w-1/2 rounded-lg p-4 highlighted-recipe-card"> <!-- Apply adjusted shadow class -->
-                <div class="bg-yellow-500 text-white rounded-t-lg p-2">
+                <div class="bg-yellow-500 text-white rounded-t-lg p-2 ">
                     <h2 class="text-lg font-semibold">Highlighted Recipe</h2>
                 </div>
                 <div class="p-4 card-body"> <!-- Apply custom styles to card body -->
@@ -180,5 +218,6 @@
             font-family: 'Damion', cursive; /* Use the Damion font */
         }
     </style>
+
 </body>
 </html>
