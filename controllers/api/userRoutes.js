@@ -3,15 +3,7 @@ const { User } = require('../../models');
 const multer = require('multer');
 
 // Configure multer for profile image uploads
-const profileImageStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public/assets/profile-images');
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, file.fieldname + '-' + uniqueSuffix + '.' + file.originalname.split('.').pop());
-  },
-});
+const profileImageStorage = multer.memoryStorage();
 const profileImageUpload = multer({
   storage: profileImageStorage,
   fileFilter: (req, file, cb) => {
@@ -28,7 +20,7 @@ router.post('/signup', profileImageUpload.single('profile_picture'), async (req,
   try {
     const userData = {
       ...req.body,
-      profile_picture: req.file ? req.file.filename : undefined,
+      profile_picture: req.file ? req.file.buffer : null,
     };
     const createdUser = await User.create(userData);
     req.session.save(() => {
@@ -82,7 +74,7 @@ router.put('/profile/:id', profileImageUpload.single('profile_picture'), async (
   try {
     const updatedUserData = {
       ...req.body,
-      profile_picture: req.file ? req.file.filename : undefined,
+      profile_picture: req.file ? req.file.buffer : null,
     };
     const userData = await User.update(updatedUserData, {
       where: {

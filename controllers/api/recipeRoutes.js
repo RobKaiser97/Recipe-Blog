@@ -4,15 +4,7 @@ const multer = require('multer');
 const withAuth = require('../../utils/auth');
 
 // Configure multer for recipe image uploads
-const recipeImageStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public/assets/recipe-images');
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, file.fieldname + '-' + uniqueSuffix + '.' + file.originalname.split('.').pop());
-  },
-});
+const recipeImageStorage = multer.memoryStorage();
 const recipeImageUpload = multer({
   storage: recipeImageStorage,
   fileFilter: (req, file, cb) => {
