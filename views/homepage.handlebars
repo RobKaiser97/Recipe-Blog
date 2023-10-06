@@ -8,15 +8,49 @@
           <i class='fas fa-utensils text-white'></i>
           <!-- Font Awesome utensils icon -->
         </div>
-        <h1 class='text-4xl font-damion text-black ml-2'>Now We're Cooking!</h1>
-        <!-- Apply the Damion font -->
-      </div>
-      <ul class='flex space-x-4'>
-        <li><a href='#' class='text-white'>Home</a></li>
-        <li><a href='#' class='text-white'>Profile</a></li>
-        <li><a href='#' class='text-white'>Recipes</a></li>
-        <li><a href='#' class='text-white'>Login</a></li>
-      </ul>
+    </nav>
+
+    <!-- Content Section -->
+    <div class="container mx-auto p-6 mt-8">
+        <div class="flex space-x-6">
+            <!-- Highlighted Recipe Card -->
+            <div class="w-1/2 mt-8 highlighted-recipe-card rounded-lg"> <!-- Adds Shadow to Card-->
+                <div class="bg-yellow-500 text-white rounded-t-lg p-2 ">
+                    <h2 class="text-lg font-semibold">Highlighted Recipe</h2>
+                </div>
+                <div class="card-body rounded-b-lg p-4"> <!-- Apply Custom Styles to Card Body -->
+                    <h3 class="text-xl font-semibold">Delicious Dish Name</h3>
+                    <img src="food-image.jpg" alt="Food Image" class="mt-2 rounded-lg">
+                    <p class=" mt-4">Description of the meal goes here.</p>
+                </div>
+            </div>
+
+            <!-- Submit a Recipe Card -->
+            <div class="w-1/2 mt-8 highlighted-recipe-card rounded-lg">
+                <div class="bg-yellow-500 text-white rounded-t-lg p-2 ">
+                    <h2 class="text-lg font-semibold">Submit a Recipe</h2>
+                </div>
+                <div class="card-body rounded-b-lg p-4"> <!-- Apply custom styles to card body -->
+                     
+<form>
+    <label class="block text-white text-sm text-xl font-semibold mb-2" for="dishName">Dish Name</label>
+    <input type="text" id="dishName" name="dishName" class="border rounded-lg w-full p-2 mb-4 text-gray-700" placeholder="Enter Dish Name">
+
+    <label class="block text-white text-sm text-xl font-semibold mb-2">Description</label>
+    <textarea id="description" name="description" class="border rounded-lg w-full p-2 mb-4 text-gray-700" placeholder="Enter Description"></textarea>
+
+    <label class="block text-white text-sm text-xl font-semibold mb-2">Ingredients</label>
+    <div class="flex items-center mb-4">
+        <input type="number" id="ingredientAmount" name="ingredientAmount" class="border rounded-lg w-1/6 p-2 mr-2 text-gray-700" placeholder="Qty">
+        <select id="ingredientUnit" name="ingredientUnit" class="border rounded-lg w-1/4 p-2 mr-2 text-gray-700">
+            <option value="g">g</option>
+            <option value="kg">kg</option>
+            <option value="ml">ml</option>
+            <option value="l">l</option>
+            <!-- Add more units as needed -->
+        </select>
+        <input type="text" id="ingredientName" name="ingredientName" class="border rounded-lg flex-grow p-2 mr-2 text-gray-700" placeholder="Ingredient Name">
+        <button type="button" class="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">+</button>
     </div>
   </nav>
 
