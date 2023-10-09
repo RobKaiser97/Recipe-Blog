@@ -60,6 +60,18 @@ nav {
   /* Use the Damion font */
 }
 
+/* Adjusted Styles for the Profile Picture in the profile page*/
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background-color: #1ba8e0; /* Blue color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Define a new class for recipe card container */
 .recipe-card {
   width: calc(33.33% - 2rem);
