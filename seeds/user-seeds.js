@@ -76,6 +76,13 @@ const userData = [
     created_at: new Date(),
     profile_picture: defaultImage,
   },
+  {
+    email: 'test@test.com',
+    password: 'password',
+    username: 'testuser',
+    created_at: new Date(),
+    profile_picture: null
+  }
 ];
 
 const seedUsers = () =>
