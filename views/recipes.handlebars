@@ -1,162 +1,48 @@
-<body class="bg-gray-100">
+<div class="bg-gray-100">
 
     <div class="container mx-auto p-8">
 
         <!-- Header -->
         <div class="text-center mb-8">
-            <h1 class="text-4xl font-semibold font-damion">My Cookbook</h1>
+            <h1 class="text-4xl font-semibold damion-font">My Cookbook</h1>
             <p class="text-gray-500">Explore and share your favorite recipes!</p>
         </div>
 
         <!-- Recipe Cards -->
+        {{#each recipeData}}
         <div class="recipe-card">
-            <!-- Recipe 1 -->
             <div class="bg-white p-4 rounded-lg shadow-md">
                 <!-- Display Recipe Information -->
-                <img src="https://via.placeholder.com/400x300" alt="Spaghetti Bolognese" class="mb-2 recipe-image">
+                <img src="{{image}}" alt="{{title}}" class="mb-2 recipe-image">
 
-                <p class="text-gray-700 mb-2 recipe-description">
-                    Classic Italian pasta dish with rich meat sauce. Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+                <p class="text-gray-700 mb-2 recipe-description{{#unless expanded}} collapsed{{/unless}}">
+                    {{description}}
                 </p>
 
-                <p class="read-more collapsible">Read More...</p>
-
                 <!-- Tags for classification -->
+                {{#if (gt (length recipe.category_id) 0)}}
                 <div class="recipe-tags">
-                    <span class="tag">#Dinner</span>
-                    <span class="tag">#Pasta</span>
+                    {{#each recipe.category_id}}
+                    {{#with (lookup ../categoryData this)}}
+                    <span class="tag">{{name}}</span>
+                    {{/with}}
+                    {{/each}}
                 </div>
+                {{/if}}
+
+                <!-- Read More -->
+                {{#if (gt (length description) 3)}}
+                <p class="read-more collapsible">Read More...</p>
+                {{/if}}
             </div>
         </div>
-
-        <div class="recipe-card">
-            <!-- Recipe 2 -->
-            <div class="bg-white p-4 rounded-lg shadow-md">
-                <!-- Display Recipe Information -->
-                <img src="https://via.placeholder.com/400x300" alt="Chocolate Chip Cookies" class="mb-2 recipe-image">
-
-                <p class="text-gray-700 mb-2 recipe-description">
-                    Classic homemade chocolate chip cookies with a gooey center. Short description. Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit.
-                </p>
-
-                <p class="read-more collapsible">Read More...</p>
-
-                <!-- Tags for classification -->
-                <div class="recipe-tags">
-                    <span class="tag">#Dessert</span>
-                    <span class="tag">#Cookie</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="recipe-card">
-            <!-- Recipe 3 -->
-            <div class="bg-white p-4 rounded-lg shadow-md">
-                <!-- Display Recipe Information -->
-                <img src="https://via.placeholder.com/400x300" alt="Chicken Alfredo" class="mb-2 recipe-image">
-
-                <p class="text-gray-700 mb-2 recipe-description">
-                    Creamy Alfredo pasta with tender chicken pieces. Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-                </p>
-
-                <p class="read-more collapsible">Read More...</p>
-
-                <!-- Tags for classification -->
-                <div class="recipe-tags">
-                    <span class="tag">#Dinner</span>
-                    <span class="tag">#Pasta</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="recipe-card">
-            <!-- Recipe 4 -->
-            <div class="bg-white p-4 rounded-lg shadow-md">
-                <!-- Display Recipe Information -->
-                <img src="https://via.placeholder.com/400x300" alt="Vegetarian Stir-Fry" class="mb-2 recipe-image">
-
-                <p class="text-gray-700 mb-2 recipe-description">
-                    Healthy and delicious stir-fried vegetables. Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-                </p>
-
-                <p class="read-more collapsible">Read More...</p>
-
-                <!-- Tags for classification -->
-                <div class="recipe-tags">
-                    <span class="tag">#Vegetarian</span>
-                    <span class="tag">#Dinner</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="recipe-card">
-            <!-- Recipe 5 -->
-            <div class="bg-white p-4 rounded-lg shadow-md">
-                <!-- Display Recipe Information -->
-                <img src="https://via.placeholder.com/400x300" alt="Margherita Pizza" class="mb-2 recipe-image">
-
-                <p class="text-gray-700 mb-2 recipe-description">
-                    Classic pizza with fresh tomatoes, mozzarella, and basil. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-                </p>
-
-                <p class="read-more collapsible">Read More...</p>
-
-                <!-- Tags for classification -->
-                <div class="recipe-tags">
-                    <span class="tag">#Dinner</span>
-                    <span class="tag">#Pizza</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="recipe-card">
-            <!-- Recipe 6 -->
-            <div class="bg-white p-4 rounded-lg shadow-md">
-                <!-- Display Recipe Information -->
-                <img src="https://via.placeholder.com/400x300" alt="Greek Salad" class="mb-2 recipe-image">
-
-                <p class="text-gray-700 mb-2 recipe-description">
-                    Refreshing salad with tomatoes, cucumbers, olives, and feta. Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-                </p>
-
-                <p class="read-more collapsible">Read More...</p>
-
-                <!-- Tags for classification -->
-                <div class="recipe-tags">
-                    <span class="tag">#Salad</span>
-                    <span class="tag">#Vegetarian</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="recipe-card">
-            <!-- Recipe 7 -->
-            <div class="bg-white p-4 rounded-lg shadow-md">
-                <!-- Display Recipe Information -->
-                <img src="https://via.placeholder.com/400x300" alt="Smoothie Bowl" class="mb-2 recipe-image">
-
-                <p class="text-gray-700 mb-2 recipe-description">
-                    Colorful and nutritious smoothie bowl with a variety of fresh fruits. Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-                </p>
-
-                <p class="read-more collapsible">Read More...</p>
-
-                <!-- Tags for classification -->
-                <div class="recipe-tags">
-                    <span class="tag">#Breakfast</span>
-                    <span class="tag">#Smoothie</span>
-                </div>
-            </div>
-        </div>
+        {{/each}}
 
         <!-- Clear float to start a new row -->
         <div class="clear-float"></div>
 
     </div>
+
+</div>
+
+<script src="../public/js"></script>
