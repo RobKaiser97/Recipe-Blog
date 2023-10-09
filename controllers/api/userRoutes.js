@@ -2,11 +2,6 @@ const router = require('express').Router();
 const { User } = require('../../models');
 const multer = require('multer');
 
-router.use('/login', /* login handler */);
-router.use('/signup', /* signup handler */);
-router.use('/profile/:user_id', /* profile handler */);
-router.use('/logout', /* logout handler */);
-
 // Configure multer for profile image uploads
 const profileImageStorage = multer.memoryStorage();
 const profileImageUpload = multer({
