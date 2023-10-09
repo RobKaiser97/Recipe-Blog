@@ -1,16 +1,70 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { Recipe, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPk();
-    const users = userData.map((user) => user.get({ plain: true }));
+    const userData = await User.findByPk(req.session.user_id, {
+      include: [
+        {
+          model: Recipe,
+          attributes: ['id', 'title', 'created_at'],
+        },
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'created_at'],
+          include: [
+            {
+              model: Recipe,
+              attributes: ['title'],
+            },
+          ],
+          where: {
+            user_id: req.session.user_id,
+          },
+        },
+      ],
+    });
+
+    const users = userData.get({ plain: true });
 
     res.render('profile', {
       users,
       loggedIn: req.session.loggedIn
     });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/recipes/edit/:id', withAuth, async (req, res) => {
+  try {
+    const recipe = await Recipe.findByPk(req.params.id);
+
+    if (!recipe) {
+      return res.status(404).json({ message: 'Recipe not found' });
+    }
+
+    res.render('edit-recipe', {
+      recipe,
+      loggedIn: req.session.loggedIn
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.put('/recipes/edit/:id', withAuth, async (req, res) => {
+  try {
+    const recipe = await Recipe.findByPk(req.params.id);
+
+    if (!recipe) {
+      return res.status(404).json({ message: 'Recipe not found' });
+    }
+
+    await recipe.update(req.body);
+
+    res.status(200).json(recipe);
   } catch (err) {
     res.status(500).json(err);
   }
