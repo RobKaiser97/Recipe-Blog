@@ -19,7 +19,7 @@ const signupHandler = async (event) => {
     }
 
     // Make an API call for login
-    const response = await fetch("/api/users/signup", {
+    const response = await fetch("/api/signup", {
         method: "POST",
         body: JSON.stringify({ email, password }),
         headers: { "Content-Type": "application/json" },
@@ -30,4 +30,4 @@ const signupHandler = async (event) => {
 };
 
 // Add event listener for login form submission
-document.querySelector("#signup-form").addEventListener("submit", signupHandler);
+document.querySelector('.signup_form').addEventListener('submit', signupHandler);
