@@ -134,14 +134,24 @@ nav {
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
+    #nav_bar {
+        width: calc(100% - 3rem);
+    }
+    .egg-circle {
+        width: 40px;
+    }
     .recipe-card {
         width: calc(50% - 2rem);
         /* 2 columns for smaller screens */
     }
+
 }
 
 /* Media query for even smaller screens */
 @media (max-width: 480px) {
+    .egg-circle {
+        width: 40px;
+    }
     .recipe-card {
         width: calc(100% - 2rem);
         /* 1 column for even smaller screens */

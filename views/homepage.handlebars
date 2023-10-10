@@ -35,6 +35,15 @@
 
                         <label class="block text-white text-sm text-xl font-semibold mb-2">Ingredients</label>
                        <div class="block items-center mb-4" id="ingredientsContainer">
+                            <input type="number" class="border rounded-lg w-1/6 p-2 mr-2 text-gray-700" placeholder="Qty">
+                            <select class="border rounded-lg w-1/4 p-2 mr-2 text-gray-700">
+                            <option value="g">gram(s)</option>
+                            <option value="kg">kilogram(s)</option>
+                            <option value="ml">milliliter(s)</option>
+                            <option value="l">liter(s)</option>
+                            <!-- Add more units as needed -->
+                            </select>
+    <input type="text" class="border rounded-lg flex-grow p-2 mr-2 text-gray-700" placeholder="Ingredient Name">
                            <button type="button" class="submit-button p-2 rounded-lg hover:bg-f3c655 plus-button mb-2" >New Ingredient</button>
                         </div>
 
