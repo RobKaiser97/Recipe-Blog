@@ -50,13 +50,15 @@ router.post(
 );
 
 router.post('/login', async (req, res) => {
+  console.log("req.body:", req.body); // Debug: Display incoming request
   try {
     const userData = await User.findOne({
       where: {
         username: req.body.username,
       },
     });
-    console.log('userData', userData);
+    // userData = { id: 1, username: 'mockUser' }; // Debug: Manually set userData for testing
+    console.log("Is userData defined?", !!userData); // Debug: Check for userData
     if (!userData) {
       res.status(404).json({ message: 'No user found' });
       return;
@@ -77,7 +79,7 @@ router.post('/login', async (req, res) => {
       // console.log('loggedIn', req.session.loggedIn);
     });
   } catch (error) {
-    console.error(error);
+    console.error('Login route errors: ', error); // Debug: Errors for login route
     res.status(500).json(error);
   }
 });
