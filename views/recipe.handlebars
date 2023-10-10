@@ -1,60 +1,65 @@
-<body>
-    <div class="recipe-container">
-        <!-- Recipe Title -->
-        <h1 class="text-4xl font-semibold damion-font mb-4">{{recipe.title}}</h1>
+<div class='recipe-container'>
+  <!-- Recipe Title -->
+  <h1 class='text-4xl font-semibold damion-font mb-4'>{{recipe.title}}</h1>
 
-        <!-- Recipe Image -->
-        <img src="{{recipe.image}}" alt="{{recipe.title}}" class="recipe-image">
+  <!-- Recipe Image -->
+  <img src='{{recipe.image}}' alt='{{recipe.title}}' class='recipe-image' />
 
-        <!-- Recipe Description -->
-        <p class="text-gray-700 mb-4">
-            {{recipe.description}}
-        </p>
+  <!-- Recipe Description -->
+  <p class='text-gray-700 mb-4'>
+    {{recipe.description}}
+  </p>
 
-        <!-- Recipe Ingredients -->
-        <h2 class="text-2xl font-semibold mb-2">Ingredients</h2>
-        <p>{{recipe.ingredients}}</p>
+  <!-- Recipe Ingredients -->
+  <h2 class='text-2xl font-semibold mb-2'>Ingredients</h2>
+  <p>{{recipe.ingredients}}</p>
 
-        <!-- Recipe Instructions -->
-        <h2 class="text-2xl font-semibold mb-2">Instructions</h2>
-        <p>{{recipe.instructions}}</p>
+  <!-- Recipe Instructions -->
+  <h2 class='text-2xl font-semibold mb-2'>Instructions</h2>
+  <p>{{recipe.instructions}}</p>
 
-        <!-- Tags for classification -->
-        <h2 class="text-2xl font-semibold mb-2">Tags</h2>
-        <div class="recipe-tags">
-            {{#each recipe.tags}}
-            <span class="tag">{{this}}</span>
-            {{/each}}
-        </div>
+  <!-- Tags for classification -->
+  <h2 class='text-2xl font-semibold mb-2'>Tags</h2>
+  <div class='recipe-tags'>
+    {{#each recipe.tags}}
+      <span class='tag'>{{this}}</span>
+    {{/each}}
+  </div>
 
-        <!-- Comments Section -->
-        <div class="comments-section">
-            <h2 class="text-2xl font-semibold mb-2">Comments</h2>
+  <!-- Comments Section -->
+  <div class='comments-section'>
+    <h2 class='text-2xl font-semibold mb-2'>Comments</h2>
 
-            <!-- Comment Form -->
-            <form class="comment-form">
-                <label for="comment">Leave a comment:</label>
-                <textarea id="comment" name="comment" rows="4" class="border p-2 rounded"></textarea>
+    <!-- Comment Form -->
+    <form class='comment-form'>
+      <label for='comment'>Leave a comment:</label>
+      <textarea
+        id='comment'
+        name='comment'
+        rows='4'
+        class='border p-2 rounded'
+      ></textarea>
 
-                <!-- Smaller Submit Button -->
-                <button type="submit" class="submit-button">Submit</button>
-            </form>
+      <!-- Smaller Submit Button -->
+      <button type='submit' class='submit-button'>Submit</button>
+    </form>
 
-            <!-- Display Existing Comments -->
-            <div class="existing-comments">
-                <h3 class="text-xl font-semibold mb-2">Existing Comments:</h3>
+    <!-- Display Existing Comments -->
+    <div class='existing-comments'>
+      <h3 class='text-xl font-semibold mb-2'>Existing Comments:</h3>
 
-                <!-- Check if there are existing comments -->
-                {{#if recipe.comments.length}}
-                <ul>
-                    {{#each recipe.comments}}
-                    <li>{{this}}</li>
-                    {{/each}}
-                </ul>
-                {{else}}
-                <p>No comments yet.</p>
-                {{/if}}
-            </div>
-        </div>
+      <!-- Check if there are existing comments -->
+      {{#if recipe.comments.length}}
+        <ul>
+          {{#each recipe.comments}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <p>No comments yet.</p>
+      {{/if}}
     </div>
-</body>
+  </div>
+</div>
+
+<script src='/js/recipe.js'></script>
