@@ -27,12 +27,12 @@
                 <!-- Apply the Damion font -->
             </div>
             <ul class='flex space-x-4'>
-                <li><a href='#' class='text-white'>Home</a></li>
+                <li><a href='/' class='text-white'>Home</a></li>
                 <li class='relative group'>
                     <a href='#' class='text-white group-hover:text-blue-200'>Categories</a>
                     <!-- Dropdown menu for Categories -->
                     <ul class='absolute hidden bg-white text-gray-800 pt-2 group-hover:block' id='categoriesDropdown'>
-                        <li><a href='./views/recipes.handlebars' class='block px-4 py-2 hover:bg-gray-200'>Breakfast</a>
+                        <li><a href='/recipe' class='block px-4 py-2 hover:bg-gray-200'>Breakfast</a>
                         </li>
                         <li><a href='/views/recipes.handlebars' class='block px-4 py-2 hover:bg-gray-200'>Lunch</a></li>
                         <li><a href='/views/recipes.handlebars' class='block px-4 py-2 hover:bg-gray-200'>Dinner</a>
@@ -48,8 +48,8 @@
                     </a>
                     <!-- Dropdown menu for Profile -->
                     <ul class='absolute hidden bg-white text-gray-800 pt-2 group-hover:block' id='profileDropdown'>
-                        <li><a href='/views/signup.handlebars' class='block px-4 py-2 hover:bg-gray-200'>Login</a></li>
-                        <li><a href='/views/profile.handlebars' class='block px-4 py-2 hover:bg-gray-200'>Profile</a>
+                        <li><a href='/login' class='block px-4 py-2 hover:bg-gray-200'>Login</a></li>
+                        <li><a href='/profile' class='block px-4 py-2 hover:bg-gray-200'>Profile</a>
                         </li>
                     </ul>
                 </li>
@@ -60,7 +60,6 @@
     {{{body}}}
 
     <!-- JS Links -->
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src='/js/main.js'></script>
 
 </body>
