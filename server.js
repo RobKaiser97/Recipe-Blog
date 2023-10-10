@@ -1,4 +1,6 @@
 require('dotenv').config();
+console.log("SECRET_KEY:", process.env.SECRET_KEY); // Debug: Assist in debugging routing errors
+// IMPORTANT: Remove before deployment
 const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
@@ -40,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
+  console.log("Database connected!"); // Debug: Check for DB connect on server start
   app.listen(PORT, () =>
     console.log(`Now listening on http://localhost:${PORT}`)
   );
