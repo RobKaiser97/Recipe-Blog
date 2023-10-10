@@ -3,11 +3,17 @@ const signupHandler = async (event) => {
     event.preventDefault();
 
     // Grab username and password
+    const username = document.querySelector("#username").value.trim();
     const email = document.querySelector("#email").value.trim();
     const password = document.querySelector("#password").value.trim();
     const confirmPass = document.querySelector("#confirmPassword").value.trim();
 
     // Check for empty fields
+    if (!username) {
+        alert("Please enter a username");
+        return;
+    }
+
     if (!email || !password) {
         alert("Please enter an email or password");
         return;
@@ -19,14 +25,14 @@ const signupHandler = async (event) => {
     }
 
     // Make an API call for login
-    const response = await fetch("/api/signup", {
+    const response = await fetch("/api/users/signup", {
         method: "POST",
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, username, password }),
         headers: { "Content-Type": "application/json" },
     });
 
     // Redirect to homepage if login is successful
-    response.ok ? document.location.replace("/") : alert("Failed to log in!");
+    response.ok ? document.location.replace("/") : alert("Failed to Signup!");
 };
 
 // Add event listener for login form submission
