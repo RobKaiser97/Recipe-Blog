@@ -21,6 +21,7 @@ router.post(
   '/signup',
   profileImageUpload.single('profile_picture'),
   async (req, res) => {
+  console.log('Entering route: ', req.originalUrl); console.log('Request body:', req.body); // Debug
     try {
       console.log('username:', req.body.username); // add this line to check the value of req.body.username
       if (!req.body.username) {
@@ -46,10 +47,11 @@ router.post(
       console.log('error:', error);
       res.status(500).json(error);
     }
-  }
-);
+    console.log('Exiting route: ', req.originalUrl); console.log('Response:', res.statusCode); // Debug
+  });
 
 router.post('/login', async (req, res) => {
+  console.log('Entering route: ', req.originalUrl); console.log('Request body:', req.body); // Debug
   try {
     const userData = await User.findOne({
       where: {
@@ -71,23 +73,22 @@ router.post('/login', async (req, res) => {
         (req.session.username = userData.username),
         (req.session.loggedIn = true);
       res.json(userData);
-
-      // console.log('user_id', req.session.user_id);
-      // console.log('username', req.session.username);
-      // console.log('loggedIn', req.session.loggedIn);
     });
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
   }
+  console.log('Exiting route: ', req.originalUrl); console.log('Response:', res.statusCode); // Debug
 });
 
 router.post('/logout', (req, res) => {
+  console.log('Entering route: ', req.originalUrl); console.log('Request body:', req.body); // Debug
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });
   }
+  console.log('Exiting route: ', req.originalUrl); console.log('Response:', res.statusCode); // Debug
 });
 
 // Put route to update User model, used for updating profile picture, username, email, and password
