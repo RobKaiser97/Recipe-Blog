@@ -15,28 +15,34 @@ const profileImageUpload = multer({
   },
 });
 
+console.log('signup endpoint hit'); // add this line to check if the endpoint is hit
 // Endpoint for user signup
-router.post(
-  '/signup',
-  profileImageUpload.single('profile_picture'),
-  async (req, res) => {
-    try {
-      const userData = {
-        ...req.body,
-        profile_picture: req.file ? req.file.buffer : null,
-      };
-      const createdUser = await User.create(userData);
-      req.session.save(() => {
-        (req.session.user_id = createdUser.id),
-          (req.session.username = createdUser.username),
-          (req.session.loggedIn = true);
-        res.json(createdUser);
-      });
-    } catch (error) {
-      res.status(500).json(error);
+router.post('/signup', profileImageUpload.single('profile_picture'), async (req, res) => {
+  try {
+    console.log('username:', req.body.username); // add this line to check the value of req.body.username
+    if (!req.body.username) {
+      throw new Error('Username field is required');
     }
+    const userData = {
+      ...req.body,
+      username: typeof req.body.username === 'string' ? req.body.username : '',
+      profile_picture: req.file ? req.file.buffer : null,
+    };
+    console.log('userData:', userData);
+    const createdUser = await User.create(userData);
+    console.log('createdUser:', createdUser);
+    req.session.save(() => {
+      (req.session.user_id = createdUser.id),
+        (req.session.username = createdUser.username),
+        (req.session.loggedIn = true);
+      res.json(createdUser);
+      console.log(createdUser);
+    });
+  } catch (error) {
+    console.log('error:', error);
+    res.status(500).json(error);
   }
-);
+});
 
 router.post('/login', async (req, res) => {
   try {
