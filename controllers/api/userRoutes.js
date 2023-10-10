@@ -17,32 +17,37 @@ const profileImageUpload = multer({
 
 console.log('signup endpoint hit'); // add this line to check if the endpoint is hit
 // Endpoint for user signup
-router.post('/signup', profileImageUpload.single('profile_picture'), async (req, res) => {
-  try {
-    console.log('username:', req.body.username); // add this line to check the value of req.body.username
-    if (!req.body.username) {
-      throw new Error('Username field is required');
+router.post(
+  '/signup',
+  profileImageUpload.single('profile_picture'),
+  async (req, res) => {
+    try {
+      console.log('username:', req.body.username); // add this line to check the value of req.body.username
+      if (!req.body.username) {
+        throw new Error('Username field is required');
+      }
+      const userData = {
+        ...req.body,
+        username:
+          typeof req.body.username === 'string' ? req.body.username : '',
+        profile_picture: req.file ? req.file.buffer : null,
+      };
+      console.log('userData:', userData);
+      const createdUser = await User.create(userData);
+      console.log('createdUser:', createdUser);
+      req.session.save(() => {
+        (req.session.user_id = createdUser.id),
+          (req.session.username = createdUser.username),
+          (req.session.loggedIn = true);
+        res.json(createdUser);
+        console.log(createdUser);
+      });
+    } catch (error) {
+      console.log('error:', error);
+      res.status(500).json(error);
     }
-    const userData = {
-      ...req.body,
-      username: typeof req.body.username === 'string' ? req.body.username : '',
-      profile_picture: req.file ? req.file.buffer : null,
-    };
-    console.log('userData:', userData);
-    const createdUser = await User.create(userData);
-    console.log('createdUser:', createdUser);
-    req.session.save(() => {
-      (req.session.user_id = createdUser.id),
-        (req.session.username = createdUser.username),
-        (req.session.loggedIn = true);
-      res.json(createdUser);
-      console.log(createdUser);
-    });
-  } catch (error) {
-    console.log('error:', error);
-    res.status(500).json(error);
   }
-});
+);
 
 router.post('/login', async (req, res) => {
   try {
@@ -51,6 +56,7 @@ router.post('/login', async (req, res) => {
         username: req.body.username,
       },
     });
+    console.log('userData', userData);
     if (!userData) {
       res.status(404).json({ message: 'No user found' });
       return;
@@ -65,8 +71,13 @@ router.post('/login', async (req, res) => {
         (req.session.username = userData.username),
         (req.session.loggedIn = true);
       res.json(userData);
+
+      // console.log('user_id', req.session.user_id);
+      // console.log('username', req.session.username);
+      // console.log('loggedIn', req.session.loggedIn);
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json(error);
   }
 });
