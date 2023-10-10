@@ -34,21 +34,8 @@
                             placeholder="Enter Description"></textarea>
 
                         <label class="block text-white text-sm text-xl font-semibold mb-2">Ingredients</label>
-                        <div class="flex items-center mb-4">
-                            <input type="number" id="ingredientAmount" name="ingredientAmount"
-                                class="border rounded-lg w-1/6 p-2 mr-2 text-gray-700" placeholder="Qty">
-                            <select id="ingredientUnit" name="ingredientUnit"
-                                class="border rounded-lg w-1/4 p-2 mr-2 text-gray-700">
-                                <option value="g">g</option>
-                                <option value="kg">kg</option>
-                                <option value="ml">ml</option>
-                                <option value="l">l</option>
-                                <!-- Add more units as needed -->
-                            </select>
-                            <input type="text" id="ingredientName" name="ingredientName"
-                                class="border rounded-lg flex-grow p-2 mr-2 text-gray-700"
-                                placeholder="Ingredient Name">
-                            <button type="button" class=" submit-button p-2 rounded-lg hover:bg-f3c655">+</button>
+                       <div class="block items-center mb-4" id="ingredientsContainer">
+                           <button type="button" class="submit-button p-2 rounded-lg hover:bg-f3c655 plus-button mb-2" >New Ingredient</button>
                         </div>
 
                         <label class="block text-white text-sm text-xl font-semibold mb-2">Tags</label>
@@ -100,3 +87,5 @@
         </div>
 
 </div>
+
+<script src='/js/index.js'></script>
