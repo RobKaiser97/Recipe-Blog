@@ -1,6 +1,17 @@
 const router = require('express').Router();
 const { Recipe, User, Comment } = require('../models'); // Adjust this path to your actual Recipe model
+// Debug: Begin debugging of session variables
+// Test route to set a session variable
+// router.get('/set', (req, res) => {
+//   req.session.testVar = 'Hello, world!';
+//   res.send('Session variable set.');
+// });
 
+// Test route to get a session variable
+// router.get('/get', (req, res) => {
+//   res.send(`Session variable: ${req.session.testVar}`);
+// });
+// * End Debug Statements *
 router.get('/', async (req, res) => {
   try {
     const recipes = await Recipe.findAll({

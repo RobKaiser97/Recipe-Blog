@@ -58,7 +58,8 @@ router.post('/login', async (req, res) => {
         username: req.body.username,
       },
     });
-    console.log('userData', userData);
+    // userData = { id: 1, username: 'mockUser' }; // Debug: Manually set userData for testing
+    console.log("Is userData defined?", !!userData); // Debug: Check for userData
     if (!userData) {
       res.status(404).json({ message: 'No user found' });
       return;
@@ -75,7 +76,7 @@ router.post('/login', async (req, res) => {
       res.json(userData);
     });
   } catch (error) {
-    console.error(error);
+    console.error('Login route errors: ', error); // Debug: Errors for login route
     res.status(500).json(error);
   }
   console.log('Exiting route: ', req.originalUrl); console.log('Response:', res.statusCode); // Debug
