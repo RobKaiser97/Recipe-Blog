@@ -1,10 +1,28 @@
 <div class="bg-gray-100">
 
     <!-- Content Section -->
-    <div class="container mx-auto p-6 mt-8">
+    <div class="container mx-auto p-6 mt-8 ">
+        <div class="container mx-auto p-6 mt-2 ">
+            <div class="welcome-card highlighted-recipe-card">
+                <h1 class="font-damion text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card">Welcome</h1>
+                <p class="text-custom-blue font-caveat text-xl">
+                    Welcome to our kitchen! We're delighted to have you here. Take a moment to explore the delicious recipes created by our community or share your own culinary masterpiece. It's all about sharing the love for cooking and baking.
+                </p>
+            </div>
+        </div>  
         <div class="flex space-x-6">
             <!-- Highlighted Recipe Card -->
             <div class="w-1/2 mt-8  rounded-lg">
+                <div class="bg-custom-yellow highlighted-recipe-card text-white rounded-t-lg p-2 ">
+                    <h2 class="text-2xl font-autour-one">Highlighted Recipe</h2>
+                </div>
+                <div class="card-body highlighted-recipe-card rounded-b-lg p-4">
+                    <h3 class="text-xl font-acme">Spaghetti Bolognese</h3>
+                    <img src="/assets/recipe-images/spaghetti-bolognese.jpeg" alt="Spaghetti Bolognese" class="mt-2 rounded-lg">
+                    <p class=" text-xl mt-4 font-caveat">Classic Italian pasta with a rich meat sauce.</p>
+                </div>
+            </div>
+            {{!-- <div class="w-1/2 mt-8  rounded-lg">
                 <div class="bg-yellow-500 highlighted-recipe-card text-white rounded-t-lg p-2 ">
                     <h2 class="text-lg font-semibold">Highlighted Recipe</h2>
                 </div>
@@ -13,27 +31,27 @@
                     <img src="food-image.jpg" alt="Food Image" class="mt-2 rounded-lg">
                     <p class=" mt-4">Description of the meal goes here.</p>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Submit a Recipe Card -->
             <div class="w-1/2 mt-8 highlighted-recipe-card rounded-lg">
-                <div class="bg-yellow-500 text-white rounded-t-lg p-2 ">
-                    <h2 class="text-lg font-semibold">Submit a Recipe</h2>
+                <div class="bg-custom-yellow text-white rounded-t-lg p-2 ">
+                    <h2 class="text-2xl  font-autour-one">Submit a Recipe</h2>
                 </div>
                 <div class="card-body rounded-b-lg p-4"> <!-- Apply custom styles to card body -->
 
                     <form>
-                        <label class="block text-white text-sm text-xl font-semibold mb-2" for="dishName">Dish
+                        <label class="block text-white text-sm text-xl font-acme mb-2" for="dishName">Dish
                             Name</label>
                         <input type="text" id="dishName" name="dishName"
                             class="border rounded-lg w-full p-2 mb-4 text-gray-700" placeholder="Enter Dish Name">
 
-                        <label class="block text-white text-sm text-xl font-semibold mb-2">Description</label>
+                        <label class="block text-white text-sm text-xl font-acme mb-2">Description</label>
                         <textarea id="description" name="description"
                             class="border rounded-lg w-full p-2 mb-4 text-gray-700"
                             placeholder="Enter Description"></textarea>
 
-                        <label class="block text-white text-sm text-xl font-semibold mb-2">Ingredients</label>
+                        <label class="block text-white text-sm text-xl font-acme mb-2">Ingredients</label>
                        <div class="block items-center mb-4" id="ingredientsContainer">
                             <input type="number" class="border rounded-lg w-1/6 p-2 mr-2 text-gray-700" placeholder="Qty">
                             <select class="border rounded-lg w-1/4 p-2 mr-2 text-gray-700">
@@ -44,11 +62,11 @@
                             <!-- Add more units as needed -->
                             </select>
     <input type="text" class="border rounded-lg flex-grow p-2 mr-2 text-gray-700" placeholder="Ingredient Name">
-                           <button type="button" class="submit-button p-2 rounded-lg hover:bg-f3c655 plus-button mb-2" >New Ingredient</button>
+                           <button type="button" class="submit-button p-2 rounded-lg hover:bg-f3c655 plus-button font-autour-one mb-2" >New Ingredient</button>
                         </div>
 
-                        <label class="block text-white text-sm text-xl font-semibold mb-2">Tags</label>
-                        <div class="grid grid-cols-2 gap-2">
+                        <label class="block text-white text-xl font-acme mb-2">Tags</label>
+                        <div class="grid grid-cols-2 gap-2 text-lg font-caveat">
                             <label class="flex items-center">
                                 <input type="checkbox" name="tags[]" value="Vegetarian" class="mr-2">
                                 Vegetarian
@@ -83,12 +101,12 @@
                             </label>
                         </div>
 
-                        <label class="block text-white text-sm text-xl font-semibold mb-2" for="image">Upload
+                        <label class="block text-white text-sm text-xl font-acme my-2" for="image">Upload
                             Image</label>
                         <input type="file" id="image" name="image" class="mb-4">
 
                         <button type="submit"
-                            class="submit-button text-white px-4 py-2 rounded-lg hover:bg-f3c655">Submit Recipe</button>
+                            class="submit-button text-white px-4 py-2 rounded-lg font-autour-one hover:bg-f3c655">Submit Recipe</button>
                         <!-- Apply custom styles to the button -->
                     </form>
                 </div>
