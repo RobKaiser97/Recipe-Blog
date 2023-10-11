@@ -20,6 +20,14 @@ body::before {
     /* Text color */
 }
 
+.bg-custom-yellow {
+    background-color: #f3c655;
+}
+
+.text-custom-blue {
+    color: #1ba8e0; /* Blue color */
+}
+
 /* Custom CSS for "Submit Recipe" button */
 .submit-button {
     background-color: #f3c655;
@@ -58,6 +66,30 @@ nav {
 .font-damion {
     font-family: 'Damion', cursive;
     /* Use the Damion font */
+}
+
+.font-autour-one {
+    font-family: 'Autour One', cursive;
+    /* Use the Autour One font */
+}
+
+.font-caveat {
+    font-family: 'Caveat', cursive;
+    /* Use the Caveat font */
+}
+
+.font-acme {
+    font-family: 'Acme', cursive;
+    /* Use the Acme font */
+}
+
+.welcome-card {
+    border: 2px dashed #1ba8e0; /* Blue dashed border */
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+    margin: auto;
 }
 
 /* Adjusted Styles for the Profile Picture in the profile page*/
