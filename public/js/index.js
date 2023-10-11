@@ -16,4 +16,37 @@ function addIngredient() {
     ingredientsContainer.appendChild(newIngredientRow);
 };
 
+const form = document.querySelector('form');
+
+form.addEventListener('submit', async function (event) {
+  event.preventDefault();
+
+  const dishName = document.getElementById('dishName').value.trim();
+  const description = document.getElementById('description').value.trim();
+  const ingredients = document.getElementById('ingredientsContainer').value;
+  const image = document.getElementById('image').value;
+  const tags = document.getElementById('tags').value;
+
+  try {
+    const response = await fetch('/api/recipe', {
+      method: 'POST',
+      body: JSON.stringify({ dishName, description, ingredients, tags, image }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      document.location.replace('/');
+    } else {
+      alert('Failed to post recipe!');
+    }
+
+    console.log('dishName:', dishName);
+    console.log('description:', description);
+    console.log('tags:', tags);
+    console.log('ingredients:', ingredients);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+});
+
 document.querySelector(".plus-button").addEventListener("click",addIngredient);
