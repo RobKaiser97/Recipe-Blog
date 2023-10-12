@@ -4,12 +4,8 @@
   <h1 class='text-4xl font-semibold damion-font mb-4'>{{recipe.title}}</h1>
 
   <!-- Recipe Image -->
-  <img
-    src='{{decodeBase64 recipe.image}}'
-    {{log decodeBase64 recipe.image}}
-    alt='{{recipe.title}}'
-    class='recipe-image'
-  />
+  <img src='{{decodeBase64 recipe.image}}' {{log decodeBase64 recipe.image}} alt='{{recipe.title}}'
+    class='recipe-image' />
 
   <!-- Recipe Description -->
   <p class='text-gray-700 mb-4'>
@@ -28,7 +24,7 @@
   <h2 class='text-2xl font-semibold mb-2'>Tags</h2>
   <div class='recipe-tags'>
     {{#each recipe.tags}}
-      <span class='tag'>{{this}}</span>
+    <span class='tag'>{{this}}</span>
     {{/each}}
   </div>
 
@@ -39,12 +35,7 @@
     <!-- Comment Form -->
     <form class='comment-form'>
       <label for='comment'>Leave a comment:</label>
-      <textarea
-        id='comment'
-        name='comment'
-        rows='4'
-        class='border p-2 rounded'
-      ></textarea>
+      <textarea id='comment' name='comment' rows='4' class='border p-2 rounded'></textarea>
 
       <!-- Smaller Submit Button -->
       <button type='submit' class='submit-button'>Submit</button>
@@ -56,14 +47,14 @@
 
       <!-- Check if there are existing comments -->
       {{#if recipe.comments.length}}
-        <ul>
-          {{#each recipe.comments}}
-            <li>{{this.content}}</li>
-            <!-- Assuming there's a 'content' property in Comment model -->
-          {{/each}}
-        </ul>
+      <ul>
+        {{#each recipe.comments}}
+        <li>{{this.content}}</li>
+        <!-- Assuming there's a 'content' property in Comment model -->
+        {{/each}}
+      </ul>
       {{else}}
-        <p>No comments yet.</p>
+      <p>No comments yet.</p>
       {{/if}}
     </div>
   </div>
