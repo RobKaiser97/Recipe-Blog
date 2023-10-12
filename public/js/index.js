@@ -24,11 +24,11 @@ form.addEventListener('submit', async function (event) {
   const dishName = document.getElementById('dishName').value.trim();
   const description = document.getElementById('description').value.trim();
   const ingredients = document.getElementById('ingredientsContainer').value;
-  const image = document.getElementById('image').value;
   const tags = document.getElementById('tags').value;
+  const image = document.getElementById('image').value;
 
   try {
-    const response = await fetch('/api/recipe', {
+    const response = await fetch('/api/recipes', {
       method: 'POST',
       body: JSON.stringify({ dishName, description, ingredients, tags, image }),
       headers: { 'Content-Type': 'application/json' },
@@ -44,6 +44,7 @@ form.addEventListener('submit', async function (event) {
     console.log('description:', description);
     console.log('tags:', tags);
     console.log('ingredients:', ingredients);
+    console.log('image:', image);
   } catch (error) {
     console.error('Error:', error);
   }

@@ -17,14 +17,14 @@ const recipeImageUpload = multer({
 });
 
 // The 'recipes' endpoint
-router.get('/recipe/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     console.log('recipe get req params: ', req.params.id); // TODO: Remove debug elements
     const recipeData = await Recipe.findByPk(req.params.id, {
       include: [
         {
           model: Category,
-          attributes: ['category_name'],
+          attributes: ['category_id'],
         },
       ],
     });
@@ -37,7 +37,7 @@ router.get('/recipe/:id', async (req, res) => {
 });
 
 router.post(
-  '/recipe',
+  '/',
   withAuth,
   recipeImageUpload.single('image'),
   async (req, res) => {
@@ -56,7 +56,7 @@ router.post(
 );
 
 router.put(
-  '/recipe/:id',
+  '/:id',
   withAuth,
   recipeImageUpload.single('image'),
   async (req, res) => {
@@ -84,7 +84,7 @@ router.put(
   }
 );
 
-router.delete('/recipe/:id', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     console.log('request for recipe delete: ', req.params.id); // TODO: Remove debug elements
     const recipeData = await Recipe.destroy({
