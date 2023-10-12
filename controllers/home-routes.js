@@ -59,37 +59,36 @@ router.get('/recipe/:id', async (req, res) => {
   }
 });
 
-router.get('/profile', async (req, res) => {
-  try {
-    console.log('Profile route');
-    console.log('User ID loggedIn', req.session.loggedIn);
-    console.log('User ID user_id', req.session.user_id);
+// router.get('/profile', async (req, res) => {
+//   try {
+//     console.log('Profile route');
+//     console.log('User ID loggedIn', req.session.loggedIn);
+//     console.log('User ID user_id', req.session.user_id);
 
-    const userData = await User.findByPk(req.session.user_id, {
-      include: [Recipe],
-    });
+//     const userData = await User.findByPk(req.session.user_id, {
+//       include: [Recipe],
+//     });
 
-    console.log("UserData", userData);
+//     console.log("UserData", userData);
 
-    if (!userData) {
-      console.log("User data not found");
-      return res.status(404).json({ message: 'User not found' });
-    }
+//     if (!userData) {
+//       console.log("User data not found");
+//       return res.status(404).json({ message: 'User not found' });
+//     }
 
-    const user = userData.get({ plain: true });
-    console.log(user);
+//     const user = userData.get({ plain: true });
+//     console.log(user);
 
-    res.render('profile', {
-      user,
-      loggedIn: req.session.loggedIn,
-      user_id: req.session.user_id,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json(error);
-  }
-});
-
+//     res.render('profile', {
+//       user,
+//       loggedIn: req.session.loggedIn,
+//       user_id: req.session.user_id,
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json(error);
+//   }
+// });
 
 router.get('/login', (req, res) => {
   res.render('login');

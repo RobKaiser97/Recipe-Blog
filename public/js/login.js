@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     try {
       // Make an API call for login
-      const response = await fetch('/api/login', {
+      const response = await fetch('/api/users/login', {
         method: 'POST',
         body: JSON.stringify({ username, password }),
         headers: { 'Content-Type': 'application/json' },
