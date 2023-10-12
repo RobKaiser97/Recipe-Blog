@@ -92,6 +92,15 @@ nav {
     margin: auto;
 }
 
+.sign-up-card {
+    border: 2px dashed #1ba8e0; /* Blue dashed border */
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px;
+    text-align: center;
+    width: 23rem;
+    margin: auto;
+}
+
 /* Adjusted Styles for the Profile Picture in the profile page*/
 .profile-picture {
     width: 150px;
