@@ -17,7 +17,7 @@ router.get('/:category', async (req, res) => {
             exclude: [
               'ingredients', // ingredients will need to be included if allergies are implemented
               'instructions',
-              'category_id',
+              // 'category_id',
               'updated_at',
             ],
           },
@@ -25,6 +25,7 @@ router.get('/:category', async (req, res) => {
       ],
     });
     const category = categoryData.get({ plain: true });
+    console.log('console log category', category);
     return res.render('categories', { category });
   } catch (err) {
     res.status(500).json(err);

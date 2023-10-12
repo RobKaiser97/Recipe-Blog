@@ -9,20 +9,20 @@
         </div>
 
         <!-- Recipe Cards -->
-        {{#each recipeData}}
+        {{#each category.recipes as |recipe|}}
         <div class="recipe-card">
             <div class="bg-white p-4 rounded-lg shadow-md">
                 <!-- Display Recipe Information -->
-                <img src="{{image}}" alt="{{title}}" class="mb-2 recipe-image">
+                <img src="{{getImageUrl recipe.image}}" alt="{{recipe.title}}" class="mb-2 recipe-image">
 
                 <p class="text-gray-700 mb-2 recipe-description{{#unless expanded}} collapsed{{/unless}}">
-                    {{description}}
+                    {{recipe.description}}
                 </p>
 
-                <!-- Tags for classification -->
+                {{!-- <!-- Tags for classification -->
                 {{#if (gt (length recipe.category_id) 0)}}
                 <div class="recipe-tags">
-                    {{#each recipe.category_id}}
+                    {{#each category.recipe.category_id}}
                     {{#with (lookup ../categoryData this)}}
                     <span class="tag">{{name}}</span>
                     {{/with}}
@@ -33,7 +33,7 @@
                 <!-- Read More -->
                 {{#if (gt (length description) 3)}}
                 <p class="read-more collapsible">Read More...</p>
-                {{/if}}
+                {{/if}} --}}
             </div>
         </div>
         {{/each}}
