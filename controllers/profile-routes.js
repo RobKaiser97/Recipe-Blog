@@ -17,7 +17,7 @@ router.get('/', withAuth, async (req, res) => {
           include: [
             {
               model: Recipe,
-              attributes: ['title'],
+              attributes: ['title', 'author_id'],
             },
           ],
           where: {
