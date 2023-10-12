@@ -19,7 +19,7 @@
                  {{#with (randomRecipe recipeData) as |randomRecipe|}}
                 <div class="card-body highlighted-recipe-card rounded-b-lg p-4">
                     <h3 class="text-xl font-acme">{{randomRecipe.title}}</h3>
-                    <img src="{{decodeBase64 randomRecipe.image}}" alt="{{randomRecipe.title}}" class="mt-2 rounded-lg">
+                    <img src="{{decodeBase64 randomRecipe.image}}" alt="{{randomRecipe.title}}" class="mt-2 max-w-xs rounded-lg">
                     <p class=" text-xl mt-4 font-caveat">{{randomRecipe.description}}</p>
                 </div>
                 {{/with}}
@@ -56,14 +56,26 @@
                             class="border rounded-lg w-full p-2 mb-4 text-gray-700"
                             placeholder="Enter Description"></textarea>
 
+                        <label class="block text-white text-sm text-xl font-acme mb-2">Instructions</label>
+                        <textarea id="instructions" name="instructions"
+                            class="border rounded-lg w-full p-2 mb-4 text-gray-700"
+                            placeholder="Enter Instructions"></textarea>
+
                         <label class="block text-white text-sm text-xl font-acme mb-2">Ingredients</label>
                        <div class="block items-center mb-4" id="ingredientsContainer">
                             <input type="number" class="border rounded-lg w-1/6 p-2 mr-2 text-gray-700" placeholder="Qty">
-                            <select class="border rounded-lg w-1/4 p-2 mr-2 text-gray-700">
-                            <option value="g">gram(s)</option>
-                            <option value="kg">kilogram(s)</option>
-                            <option value="ml">milliliter(s)</option>
-                            <option value="l">liter(s)</option>
+                           <select class="border rounded-lg w-1/4 p-2 mr-2 text-gray-700">
+                            <option value="whole">whole</option>
+                            <option value="slice(s)">slice(s)</option>
+                            <option value="teaspoon(s)">teaspoon(s)</option>
+                            <option value="tablespoon(s)">tablespoon(s)</option>
+                            <option value="cup(s)">cup(s)</option>
+                            <option value="pint(s)">pint(s)</option>
+                            <option value="quart(s)">quart(s)</option>
+                            <option value="gallon(s)">gallon(s)</option>
+                            <option value="ounce(s)">ounce(s)</option>
+                            <option value="fluid ounce(s)">fluid ounce(s)</option>
+                            <option value="pound(s)">pound(s)</option>
                             <!-- Add more units as needed -->
                             </select>
     <input type="text" class="border rounded-lg flex-grow p-2 mr-2 text-gray-700" placeholder="Ingredient Name">
