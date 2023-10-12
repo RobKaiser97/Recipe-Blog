@@ -41,7 +41,7 @@ router.get('/:id', async (req, res) => {
 
 router.post(
   '/',
-
+  withAuth,
   recipeImageUpload.single('image'),
   async (req, res) => {
     try {
