@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Recipe } = require('../../models');
+const { Category, Recipe } = require('../models');
 
 // The `/api/categories` endpoint
 router.get('/:category', async (req, res) => {
