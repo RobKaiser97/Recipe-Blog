@@ -8,7 +8,9 @@ module.exports = {
   },
   decodeBase64: (base64String) => {
     const decodedString = Buffer.from(base64String, 'base64').toString();
-    console.log(decodedString);
-    return decodedString;
+    const parts = decodedString.split('/public');
+    const imagePath = parts[1];
+    console.log(imagePath);
+    return imagePath;
   }
 };
