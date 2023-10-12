@@ -20,21 +20,21 @@ function updateComments(comments) {
 }
 
 // Assume you have a function to initialize the page with recipe data
-function initPage(recipeId) {
-    fetchRecipeData(recipeId)
-        .then(recipeData => {
-            // Assuming you have a function to render the recipe data using Handlebars
-            renderRecipe(recipeData);
+// function initPage(recipeId) {
+//     fetchRecipeData(recipeId)
+//         .then(recipeData => {
+//             // Assuming you have a function to render the recipe data using Handlebars
+//             renderRecipe(recipeData);
 
-            // Attach event listener to the comment form
-            const commentForm = document.querySelector('.comment-form');
-            commentForm.addEventListener('submit', event => handleCommentSubmission(event, recipeId));
-        })
-        .catch(error => console.error('Error initializing page:', error));
-}
+//             // Attach event listener to the comment form
+//             const commentForm = document.querySelector('.comment-form');
+//             commentForm.addEventListener('submit', event => handleCommentSubmission(event, recipeId));
+//         })
+//         .catch(error => console.error('Error initializing page:', error));
+// }
 
-// Call initPage with the recipe ID when the page is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    const recipeId = /* get the recipe ID from somewhere */
-        initPage(recipeId);
-});
+// // Call initPage with the recipe ID when the page is loaded
+// document.addEventListener('DOMContentLoaded', () => {
+//     const recipeId = /* get the recipe ID from somewhere */
+//         initPage(recipeId);
+// });

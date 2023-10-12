@@ -3,5 +3,21 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "files.eol": "\n"
+  "files.eol": "\n",
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "previewLimit": 50,
+      "server": "127.0.0.1",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "recipe_db",
+      "database": "recipe_db",
+      "username": "root",
+      "password": "1234"
+    }
+  ]
 }

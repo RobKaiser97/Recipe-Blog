@@ -6,12 +6,9 @@ module.exports = {
     return `${formattedDate.getMonth() + 1
       }/${formattedDate.getDate()}/${formattedDate.getFullYear()}`;
   },
-
-  getImageUrl: (blob) => {
-    return new Promise((resolve, reject) => {
-      const buffer = Buffer.from(blob);
-      const dataUrl = `data:${blob.type};base64,${buffer.toString('base64')}`;
-      resolve(dataUrl);
-    });
+  decodeBase64: (base64String) => {
+    const decodedString = Buffer.from(base64String, 'base64').toString();
+    console.log(decodedString);
+    return decodedString;
   }
 };

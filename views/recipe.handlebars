@@ -1,9 +1,15 @@
 <div class='recipe-container'>
   <!-- Recipe Title -->
+  {{log recipe}}
   <h1 class='text-4xl font-semibold damion-font mb-4'>{{recipe.title}}</h1>
 
   <!-- Recipe Image -->
-  <img src='{{recipe.image}}' alt='{{recipe.title}}' class='recipe-image' />
+  <img
+    src='{{decodeBase64 recipe.image}}'
+    {{log decodeBase64 recipe.image}}
+    alt='{{recipe.title}}'
+    class='recipe-image'
+  />
 
   <!-- Recipe Description -->
   <p class='text-gray-700 mb-4'>
