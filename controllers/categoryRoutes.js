@@ -7,7 +7,7 @@ router.get('/:category', async (req, res) => {
     // Find category by name provided in the req params and return the associated recipes
     const categoryData = await Category.findOne({
       where: {
-        category_name: req.params.category,
+        name: req.params.category,
       },
       include: [
         {
@@ -25,7 +25,7 @@ router.get('/:category', async (req, res) => {
       ],
     });
     const category = categoryData.get({ plain: true });
-    return res.render('category', { category });
+    return res.render('categories', { category });
   } catch (err) {
     res.status(500).json(err);
   }
