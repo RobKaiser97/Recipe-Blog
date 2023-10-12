@@ -34,7 +34,7 @@ function initPage(recipeId) {
 }
 
 // Call initPage with the recipe ID when the page is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    const recipeId = /* get the recipe ID from somewhere */
-        initPage(recipeId);
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//     const recipeId = /* get the recipe ID from somewhere */
+//         initPage(recipeId);
+// });

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Recipe } = require('../../models');
+const { Category, Recipe, Comment } = require('../../models');
 const multer = require('multer');
 const withAuth = require('../../utils/auth');
 
@@ -25,6 +25,9 @@ router.get('/:id', async (req, res) => {
         {
           model: Category,
           attributes: ['category_id'],
+        },
+        {
+          model: Comment,
         },
       ],
     });
