@@ -1,4 +1,5 @@
 const { Buffer } = require('buffer');
+const path = require('path');
 
 module.exports = {
   format_date: (date) => {
@@ -7,10 +8,19 @@ module.exports = {
       }/${formattedDate.getDate()}/${formattedDate.getFullYear()}`;
   },
   decodeBase64: (base64String) => {
-    const decodedString = Buffer.from(base64String, 'base64').toString();
-    const parts = decodedString.split('/public');
-    const imagePath = parts[1];
-    console.log(imagePath);
-    return imagePath;
+    try {
+      // Decode the Base64 string
+      const decodedString = Buffer.from(base64String, 'base64').toString();
+
+      // Use the path module to handle the file path in an OS-agnostic way
+      const parts = decodedString.split(path.sep + 'public');
+      const imagePath = parts[1];
+
+      console.log(imagePath);
+      return imagePath;
+    } catch (error) {
+      console.error("An error occurred:", error);
+      return null;
+    }
   }
 };
