@@ -1,8 +1,8 @@
 function addIngredient() {
-    const ingredientsContainer = document.getElementById('ingredientsContainer');
-    const newIngredientRow = document.createElement('div');
-    newIngredientRow.className = 'flex mb-2 block';
-    newIngredientRow.innerHTML = `
+  const ingredientsContainer = document.getElementById('ingredientsContainer');
+  const newIngredientRow = document.createElement('div');
+  newIngredientRow.className = 'flex mb-2 block';
+  newIngredientRow.innerHTML = `
       <input type="number" class="border rounded-lg w-1/6 p-2 mr-2 text-gray-700" placeholder="Qty">
     <select class="border rounded-lg w-1/4 p-2 mr-2 text-gray-700">
     <option value="g">gram(s)</option>
@@ -13,8 +13,8 @@ function addIngredient() {
     </select>
     <input type="text" class="border rounded-lg flex-grow p-2 mr-2 text-gray-700" placeholder="Ingredient Name">
     `;
-    ingredientsContainer.appendChild(newIngredientRow);
-};
+  ingredientsContainer.appendChild(newIngredientRow);
+}
 
 const form = document.querySelector('form');
 
@@ -23,14 +23,30 @@ form.addEventListener('submit', async function (event) {
 
   const dishName = document.getElementById('dishName').value.trim();
   const description = document.getElementById('description').value.trim();
-  const ingredients = document.getElementById('ingredientsContainer').value;
-  const tags = document.getElementById('tags').value;
+  const ingredients = Array.from(
+    document.querySelectorAll(
+      '#ingredientsContainer input[type="number"], #ingredientsContainer select, #ingredientsContainer input[type="text"]'
+    )
+  ).map((element) => element.value);
+  const tags = Array.from(
+    document.querySelectorAll('#tags input[type="checkbox"]')
+  )
+    .filter((element) => element.checked)
+    .map((element) => element.value);
   const image = document.getElementById('image').value;
-
+  // Concatenate ingredients and tags
+  const ingredientsString = ingredients.join(', ');
+  const tagsString = tags.join(', ');
   try {
     const response = await fetch('/api/recipes', {
       method: 'POST',
-      body: JSON.stringify({ dishName, description, ingredients, tags, image }),
+      body: JSON.stringify({
+        dishName,
+        description,
+        ingredients: ingredientsString,
+        tags: tagsString,
+        image,
+      }),
       headers: { 'Content-Type': 'application/json' },
     });
 
@@ -39,15 +55,9 @@ form.addEventListener('submit', async function (event) {
     } else {
       alert('Failed to post recipe!');
     }
-
-    console.log('dishName:', dishName);
-    console.log('description:', description);
-    console.log('tags:', tags);
-    console.log('ingredients:', ingredients);
-    console.log('image:', image);
   } catch (error) {
     console.error('Error:', error);
   }
 });
 
-document.querySelector(".plus-button").addEventListener("click",addIngredient);
+document.querySelector('.plus-button').addEventListener('click', addIngredient);

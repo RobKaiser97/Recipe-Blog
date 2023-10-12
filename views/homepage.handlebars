@@ -16,13 +16,14 @@
                 <div class="bg-custom-yellow highlighted-recipe-card text-white rounded-t-lg p-2 ">
                     <h2 class="text-2xl font-autour-one">Highlighted Recipe</h2>
                 </div>
-                 {{#each recipeData}}
+                 {{#with (randomRecipe recipeData) as |randomRecipe|}}
                 <div class="card-body highlighted-recipe-card rounded-b-lg p-4">
-                    <h3 class="text-xl font-acme">{{this.title}}</h3>
-                    <img src="/assets/recipe-images/{{this.image}}" alt="{{this.title}}" class="mt-2 rounded-lg">
-                    <p class=" text-xl mt-4 font-caveat">{{this.description}}</p>
+                    <h3 class="text-xl font-acme">{{randomRecipe.title}}</h3>
+                    <img src="{{decodeBase64 randomRecipe.image}}" alt="{{randomRecipe.title}}" class="mt-2 rounded-lg">
+                    <p class=" text-xl mt-4 font-caveat">{{randomRecipe.description}}</p>
                 </div>
-                {{/each}}
+                {{/with}}
+
             </div>
             {{!-- <div class="w-1/2 mt-8  rounded-lg">
                 <div class="bg-yellow-500 highlighted-recipe-card text-white rounded-t-lg p-2 ">
@@ -42,7 +43,7 @@
                 </div>
                 <div class="card-body rounded-b-lg p-4"> <!-- Apply custom styles to card body -->
 
-                    <form>
+                    <form enctype="multipart/form-data">
                         <label class="block text-white text-sm text-xl font-acme mb-2" for="dishName">Dish
                             Name</label>
                         <input type="text" id="dishName" name="dishName"

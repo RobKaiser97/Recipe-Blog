@@ -22,5 +22,9 @@ module.exports = {
       console.error("An error occurred:", error);
       return null;
     }
+  },
+  randomRecipe: (recipeData) => {
+    const randomIndex = Math.floor(Math.random() * recipeData.length);
+    return recipeData[randomIndex];
   }
 };
