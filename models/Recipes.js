@@ -22,16 +22,10 @@ Recipe.init(
     ingredients: {
       type: DataTypes.TEXT,
       allowNull: false,
-      validate: {
-        isAlphanumeric: true,
-      },
     },
     instructions: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isAlphanumeric: true,
-      },
+      allowNull: true,
     },
     author_id: {
       type: DataTypes.INTEGER,

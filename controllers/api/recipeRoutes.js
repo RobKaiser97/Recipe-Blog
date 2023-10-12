@@ -46,6 +46,7 @@ router.post(
   async (req, res) => {
     try {
       console.log('request for recipe post: ', req.body, req.session.user_id); // TODO: Remove debug elements
+      console.log(req.body);
       const recipeData = await Recipe.create({
         ...req.body,
         author_id: req.session.user_id,
