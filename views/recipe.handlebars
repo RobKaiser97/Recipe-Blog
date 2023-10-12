@@ -58,7 +58,8 @@
       {{#if recipe.comments.length}}
         <ul>
           {{#each recipe.comments}}
-            <li>{{this}}</li>
+            <li>{{this.content}}</li>
+            <!-- Assuming there's a 'content' property in Comment model -->
           {{/each}}
         </ul>
       {{else}}
