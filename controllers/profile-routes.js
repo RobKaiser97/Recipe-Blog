@@ -3,16 +3,17 @@ const { Recipe, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
+  console.log(req.session.user_id);
   try {
     const userData = await User.findByPk(req.session.user_id, {
       include: [
         {
           model: Recipe,
-          attributes: ['id', 'title', 'created_at'],
+          attributes: ['recipe_id', 'title', 'created_at'],
         },
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'created_at'],
+          attributes: ['comment_id', 'content', 'created_at'],
           include: [
             {
               model: Recipe,
