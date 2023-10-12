@@ -3,12 +3,19 @@ function addIngredient() {
   const newIngredientRow = document.createElement('div');
   newIngredientRow.className = 'flex mb-2 block';
   newIngredientRow.innerHTML = `
-      <input type="number" class="border rounded-lg w-1/6 p-2 mr-2 text-gray-700" placeholder="Qty">
-    <select class="border rounded-lg w-1/4 p-2 mr-2 text-gray-700">
-    <option value="g">gram(s)</option>
-    <option value="kg">kilogram(s)</option>
-    <option value="ml">milliliter(s)</option>
-    <option value="l">liter(s)</option>
+  <input type="number" class="border rounded-lg w-1/6 p-2 mr-2 text-gray-700" placeholder="Qty">
+  <select class="border rounded-lg w-1/4 p-2 mr-2 text-gray-700">
+  <option value="whole">whole</option>
+  <option value="slice(s)">slice(s)</option>
+  <option value="teaspoon(s)">teaspoon(s)</option>
+  <option value="tablespoon(s)">tablespoon(s)</option>
+  <option value="cup(s)">cup(s)</option>
+  <option value="pint(s)">pint(s)</option>
+  <option value="quart(s)">quart(s)</option>
+  <option value="gallon(s)">gallon(s)</option>
+  <option value="ounce(s)">ounce(s)</option>
+  <option value="fluid ounce(s)">fluid ounce(s)</option>
+  <option value="pound(s)">pound(s)</option>
     <!-- Add more units as needed -->
     </select>
     <input type="text" class="border rounded-lg flex-grow p-2 mr-2 text-gray-700" placeholder="Ingredient Name">
@@ -21,14 +28,14 @@ const form = document.querySelector('form');
 form.addEventListener('submit', async function (event) {
   event.preventDefault();
 
-  const dishName = document.getElementById('dishName').value.trim();
+  const title = document.getElementById('dishName').value.trim();
   const description = document.getElementById('description').value.trim();
   const ingredients = Array.from(
     document.querySelectorAll(
       '#ingredientsContainer input[type="number"], #ingredientsContainer select, #ingredientsContainer input[type="text"]'
     )
   ).map((element) => element.value);
-  const tags = Array.from(
+  const category_id = Array.from(
     document.querySelectorAll('#tags input[type="checkbox"]')
   )
     .filter((element) => element.checked)
@@ -36,15 +43,15 @@ form.addEventListener('submit', async function (event) {
   const image = document.getElementById('image').value;
   // Concatenate ingredients and tags
   const ingredientsString = ingredients.join(', ');
-  const tagsString = tags.join(', ');
+  const tagsString = category_id.join(', ');
   try {
     const response = await fetch('/api/recipes', {
       method: 'POST',
       body: JSON.stringify({
-        dishName,
+        title,
         description,
         ingredients: ingredientsString,
-        tags: tagsString,
+        category_id: tagsString,
         image,
       }),
       headers: { 'Content-Type': 'application/json' },
