@@ -26,6 +26,7 @@ const sess = {
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize,
+    logging: false,
   }),
 };
 

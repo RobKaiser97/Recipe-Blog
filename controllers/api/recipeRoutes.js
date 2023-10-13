@@ -39,62 +39,29 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post(
-  '/',
-  withAuth,
-  recipeImageUpload.single('image'),
-  async (req, res) => {
-    try {
-      console.log('request for recipe post: ', req.body, req.session.user_id); // TODO: Remove debug elements
-      console.log(req.body);
-      const recipeData = await Recipe.create({
-        ...req.body,
-        author_id: req.session.user_id,
-        image: req.file ? req.file.buffer : null,
-      });
-      res.status(200).json(recipeData);
-    } catch (err) {
-      res.status(400).json(err);
-    }
+router.post('/', withAuth, recipeImageUpload.single('image'), async (req, res) => {
+  console.log('\x1b[36m%s\x1b[0m', 'Initial Request Body:', req.body);  // Cyan color
+  console.log('\x1b[32m%s\x1b[0m', 'Initial Request File:', req.file);  // Green color
+
+  try {
+    console.log('Data being sent to Recipe.create:', {
+      ...req.body,
+      author_id: req.session.user_id,
+      image: req.file ? req.file.buffer : null,
+    });
+    const recipeData = await Recipe.create({
+      ...req.body,
+      author_id: req.session.user_id,
+      image: req.file ? req.file.buffer : null,
+    });
+    console.log('Data returned from Recipe.create:', recipeData);
+    res.status(200).json(recipeData);
+  } catch (err) {
+    console.error('An error occurred:', err);
+    res.status(400).json(err);
   }
+}
 );
-
-// router.post(
-//   '/',
-//   withAuth,
-//   recipeImageUpload.single('image'),
-//   async (req, res) => {
-//     try {
-//       console.log('request for recipe post: ', req.body, req.session.user_id); // TODO: Remove debug elements
-//       // Separate category_id from the rest of the body
-//       // const { category_id, ...body } = req.body;
-//       // console.log('category_id: ', category_id); // TODO: Remove debug elements
-//       // console.log('body: ', ...body); // TODO: Remove debug elements
-//       const recipeData = await Recipe.create({
-//         title,
-//         description,
-//         ingredients,
-//         category_id,
-//         image: req.file ? req.file.buffer : null,
-//         author_id: req.session.user_id
-//       });
-
-//       // // Fetch the categories from the database
-//       // const categories = await Category.findAll({
-//       //   where: {
-//       //     id: category_id
-//       //   }
-//       // });
-
-//       // // Associate the categories with the recipe
-//       // await recipeData.setCategories(categories);
-
-//       res.status(200).json(recipeData);
-//     } catch (err) {
-//       res.status(400).json(err);
-//     }
-//   }
-// );
 
 router.put(
   '/:id',

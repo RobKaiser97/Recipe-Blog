@@ -28,6 +28,16 @@ const form = document.querySelector('form');
 form.addEventListener('submit', async function (event) {
   event.preventDefault();
 
+  const formData = new FormData(form);
+
+  // Debugging: Log FormData before sending it
+  console.log('FormData:', formData);
+
+  // More debugging: Iterate through FormData entries
+  for (var pair of formData.entries()) {
+    console.log(pair[0] + ': ' + pair[1]);
+  }
+
   const title = document.getElementById('dishName').value.trim();
   const description = document.getElementById('description').value.trim();
   const ingredients = Array.from(
@@ -36,21 +46,12 @@ form.addEventListener('submit', async function (event) {
     )
   ).map((element) => element.value);
 
-  // Initialize an empty array to store values
-  let selectedValues = [];
-
   // Query all checked checkboxes with a certain name
   const checkedCheckboxes = document.querySelectorAll('input[name="category_id"]:checked');
   console.log(checkedCheckboxes);
   const array = Array.from(checkedCheckboxes);
   const category_id = array.map((element) => element.value);
-  // Loop through NodeList and push each value into the array
-  // checkedCheckboxes.forEach((checkbox) => {
-  //   selectedValues.push(checkbox.value);
-  // });
 
-  // const category_id = selectedValues;  // Now category_id will contain the values of selected checkboxes
-  console.log(category_id);
   const image = document.getElementById('image').value;
 
   // Concatenate ingredients and tags
