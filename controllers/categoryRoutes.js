@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Recipe } = require('../models');
+const { Category, Recipe, CategoryRecipe } = require('../models');
 
 // The `/api/categories` endpoint
 router.get('/:category', async (req, res) => {
@@ -12,12 +12,13 @@ router.get('/:category', async (req, res) => {
       include: [
         {
           model: Recipe,
+          through: {
+            model: CategoryRecipe,
+          },
           attributes: {
-            // renders the recipe_id, title, description, author_id, created_at
             exclude: [
-              'ingredients', // ingredients will need to be included if allergies are implemented
+              'ingredients',
               'instructions',
-              // 'category_id',
               'updated_at',
             ],
           },

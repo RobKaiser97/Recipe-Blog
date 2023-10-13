@@ -1,8 +1,29 @@
-var recipeImage = document.getElementById("recipe-card-image");
-var clickedRecipeId = document.getElementById("recipe-card-image").getAttribute("data-recipe-id");
+var recipeImages = document.querySelectorAll(".cardImgIdentifier");
+
+// Add a click event listener to each recipe image
+recipeImages.forEach(function (recipeImage) {
+    recipeImage.addEventListener("click", handleImageClick);
+});
+
+// Function to handle recipe image click
+function handleImageClick(event) {
+    // Get the recipe ID from the clicked image
+    var clickedRecipeId = event.target.getAttribute("data-recipe-id");
+
+    // Get the recipe card element that contains the clicked image
+    var card = event.target.closest(".recipe-card");
+
+    // Toggle the description for the clicked recipe card
+    toggleDescription(card);
+
+    // Construct the URL based on the recipe_id
+    var url = "/api/recipes/" + clickedRecipeId; // Replace with your desired URL structure
+
+    // Change the page location to the constructed URL
+    window.location.href = url;
+}
 
 // Function to toggle the display of full description
-
 function toggleDescription(card) {
     const description = card.querySelector('.recipe-description');
     const readMore = card.querySelector('.read-more');
@@ -15,22 +36,3 @@ function toggleDescription(card) {
         readMore.innerText = 'Read More...';
     }
 }
-
-recipeImage.addEventListener("click", handleImageClick);
-
-function handleImageClick() {
-
-    // Get the recipe_id from the data object using Handlebars syntax
-    var recipeId = this; // Replace with the correct Handlebars syntax
-    console.log("Clicked on recipe with ID:", clickedRecipeId);
-    console.log(recipeId);
-
-    // Construct the URL based on the recipe_id
-    var url = "/api/recipes/" + clickedRecipeId; // Replace with your desired URL structure
-
-    // Change the page location to the constructed URL
-    window.location.href = url;
-}
-
-
-
