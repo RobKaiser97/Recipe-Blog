@@ -20,11 +20,11 @@
         <div class="container mx-auto p-6 mt-2 ">
             <div class="welcome-card highlighted-recipe-card">
                 <h1 class="font-damion text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card">About Me</h1>
+                {{#if users.about}}
                 <p class="text-custom-blue font-caveat text-xl">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel lectus id urna posuere suscipit.
-                    Phasellus euismod ultricies ipsum, non finibus justo tempus sed. Proin tristique lacus at mauris eleifend,
-                    nec dictum orci facilisis.
+                    {{users.about}}
                 </p>
+                {{/if}}
                 <div class="mt-2 space-x-6">
                 <button class="submit-button text-white px-4 py-2 rounded-lg font-autour-one highlighted-recipe-card hover:bg-f3c655">Edit Profile</button>
                 </div>
@@ -52,6 +52,8 @@
                     <h2 class="text-2xl  font-autour-one">My Recipes</h2>
                      </div>
             <div class="card-body rounded-b-lg p-4">
+                {{log "users comments" users.comments}}
+                {{log "users recipes" users.recipes}}
             {{#each users.recipes}}
               <div class="recipe">
                 <h3  class="text-4xl font-acme mt-2">{{this.title}}</h3>

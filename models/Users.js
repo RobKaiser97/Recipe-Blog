@@ -34,6 +34,10 @@ User.init(
         isEmail: true,
       },
     },
+    about: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
     created_at: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
@@ -46,7 +50,7 @@ User.init(
   },
   {
     hooks: {
-      beforeCreate: async (hashPassword) => {
+      beforeCreate: async hashPassword => {
         hashPassword.password = await bcrypt.hash(hashPassword.password, 10);
         return hashPassword;
       },
