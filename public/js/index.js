@@ -28,6 +28,16 @@ const form = document.querySelector('form');
 form.addEventListener('submit', async function (event) {
   event.preventDefault();
 
+  const formData = new FormData(form);
+
+  // Debugging: Log FormData before sending it
+  console.log('FormData:', formData);
+
+  // More debugging: Iterate through FormData entries
+  for (var pair of formData.entries()) {
+    console.log(pair[0] + ': ' + pair[1]);
+  }
+
   const title = document.getElementById('dishName').value.trim();
   const description = document.getElementById('description').value.trim();
   const ingredients = Array.from(
@@ -35,17 +45,18 @@ form.addEventListener('submit', async function (event) {
       '#ingredientsContainer input[type="number"], #ingredientsContainer select, #ingredientsContainer input[type="text"]'
     )
   ).map((element) => element.value);
-  
-  const category_id = Array.from(
-    document.querySelectorAll('#tags input[type="checkbox"]')
-  )
-    .filter((element) => element.checked)
-    .map((element) => element.value);
+
+  // Query all checked checkboxes with a certain name
+  const checkedCheckboxes = document.querySelectorAll('input[name="category_id"]:checked');
+  console.log(checkedCheckboxes);
+  const array = Array.from(checkedCheckboxes);
+  const category_id = array.map((element) => element.value);
 
   const image = document.getElementById('image').value;
-  
-  // Concatenate ingredients
+
+  // Concatenate ingredients and tags
   const ingredientsString = ingredients.join(', ');
+  // const tagsString = category_id.join(', ');
 
   try {
     const response = await fetch('/api/recipes', {
@@ -54,7 +65,7 @@ form.addEventListener('submit', async function (event) {
         title,
         description,
         ingredients: ingredientsString,
-        category_id, // Send an array of category ids
+        category_id,
         image,
       }),
       headers: { 'Content-Type': 'application/json' },

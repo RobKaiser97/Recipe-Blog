@@ -8,7 +8,13 @@ module.exports = {
       }/${formattedDate.getDate()}/${formattedDate.getFullYear()}`;
   },
   decodeBase64: (base64String) => {
+    // console.log('Before decodeBase64:', req.file.buffer);
     try {
+      if (base64String === null || base64String === undefined) {
+        console.log('Received null or undefined. Skipping decoding.');
+        return null;
+      }
+
       // Decode the Base64 string
       const decodedString = Buffer.from(base64String, 'base64').toString();
 
