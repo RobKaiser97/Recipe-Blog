@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Recipe, User, Comment } = require('../models'); // Adjust this path to your actual Recipe model
+const { Recipe, User, Comment, Category } = require('../models'); // Adjust this path to your actual Recipe model
 // Debug: Begin debugging of session variables
 // Test route to set a session variable
 // router.get('/set', (req, res) => {
@@ -19,13 +19,17 @@ router.get('/', async (req, res) => {
     });
     const recipeData = recipes.map((recipe) => recipe.toJSON());
 
+    const categoriesFind = await Category.findAll();
+    const categories = categoriesFind.map((category) => category.toJSON());
+
     res.render('homepage', {
       recipeData,
+      categories,
       loggedIn: req.session.loggedIn,
       user_id: req.session.user_id,
     });
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).render('error', { error });
   }
 });
 

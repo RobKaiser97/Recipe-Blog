@@ -35,17 +35,27 @@ form.addEventListener('submit', async function (event) {
       '#ingredientsContainer input[type="number"], #ingredientsContainer select, #ingredientsContainer input[type="text"]'
     )
   ).map((element) => element.value);
-  
-  const category_id = Array.from(
-    document.querySelectorAll('#tags input[type="checkbox"]')
-  )
-    .filter((element) => element.checked)
-    .map((element) => element.value);
 
+  // Initialize an empty array to store values
+  let selectedValues = [];
+
+  // Query all checked checkboxes with a certain name
+  const checkedCheckboxes = document.querySelectorAll('input[name="category_id"]:checked');
+  console.log(checkedCheckboxes);
+  const array = Array.from(checkedCheckboxes);
+  const category_id = array.map((element) => element.value);
+  // Loop through NodeList and push each value into the array
+  // checkedCheckboxes.forEach((checkbox) => {
+  //   selectedValues.push(checkbox.value);
+  // });
+
+  // const category_id = selectedValues;  // Now category_id will contain the values of selected checkboxes
+  console.log(category_id);
   const image = document.getElementById('image').value;
-  
-  // Concatenate ingredients
+
+  // Concatenate ingredients and tags
   const ingredientsString = ingredients.join(', ');
+  // const tagsString = category_id.join(', ');
 
   try {
     const response = await fetch('/api/recipes', {
@@ -54,7 +64,7 @@ form.addEventListener('submit', async function (event) {
         title,
         description,
         ingredients: ingredientsString,
-        category_id, // Send an array of category ids
+        category_id,
         image,
       }),
       headers: { 'Content-Type': 'application/json' },

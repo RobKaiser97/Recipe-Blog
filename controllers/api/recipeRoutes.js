@@ -59,6 +59,43 @@ router.post(
   }
 );
 
+// router.post(
+//   '/',
+//   withAuth,
+//   recipeImageUpload.single('image'),
+//   async (req, res) => {
+//     try {
+//       console.log('request for recipe post: ', req.body, req.session.user_id); // TODO: Remove debug elements
+//       // Separate category_id from the rest of the body
+//       // const { category_id, ...body } = req.body;
+//       // console.log('category_id: ', category_id); // TODO: Remove debug elements
+//       // console.log('body: ', ...body); // TODO: Remove debug elements
+//       const recipeData = await Recipe.create({
+//         title,
+//         description,
+//         ingredients,
+//         category_id,
+//         image: req.file ? req.file.buffer : null,
+//         author_id: req.session.user_id
+//       });
+
+//       // // Fetch the categories from the database
+//       // const categories = await Category.findAll({
+//       //   where: {
+//       //     id: category_id
+//       //   }
+//       // });
+
+//       // // Associate the categories with the recipe
+//       // await recipeData.setCategories(categories);
+
+//       res.status(200).json(recipeData);
+//     } catch (err) {
+//       res.status(400).json(err);
+//     }
+//   }
+// );
+
 router.put(
   '/:id',
   withAuth,
