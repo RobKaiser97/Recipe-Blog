@@ -42,6 +42,9 @@ router.get('/:id', async (req, res) => {
 router.post('/', withAuth, recipeImageUpload.single('image'), async (req, res) => {
   console.log('\x1b[36m%s\x1b[0m', 'Initial Request Body:', req.body);  // Cyan color
   console.log('\x1b[32m%s\x1b[0m', 'Initial Request File:', req.file);  // Green color
+  console.log('\x1b[33m%s\x1b[0m', 'Initial Request Session:', req.sessionID);  // Yellow color
+  console.log('\x1b[34m%s\x1b[0m', 'Initial Request Session Url:', req.session.originalUrl);  // Blue color
+  console.log('\x1b[35m%s\x1b[0m', 'Initial Request Method:', req.method);  // Magenta color
 
   try {
     console.log('Data being sent to Recipe.create:', {
