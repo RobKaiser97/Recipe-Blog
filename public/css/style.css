@@ -25,7 +25,8 @@ body::before {
 }
 
 .text-custom-blue {
-    color: #1ba8e0; /* Blue color */
+    color: #1ba8e0;
+    /* Blue color */
 }
 
 /* Custom CSS for "Submit Recipe" button */
@@ -84,8 +85,10 @@ nav {
 }
 
 .welcome-card {
-    border: 2px dashed #1ba8e0; /* Blue dashed border */
-    border-radius: 20px; /* Rounded corners */
+    border: 2px dashed #1ba8e0;
+    /* Blue dashed border */
+    border-radius: 20px;
+    /* Rounded corners */
     padding: 20px;
     text-align: center;
     width: 50%;
@@ -93,8 +96,10 @@ nav {
 }
 
 .sign-up-card {
-    border: 2px dashed #1ba8e0; /* Blue dashed border */
-    border-radius: 20px; /* Rounded corners */
+    border: 2px dashed #1ba8e0;
+    /* Blue dashed border */
+    border-radius: 20px;
+    /* Rounded corners */
     padding: 20px;
     text-align: center;
     width: 23rem;
@@ -173,14 +178,37 @@ nav {
     display: none;
 }
 
+/*  */
+.read-more {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1.2em;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.image-container:hover img {
+    filter: brightness(70%);
+    /* Adjust the brightness for the hover effect */
+}
+
+.image-container:hover .read-more {
+    opacity: 1;
+}
+
 /* Media query for smaller screens */
 @media (max-width: 768px) {
     #nav_bar {
         width: calc(100% - 3rem);
     }
+
     .egg-circle {
         width: 40px;
     }
+
     .recipe-card {
         width: calc(50% - 2rem);
         /* 2 columns for smaller screens */
@@ -193,6 +221,7 @@ nav {
     .egg-circle {
         width: 40px;
     }
+
     .recipe-card {
         width: calc(100% - 2rem);
         /* 1 column for even smaller screens */
