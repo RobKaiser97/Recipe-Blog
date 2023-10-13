@@ -32,5 +32,10 @@ module.exports = {
   randomRecipe: (recipeData) => {
     const randomIndex = Math.floor(Math.random() * recipeData.length);
     return recipeData[randomIndex];
+  },
+
+  seasonalRecipe: (recipeData) => {
+    const specificIndex = 1;
+    return recipeData[specificIndex];
   }
 };
