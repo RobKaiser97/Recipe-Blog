@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "seed": "node seeds/index.js",
+    "seed": "node seeds/seed.js",
     "watch": "nodemon server.js",
     "lint": "npx eslint **/*.js",
     "format": "prettier --write .",

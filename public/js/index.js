@@ -35,15 +35,18 @@ form.addEventListener('submit', async function (event) {
       '#ingredientsContainer input[type="number"], #ingredientsContainer select, #ingredientsContainer input[type="text"]'
     )
   ).map((element) => element.value);
+  
   const category_id = Array.from(
     document.querySelectorAll('#tags input[type="checkbox"]')
   )
     .filter((element) => element.checked)
     .map((element) => element.value);
+
   const image = document.getElementById('image').value;
-  // Concatenate ingredients and tags
+  
+  // Concatenate ingredients
   const ingredientsString = ingredients.join(', ');
-  const tagsString = category_id.join(', ');
+
   try {
     const response = await fetch('/api/recipes', {
       method: 'POST',
@@ -51,7 +54,7 @@ form.addEventListener('submit', async function (event) {
         title,
         description,
         ingredients: ingredientsString,
-        category_id: tagsString,
+        category_id, // Send an array of category ids
         image,
       }),
       headers: { 'Content-Type': 'application/json' },
@@ -66,5 +69,6 @@ form.addEventListener('submit', async function (event) {
     console.error('Error:', error);
   }
 });
+
 
 document.querySelector('.plus-button').addEventListener('click', addIngredient);
