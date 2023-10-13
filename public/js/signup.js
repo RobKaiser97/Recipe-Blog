@@ -6,6 +6,7 @@ const signupHandler = async (event) => {
     const username = document.querySelector("#username").value.trim();
     const email = document.querySelector("#email").value.trim();
     const password = document.querySelector("#password").value.trim();
+    const about = document.querySelector("#about").value.trim();
     const confirmPass = document.querySelector("#confirmPassword").value.trim();
 
     // Check for empty fields
@@ -27,7 +28,7 @@ const signupHandler = async (event) => {
     // Make an API call for login
     const response = await fetch("/api/users/signup", {
         method: "POST",
-        body: JSON.stringify({ email, username, password }),
+        body: JSON.stringify({ email, username, password, about }),
         headers: { "Content-Type": "application/json" },
     });
 

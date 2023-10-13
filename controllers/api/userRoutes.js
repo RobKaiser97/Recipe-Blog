@@ -30,20 +30,20 @@ router.post(
       }
       const userData = {
         ...req.body,
-        username:
-          typeof req.body.username === 'string' ? req.body.username : '',
+        username: typeof req.body.username === 'string' ? req.body.username : '',
         profile_picture: req.file ? req.file.buffer : null,
       };
       console.log('userData:', userData);
       const createdUser = await User.create(userData);
       console.log('createdUser:', createdUser);
-      req.session.save(() => {
-        (req.session.user_id = createdUser.id),
-          (req.session.username = createdUser.username),
-          (req.session.loggedIn = true);
-        res.json(createdUser);
-        console.log(createdUser);
-      });
+
+      // Use the createdUser directly to set session variables
+      req.session.user_id = createdUser.user_id;
+      req.session.username = createdUser.username;
+      req.session.loggedIn = true;
+
+      res.json(createdUser);
+      console.log(createdUser);
     } catch (error) {
       console.log('error:', error);
       res.status(500).json(error);
@@ -52,6 +52,7 @@ router.post(
     console.log('Response:', res.statusCode); // Debug
   }
 );
+
 
 router.post('/login', async (req, res) => {
   console.log('Entering route: ', req.originalUrl);
