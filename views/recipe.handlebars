@@ -1,11 +1,13 @@
 <div class='recipe-container'>
   <!-- Recipe Title -->
   {{log recipe}}
-  <h1 class='text-4xl font-semibold damion-font mb-4'>{{recipe.title}}</h1>
+  <h1 class='text-4xl font-semibold damion-font mb-4'>{{recipe.title}} </h1>
 
   <!-- Recipe Image -->
-  <img src='{{decodeBase64 recipe.image}}' {{log decodeBase64 recipe.image}} alt='{{recipe.title}}'
-    class='recipe-image' />
+  <div id='image-container' data-recipe-id="{{recipe.recipe_id}}">
+    <img src='{{decodeBase64 recipe.image}}' {{log decodeBase64 recipe.image}} alt='{{recipe.title}}'
+      class='recipe-image' />
+  </div>
 
   <!-- Recipe Description -->
   <p class='text-gray-700 mb-4'>
@@ -35,10 +37,10 @@
     <!-- Comment Form -->
     <form class='comment-form'>
       <label for='comment'>Leave a comment:</label>
-      <textarea id='comment' name='comment' rows='4' class='border p-2 rounded'></textarea>
+      <textarea id='comment-box' name='comment' rows='4' class='border p-2 rounded'></textarea>
 
       <!-- Smaller Submit Button -->
-      <button type='submit' class='submit-button'>Submit</button>
+      <button type='submit' class='submit-button' id="submit-button">Submit</button>
     </form>
 
     <!-- Display Existing Comments -->
