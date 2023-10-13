@@ -87,6 +87,19 @@ const recipeData = [
     updated_at: new Date(),
     image: chocoChipCookie,
   },
+  {
+    title: 'Waffles',
+    description: 'Delicious waffles with your favorite toppings.',
+    ingredients:
+      '1 cup Flour, 2 tbsp Sugar, 1 tbsp Baking powder, 1/2 tsp Salt, 1 cup Milk, 2 Eggs, 1/4 cup Butter (melted)',
+    instructions:
+      'EAT YOUR FUCKING WAFFLE',
+    author_id: 5,
+    category_id: 5,
+    created_at: new Date(),
+    updated_at: new Date(),
+    image: chocoChipCookie,
+  },
 ];
 
 const seedRecipes = () => Recipe.bulkCreate(recipeData);
