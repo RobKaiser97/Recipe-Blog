@@ -40,6 +40,7 @@ form.addEventListener('submit', async function (event) {
 
   const title = document.getElementById('dishName').value.trim();
   const description = document.getElementById('description').value.trim();
+  const instructions = document.getElementById('instructions').value.trim();
   const ingredients = Array.from(
     document.querySelectorAll(
       '#ingredientsContainer input[type="number"], #ingredientsContainer select, #ingredientsContainer input[type="text"]'
@@ -48,7 +49,6 @@ form.addEventListener('submit', async function (event) {
 
   // Query all checked checkboxes with a certain name
   const checkedCheckboxes = document.querySelectorAll('input[name="category_id"]:checked');
-  console.log(checkedCheckboxes);
   const array = Array.from(checkedCheckboxes);
   const category_id = array.map((element) => element.value);
 
@@ -64,6 +64,7 @@ form.addEventListener('submit', async function (event) {
       body: JSON.stringify({
         title,
         description,
+        instructions,
         ingredients: ingredientsString,
         category_id,
         image,
