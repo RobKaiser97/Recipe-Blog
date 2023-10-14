@@ -159,8 +159,8 @@
           </div>
           <div class='card-body rounded-b-lg p-4'>
             {{log 'users comments' users.comments}}
-            {{log 'user recipes' user.recipes}}
-            {{#each user.recipes}}
+            {{log 'user recipes' users.recipes}}
+            {{#each users.recipes}}
               <div class='recipe'>
                 <h3 class='text-4xl font-acme mt-2'>{{this.title}}</h3>
                 <p

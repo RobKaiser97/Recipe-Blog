@@ -11,7 +11,7 @@ router.get('/', withAuth, async (req, res) => {
       include: [
         {
           model: Recipe,
-          attributes: ['recipe_id', 'title', 'created_at'],
+          attributes: ['recipe_id', 'title', 'created_at', 'description'],
         },
         {
           model: Comment,
