@@ -3,6 +3,7 @@ const { Recipe, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
+  console.log('session:', req.session);
   console.log('user_id:', req.session.user_id);
   console.log('username:', req.session.username);
   console.log('loggedIn:', req.session.loggedIn);
@@ -28,10 +29,10 @@ router.get('/', withAuth, async (req, res) => {
         },
       ],
     });
+    console.log('userData', userData);
     if (!userData) {
       return res.status(404).send('User not found');
     }
-    console.log('userData', userData);
     const users = userData.get({ plain: true });
     console.log('users', users);
     res.render('profile', {

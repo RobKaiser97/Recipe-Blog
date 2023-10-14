@@ -37,10 +37,13 @@
         </div>
       </div>
     </div>
-    <div style="display: flex;">
+    <div style='display: flex;'>
       {{log 'loggedIn' loggedIn}}
       {{log 'user_id' user_id}}
-      <div style="flex-grow: 1; margin-right: 5%;" class='w-1/2 mt-8 highlighted-recipe-card rounded-lg'>
+      <div
+        style='flex-grow: 1; margin-right: 5%;'
+        class='w-1/2 mt-8 highlighted-recipe-card rounded-lg'
+      >
         <div class='bg-custom-yellow text-white rounded-t-lg p-2'>
           <h2 class='text-2xl font-autour-one'>Submit a Recipe</h2>
         </div>
@@ -115,6 +118,80 @@
             </div>
 
             <label class='block text-white text-xl font-acme mb-2'>Tags</label>
+            <div class='grid grid-cols-2 gap-2 text-lg font-caveat' id='tags'>
+              <label class='flex items-center'>
+                <input
+                  type='checkbox'
+                  name='tags[]'
+                  value='1'
+                  class='mr-2'
+                />
+                Vegetarian
+              </label>
+              <label class='flex items-center'>
+                <input
+                  type='checkbox'
+                  name='tags[]'
+                  value='2'
+                  class='mr-2'
+                />
+                Vegan
+              </label>
+              <label class='flex items-center'>
+                <input
+                  type='checkbox'
+                  name='tags[]'
+                  value='3'
+                  class='mr-2'
+                />
+                Gluten Free
+              </label>
+              <label class='flex items-center'>
+                <input
+                  type='checkbox'
+                  name='tags[]'
+                  value='4'
+                  class='mr-2'
+                />
+                Keto Compliant
+              </label>
+              <label class='flex items-center'>
+                <input
+                  type='checkbox'
+                  name='tags[]'
+                  value='5'
+                  class='mr-2'
+                />
+                Breakfast
+              </label>
+              <label class='flex items-center'>
+                <input
+                  type='checkbox'
+                  name='tags[]'
+                  value='6'
+                  class='mr-2'
+                />
+                Lunch
+              </label>
+              <label class='flex items-center'>
+                <input
+                  type='checkbox'
+                  name='tags[]'
+                  value='7'
+                  class='mr-2'
+                />
+                Dinner
+              </label>
+              <label class='flex items-center'>
+                <input
+                  type='checkbox'
+                  name='tags[]'
+                  value='8'
+                  class='mr-2'
+                />
+                Dessert
+              </label>
+            </div>
 
             <div
               class='grid grid-cols-2 gap-2 text-lg font-caveat'
@@ -149,8 +226,8 @@
           </form>
         </div>
       </div>
-    
-       <div style="flex-grow: 1; display: flex; flex-direction: column;">
+
+      <div style='flex-grow: 1; display: flex; flex-direction: column;'>
         <!-- My Recipes Section -->
 
         <div class='profile mt-8 highlighted-recipe-card rounded-lg'>
