@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Recipe, Comment } = require('../../models');
+const { Category, Recipe, Comment, CategoryRecipe } = require('../../models');
 const multer = require('multer');
 const withAuth = require('../../utils/auth');
 
@@ -47,24 +47,31 @@ router.post('/', withAuth, recipeImageUpload.single('image'), async (req, res) =
   console.log('\x1b[35m%s\x1b[0m', 'Initial Request Method:', req.method);  // Magenta color
 
   try {
-    console.log('Data being sent to Recipe.create:', {
-      ...req.body,
-      author_id: req.session.user_id,
-      image: req.file ? req.file.buffer : null,
-    });
+    // Create the recipe
     const recipeData = await Recipe.create({
       ...req.body,
       author_id: req.session.user_id,
       image: req.file ? req.file.buffer : null,
     });
-    console.log('Data returned from Recipe.create:', recipeData);
+
+    // Get the recipe_id of the newly created recipe
+    const { recipe_id } = recipeData.get({ plain: true });
+
+    // Loop through category_id array and insert into CategoryRecipe table
+    const categoryIds = req.body.category_id;
+    for (let id of categoryIds) {
+      await CategoryRecipe.create({
+        recipe_id,
+        category_id: parseInt(id), // Make sure the category_id is an integer
+      });
+    }
+
     res.status(200).json(recipeData);
   } catch (err) {
     console.error('An error occurred:', err);
     res.status(400).json(err);
   }
-}
-);
+});
 
 router.put(
   '/:id',

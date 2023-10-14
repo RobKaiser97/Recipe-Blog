@@ -35,14 +35,6 @@ Recipe.init(
         key: 'user_id',
       },
     },
-    category_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'category',
-        key: 'category_id',
-      },
-    },
     created_at: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
