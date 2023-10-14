@@ -26,7 +26,7 @@ const sess = {
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize,
-    logging: console.log,
+    logging: false,
   }),
 };
 
@@ -41,9 +41,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+  console.log(`
+  ##################
+  ### Route Call ###
+  ##################
+  `);
+  console.log(`[${new Date().toISOString()}] ${req.method} to ${req.url}`);
+  next();
+});
+
+
 app.use(routes);
 
-sequelize.sync({ force: false, logging: console.log }).then(() => {
+sequelize.sync({ force: false, logging: false }).then(() => {
   console.log("Database connected!"); // Debug: Check for DB connect on server start
   app.listen(PORT, () =>
     console.log(`Now listening on http://localhost:${PORT}`)
