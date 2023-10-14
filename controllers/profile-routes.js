@@ -3,9 +3,6 @@ const { Recipe, User, Comment, Category } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
-  console.log('user_id:', req.session.user_id);
-  console.log('username:', req.session.username);
-  console.log('loggedIn:', req.session.loggedIn);
   try {
     const userData = await User.findByPk(req.session.user_id, {
       include: [
@@ -33,9 +30,7 @@ router.get('/', withAuth, async (req, res) => {
     }
     const categories = await Category.findAll();
     const category = categories.map((category) => category.get({ plain: true }));
-    console.log('categories loaded on profile page', category)
     const users = userData.get({ plain: true });
-    console.log('users', users);
     res.render('profile', {
       users,
       category,
