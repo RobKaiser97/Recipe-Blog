@@ -1,7 +1,7 @@
 const CategoryRecipe = require('./CategoryRecipe');
 const User = require('./Users');
 const Recipe = require('./Recipes');
-const Category = require('./Categories');
+const Category = require('./Category');
 const Comment = require('./Comments');
 
 User.hasMany(Recipe, {
