@@ -23,6 +23,10 @@ router.get('/:id', async (req, res) => {
     const recipeData = await Recipe.findByPk(req.params.id, {
       include: [
         {
+          model: User,
+          attributes: ['username']
+        },
+        {
           model: Category,
           attributes: ['category_id'],
         },
