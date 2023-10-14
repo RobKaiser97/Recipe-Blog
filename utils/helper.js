@@ -37,5 +37,8 @@ module.exports = {
   seasonalRecipe: (recipeData) => {
     const specificIndex = 1;
     return recipeData[specificIndex];
-  }
+  },
+  eq: (a, b) => {
+    return a === b;
+  },
 };
