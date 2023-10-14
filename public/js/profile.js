@@ -50,18 +50,15 @@ document.addEventListener('DOMContentLoaded', function () {
       )
     ).map(element => element.value);
 
-    // Query all checked checkboxes with a certain name
-    const category_id = Array.from(
-      document.querySelectorAll('#tags input[type="checkbox"]')
-    )
-      .filter(element => element.checked)
-      .map(element => element.value);
+    // Get the value of the checked category
+    const category_ids = Array.from(
+      formData.getAll('tags[]')
+    ).map(value => parseInt(value, 10));
 
     const image = document.getElementById('image').value;
 
     // Concatenate ingredients and tags
     const ingredientsString = ingredients.join(', ');
-    const tagsString = category_id.join(', ');
 
     try {
       const response = await fetch('/api/recipes', {
@@ -71,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
           description,
           instructions,
           ingredients: ingredientsString,
-          category_id: tagsString,
+          category_id: category_ids,
           image,
         }),
         headers: { 'Content-Type': 'application/json' },
