@@ -163,6 +163,16 @@ nav {
     /* Rounded corners */
 }
 
+.recipe-page-picture {
+    width: 50%;
+    height: auto;
+    /* Adjust as needed */
+    object-fit: cover;
+    border-radius: 8px;
+    /* Rounded corners */
+}
+
+
 /* Style for tags */
 .recipe-tags {
     display: flex;

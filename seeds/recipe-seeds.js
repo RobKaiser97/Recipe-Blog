@@ -20,6 +20,10 @@ const chocoChipCookie = path.join(
   __dirname,
   '../public/assets/recipe-images/chocolate-chip-cookie.jpg'
 );
+const waffle = path.join(
+  __dirname,
+  '../public/assets/recipe-images/belgian-waffles.jpg'
+);
 
 const recipeData = [
   {
@@ -93,12 +97,12 @@ const recipeData = [
     ingredients:
       '1 cup Flour, 2 tbsp Sugar, 1 tbsp Baking powder, 1/2 tsp Salt, 1 cup Milk, 2 Eggs, 1/4 cup Butter (melted)',
     instructions:
-      'EAT YOUR FUCKING WAFFLE',
+      '1. Preheat Waffle Iron, 2. Combine Dry Ingredients, 3. Mix Wet Ingredients, 4. Combine Wet and Dry Ingredients, 5. Cook the Waffles',
     author_id: 5,
     category_id: 5,
     created_at: new Date(),
     updated_at: new Date(),
-    image: chocoChipCookie,
+    image: waffle,
   },
 ];
 
