@@ -37,10 +37,13 @@
         </div>
       </div>
     </div>
-    <div style="display: flex;">
+    <div style='display: flex;'>
       {{log 'loggedIn' loggedIn}}
       {{log 'user_id' user_id}}
-      <div style="flex-grow: 1; margin-right: 5%;" class='w-1/2 mt-8 highlighted-recipe-card rounded-lg'>
+      <div
+        style='flex-grow: 1; margin-right: 5%;'
+        class='w-1/2 mt-8 highlighted-recipe-card rounded-lg'
+      >
         <div class='bg-custom-yellow text-white rounded-t-lg p-2'>
           <h2 class='text-2xl font-autour-one'>Submit a Recipe</h2>
         </div>
@@ -120,8 +123,8 @@
               class='grid grid-cols-2 gap-2 text-lg font-caveat'
               id='categories'
             >
-              {{log 'categories' categories}}
-              {{#each categories as |category|}}
+              {{log 'categories #################################' category}}
+              {{#each category as |category|}}
 
                 <label class='flex items-center'>
                   <input
@@ -149,8 +152,8 @@
           </form>
         </div>
       </div>
-    
-       <div style="flex-grow: 1; display: flex; flex-direction: column;">
+
+      <div style='flex-grow: 1; display: flex; flex-direction: column;'>
         <!-- My Recipes Section -->
 
         <div class='profile mt-8 highlighted-recipe-card rounded-lg'>
