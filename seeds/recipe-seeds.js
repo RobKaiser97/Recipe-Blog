@@ -7,7 +7,7 @@ const chickenAlfredo = 'public/assets/recipe-images/Chicken-Alfredo.jpg';
 const capreseSalad = 'public/assets/recipe-images/Caprese-Salad.jpg';
 const vegeStirFry = 'public/assets/recipe-images/vegetable-stir-fry.jpg';
 const chocoChipCookie = 'public/assets/recipe-images/chocolate-chip-cookie.jpg';
-const waffle = 'assets/recipe-images/Belgian-Waffles.jpg';
+const waffle = 'public/assets/recipe-images/Belgian-Waffles.jpg';
 
 const recipeData = [
   {
