@@ -100,3 +100,55 @@ document.addEventListener('DOMContentLoaded', function () {
     .querySelector('.plus-button')
     .addEventListener('click', addIngredient);
 });
+
+
+async function deleteCommentFromServer(comment_id) {
+  try {
+    const response = await fetch(`/api/comments/${comment_id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const deletedComment = await response.json();
+    return deletedComment;
+  } catch (error) {
+    console.error('Error deleting comment:', error.message);
+    throw error; // Propagate the error to the caller if needed
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const deleteButtons = document.querySelectorAll('.delete-button');
+
+  deleteButtons.forEach(deleteButton => {
+    deleteButton.addEventListener('click', async function (event) {
+      try {
+        event.preventDefault();
+
+        // Get the comment_id from the data-comment-id attribute
+        const comment_id = this.closest('.comment').getAttribute('data-comment-id');
+
+        console.log('Comment ID to delete:', comment_id);
+
+        // Ask for confirmation
+        const isConfirmed = confirm('Are you sure you want to delete this comment?');
+
+        if (isConfirmed) {
+          const deletedComment = await deleteCommentFromServer(comment_id);
+          console.log('Deleted comment:', deletedComment);
+
+          // Assuming you want to do something after successful deletion
+          // For example, you can remove the comment from the UI
+          // You might need to adjust this part based on your specific UI structure
+          const commentElement = this.closest('.comment');
+          commentElement.remove();
+        }
+      } catch (error) {
+        console.error('Error deleting comment:', error.message);
+        // Handle errors, e.g., show an alert to the user
+      }
+    });
+  });
+});
