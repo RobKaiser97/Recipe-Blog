@@ -10,12 +10,11 @@ router.get('/', async (req, res) => {
 
     const categoriesFind = await Category.findAll();
     const categories = categoriesFind.map(category => category.toJSON());
-
     res.render('homepage', {
       recipeData,
       categories,
-      loggedIn: req.session.loggedIn,
-      user_id: req.session.user_id,
+      loggedIn: req.session.loggedIn || false,
+      user_id: req.session.user_id || null,
     });
   } catch (error) {
     res.status(500).render('error', { error });
