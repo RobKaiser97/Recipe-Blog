@@ -1,27 +1,10 @@
 const router = require('express').Router();
-const {
-  Category,
-  Recipe,
-  Comment,
-  CategoryRecipe,
-  User,
-} = require('../../models');
-const multer = require('multer');
-const withAuth = require('../../utils/auth');
+const { Category, Recipe, Comment, CategoryRecipe, User, } = require('../../models');
+const { upload, imageToBase64, binaryToBase64 } = require('../../utils/helper');
 const path = require('path');
 
-// Configure multer for recipe image uploads
-const recipeImageStorage = multer.memoryStorage();
-const recipeImageUpload = multer({
-  storage: recipeImageStorage,
-  fileFilter: (req, file, cb) => {
-    if (file.mimetype.startsWith('image/')) {
-      cb(null, true);
-    } else {
-      cb(new Error('Not an image! Please upload an image.', 400), false);
-    }
-  },
-});
+const defaultImageURL = imageToBase64('public/assets/recipe-images/default_recipe_image.png');
+
 
 // The 'recipes' endpoint
 router.get('/:id', async (req, res) => {
@@ -54,86 +37,65 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post(
-  '/',
-  withAuth,
-  recipeImageUpload.single('image'),
-  async (req, res) => {
-    console.log('\x1b[32m%s\x1b[0m', 'Initial Request File:', req.file); // Green color
-    console.log('\x1b[33m%s\x1b[0m', 'Initial Request Session:', req.sessionID); // Yellow color
-    console.log(
-      '\x1b[34m%s\x1b[0m',
-      'Initial Request Session Url:',
-      req.session.originalUrl
-    ); // Blue color
-    console.log('\x1b[35m%s\x1b[0m', 'Initial Request Method:', req.method); // Magenta color
-
-    try {
-      const defaultImageURL = path.join(
-        __dirname,
-        '/public/assets/recipe-images/default_recipe_image.png'
-      );
-
-      // Create the recipe
-      const recipeData = await Recipe.create({
-        ...req.body,
-        author_id: req.session.user_id,
-        // Set default image if there is no image selected
-        image: req.file ? req.file.buffer : defaultImageURL,
-      });
-
-      // Get the recipe_id of the newly created recipe
-      const { recipe_id } = recipeData.get({ plain: true });
-
-      // Loop through category_id array and insert into CategoryRecipe table
-      const categoryIds = req.body.category_id;
-      for (let id of categoryIds) {
-        await CategoryRecipe.create({
-          recipe_id,
-          category_id: parseInt(id), // Make sure the category_id is an integer
-        });
-      }
-
-      res.status(200).json(recipeData);
-    } catch (err) {
-      console.error('An error occurred:', err);
-      res.status(400).json(err);
-    }
+const handleCategories = async (recipe_id, categoryIds) => {
+  for (let id of categoryIds) {
+    await CategoryRecipe.create({
+      recipe_id,
+      category_id: parseInt(id),
+    });
   }
-);
+};
 
-router.put(
-  '/:id',
-  withAuth,
-  recipeImageUpload.single('image'),
-  async (req, res) => {
-    try {
-      console.log('request for recipe put: ', req.body, req.params.id); // TODO: Remove debug elements
-      const recipeData = await Recipe.update(
-        {
-          ...req.body,
-          image: req.file ? req.file.buffer : null,
-        },
-        {
-          where: {
-            recipe_id: req.params.id,
-          },
-        }
-      );
-      if (!recipeData) {
-        res.status(404).json({ message: 'No recipe found with this id!' });
-        return;
-      }
-      res.status(200).json(recipeData);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-);
-
-router.delete('/:id', withAuth, async (req, res) => {
+router.post('/', upload.single('image'), async (req, res) => {
   try {
-    console.log('request for recipe delete: ', req.params.id); // TODO: Remove debug elements
+    // Create the recipe
+    const recipeData = await Recipe.create({
+      ...req.body,
+      author_id: req.session.user_id,
+      // Set default image if there is no image selected
+      image: req.file ? binaryToBase64(req.file.buffer) : defaultImageURL,
+    });
+    // Get the recipe_id of the newly created recipe
+    const { recipe_id } = recipeData.get({ plain: true });
+    // Loop through category_id array and insert into CategoryRecipe table
+    await handleCategories(recipe_id, req.body.category_id);
+    res.status(200).json(recipeData);
+  } catch (err) {
+    console.error('An error occurred:', err);
+    res.status(400).json(err);
+  }
+}
+);
+
+router.put('/:id', upload.single('image'), async (req, res) => {
+  try {
+    // Initialize update data with request body
+    const updateData = { ...req.body };
+
+    // Only update image if a new file is uploaded
+    if (req.file) {
+      updateData.image = binaryToBase64(req.file.buffer);
+    }
+
+    const recipeData = await Recipe.update(updateData, {
+      where: {
+        recipe_id: req.params.id,
+      },
+    });
+
+    if (!recipeData) {
+      res.status(404).json({ message: 'No recipe found with this id!' });
+      return;
+    }
+    res.status(200).json(recipeData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+router.delete('/:id', async (req, res) => {
+  try {
     const recipeData = await Recipe.destroy({
       where: {
         recipe_id: req.params.id,
