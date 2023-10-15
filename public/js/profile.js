@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault();
 
     const formData = new FormData(form);
+    let emptyFields = [];
+    let ingredientsArray = [];
 
     const title = formData.get('title');
     const description = formData.get('description');
@@ -116,8 +118,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Get the comment_id from the data-comment-id attribute
         const comment_id = this.closest('.comment').getAttribute('data-comment-id');
-
-        console.log('Comment ID to delete:', comment_id);
 
         // Ask for confirmation
         const isConfirmed = confirm('Are you sure you want to delete this comment?');
