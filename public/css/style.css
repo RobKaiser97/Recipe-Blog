@@ -63,6 +63,11 @@ nav {
   /* Adjusted shadow for the highlighted recipe card */
 }
 
+.highlighted-recipe-image {
+  max-width: 100%;
+  max-height: auto;
+}
+
 /* Custom CSS for Damion font */
 .font-damion {
   font-family: 'Damion', cursive;
@@ -256,6 +261,11 @@ nav {
     width: calc(50% - 2rem);
     /* 2 columns for smaller screens */
   }
+
+  .highlighted-recipe-image {
+    max-width: 100%;
+    max-height: auto;
+  }
 }
 
 /* Media query for even smaller screens */
@@ -267,5 +277,10 @@ nav {
   .recipe-card {
     width: calc(100% - 2rem);
     /* 1 column for even smaller screens */
+  }
+
+  .highlighted-recipe-image {
+    max-width: 100%;
+    max-height: auto;
   }
 }
