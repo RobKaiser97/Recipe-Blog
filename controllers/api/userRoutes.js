@@ -17,41 +17,40 @@ const profileImageUpload = multer({
 
 console.log('signup endpoint hit'); // add this line to check if the endpoint is hit
 // Endpoint for user signup
-router.post(
-  '/signup',
-  profileImageUpload.single('profile_picture'),
-  async (req, res) => {
-    console.log('Entering route: ', req.originalUrl);
-    console.log('Request body:', req.body); // Debug
-    try {
-      console.log('username:', req.body.username); // add this line to check the value of req.body.username
-      if (!req.body.username) {
-        throw new Error('Username field is required');
-      }
-      const userData = {
-        ...req.body,
-        username: typeof req.body.username === 'string' ? req.body.username : '',
-        profile_picture: req.file ? req.file.buffer : null,
-      };
-      console.log('userData:', userData);
-      const createdUser = await User.create(userData);
-      console.log('createdUser:', createdUser);
+router.post('/signup', async (req, res) => {
+  console.log('Entering route: ', req.originalUrl);
+  console.log('Request body:', req.body); // Debug
+  try {
+    console.log('username:', req.body.username); // add this line to check the value of req.body.username
+    if (!req.body.username || typeof req.body.username !== 'string') {
+      throw new Error('Username field is required');
+    }
+    const userData = {
+      ...req.body,
+      profile_picture: null, // Set to null
+    };
+    console.log('userData:', userData);
+    const createdUser = await User.create(userData);
+    console.log('createdUser:', createdUser);
 
-      // Use the createdUser directly to set session variables
+    // Use req.session.save() to make sure session is saved before redirecting
+    req.session.save(() => {
       req.session.user_id = createdUser.user_id;
       req.session.username = createdUser.username;
       req.session.loggedIn = true;
 
-      res.json(createdUser);
-      console.log(createdUser);
-    } catch (error) {
-      console.log('error:', error);
-      res.status(500).json(error);
-    }
-    console.log('Exiting route: ', req.originalUrl);
-    console.log('Response:', res.statusCode); // Debug
+      res.redirect('/profile');
+    });
+
+  } catch (error) {
+    console.log('error:', error);
+    res.status(500).json(error);
   }
-);
+  console.log('Exiting route: ', req.originalUrl);
+  console.log('Response:', res.statusCode); // Debug
+});
+
+
 
 
 router.post('/login', async (req, res) => {
