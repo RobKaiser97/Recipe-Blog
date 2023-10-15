@@ -3,11 +3,6 @@ const { Recipe, User, Comment, Category } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
-  console.log('\x1b[36m%s\x1b[0m', req.session);
-  console.log('\x1b[36m%s\x1b[0m', '====================================');
-  console.log('\x1b[36m%s\x1b[0m', '|| Body of /profile route request ||');
-  console.log('\x1b[36m%s\x1b[0m', '====================================');
-  console.log('\x1b[36m%s\x1b[0m', JSON.stringify(req.body));
   try {
     const userData = await User.findByPk(req.session.user_id, {
       logging: console.log,
@@ -28,18 +23,13 @@ router.get('/', withAuth, async (req, res) => {
         },
       ],
     });
-
     // Check if userData exists
     if (userData) {
       // Convert userData to plain object
       const users = userData.get({ plain: true });
-
       // Initialize categories
       const categories = await Category.findAll();
-      const category = categories.map(category =>
-        category.get({ plain: true })
-      );
-
+      const category = categories.map(category => category.get({ plain: true }));
       // Render profile even if the user has no recipes or comments
       return res.render('profile', {
         users,

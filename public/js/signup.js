@@ -1,5 +1,3 @@
-console.log('signup.js loaded');
-
 const signupHandler = async event => {
   event.preventDefault();
   const username = document.querySelector('#username').value.trim();
