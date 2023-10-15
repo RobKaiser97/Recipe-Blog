@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Recipe, User, Comment, Category } = require('../models'); // Adjust this path to your actual Recipe model
+const { Recipe, User, Comment, Category } = require('../models'); 
 
 router.get('/', async (req, res) => {
   try {

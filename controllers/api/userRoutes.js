@@ -8,7 +8,8 @@ const signupHandler = async (req, res) => {
     validateSignupData(req.body);
     const userData = {
       ...req.body,
-      profile_picture: defaultProfileImg, // Set to default image, can be modified later
+      // Set to default image
+      profile_picture: defaultProfileImg, 
     };
     const createdUser = await User.create(userData);
     // Use req.session.save() to make sure session is saved before redirecting
@@ -71,7 +72,8 @@ router.put('/profile/:id', upload.single('profile_picture'), async (req, res) =>
     const updatedUserData = { ...req.body };
     // Only update the profile_picture if a new file is provided.
     if (req.file) {
-      const mimeType = req.file.mimetype; // Get the mime type of the file
+      // Get the mime type of the file
+      const mimeType = req.file.mimetype; 
       updatedUserData.profile_picture = binaryToBase64(req.file.buffer, mimeType);
     }
     const userData = await User.update(updatedUserData, {
