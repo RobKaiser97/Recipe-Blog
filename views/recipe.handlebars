@@ -7,46 +7,70 @@
   </h1>
 
 
-  <div class="ml-4">
-    <!-- Recipe Image -->
-    <div id='image-container' data-recipe-id="{{recipe.recipe_id}}">
-      <img src='{{decodeBase64 recipe.image}}' {{log decodeBase64 recipe.image}} alt='{{recipe.title}}'
-        class=' recipe-page-picture' />
-    </div>
+  <div class="mt-4">
 
-    <!-- Recipe Description -->
-    <p class='text-gray-700 mt-2 mb-4 font-indie-flower text-xl'>
-      {{recipe.description}}
-    </p>
+    <div class='welcome-card highlighted-recipe-card mb-3'>
+        <!-- Recipe Image -->
+        <div id='image-container' data-recipe-id="{{recipe.recipe_id}}">
+          <img src='{{decodeBase64 recipe.image}}' {{log decodeBase64 recipe.image}} alt='{{recipe.title}}'
+            class=' recipe-page-picture bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card' />
+        </div>
+         <!-- Recipe Description -->
+         <h2
+          class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
+        >Description</h2>
+        <p class='text-custom-blue font-indie-flower text-xl'>
+          {{recipe.description}}
+        </p>
+      </div>
 
     <!-- Recipe Ingredients -->
-    <h2 class='text-2xl mt-4 font-acme mb-2'>Ingredients</h2>
-    <p class="font-indie-flower text-xl">{{recipe.ingredients}}</p>
+    <div class='welcome-card highlighted-recipe-card'>
+        <h2
+          class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
+        >Ingredients</h2>
+        <p class='text-custom-blue font-indie-flower text-xl'>
+          {{recipe.ingredients}}
+        </p>
+      </div>
+
 
     <!-- Recipe Instructions -->
-    <h2 class='text-2xl mt-4 font-acme mb-2'>Instructions</h2>
-    <p class="font-indie-flower text-xl">{{recipe.instructions}}</p>
+    <div class='welcome-card highlighted-recipe-card'>
+        <h2
+          class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
+        >Instructions</h2>
+        <p class='text-custom-blue font-indie-flower text-xl'>
+          {{recipe.instructions}}
+        </p>
+      </div>
 
     <!-- Tags for classification -->
-    <h2 class='text-2xl mt-4 font-acme mb-2'>Tags</h2>
-    <div class='recipe-tags font-indie-flower'>
-      {{#each this.recipe.categories}}
-      <a href='/categories/{{this.name}}' class='tag'>{{this.name}}</a>
-      {{/each}}
-    </div>
+    <div class='welcome-card highlighted-recipe-card'>
+        <h2
+          class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
+        >Tags</h2>
+            <div class='recipe-tags'>
+          {{#each this.recipe.categories}}
+          <a href='/categories/{{this.name}}' class='submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65 '>{{this.name}}</a>
+          {{/each}}
+        </div>
+      </div>
+   
 
     <!-- Comments Section -->
-    <div class='existing-comments'>
-      <h3 class='text-2xl mt-4 font-acme mb-2'>Comments</h3>
-
-      <!-- Comment Form -->
+    <div class='welcome-card highlighted-recipe-card existing-comments'>
+        <h2
+          class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
+        >Comments</h2>
+          <!-- Comment Form -->
 
       <form class='comment-form'>
-        <div class='container w-1/4 p-6 mt-2'>
+        <div class='container p-6'>
           <div class="bg-custom-yellow text-white rounded-t-lg p-2 text-2xl font-autour-one">
             <label for='comment'>Leave a comment</label>
           </div>
-          <div class="card-body pl-4 pt-4">
+          <div class="card-body pt-4">
             <textarea id='comment-box' name='comment' rows='4' class=' text-gray-600 w-4/5 pt-2 rounded'></textarea>
           </div>
           <!-- Smaller Submit Button -->
@@ -56,16 +80,13 @@
           </div>
         </div>
       </form>
-    </div>
 
-    <!-- Display Existing Comments -->
-
-    <!-- Check if there are existing comments -->
+      <!-- Check if there are existing comments -->
     {{#if recipe.comments.length}}
     <ul>
       {{#each recipe.comments}}
       <li>
-        <div class='container w-1/4 p-6 mt-2'>
+        <div class='container p-6 mt-2'>
           <div class="bg-custom-yellow text-white rounded-t-lg p-2 text-2xl font-autour-one">
             <p class="font-autour-one text-xl">{{this.user.username}}</p>
           </div>
@@ -84,6 +105,15 @@
     {{else}}
     <p class="font-indie-flower text-xl mb-4">No comments yet.</p>
     {{/if}}
+        </div>
+      </div>
+    </div>
+
+    <!-- Display Existing Comments -->
+
+    
+
+     
   </div>
 </div>
 </div>
