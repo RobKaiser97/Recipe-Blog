@@ -4,7 +4,7 @@ const commentsList = document.querySelector('.existing-comments ul');
 
 // Initial State
 const userId = sessionStorage.getItem('userId');
-console.log(userId ? 'Logged in' : 'Logged Out');
+console.log(userId ? 'Logged in' : 'Not Currently Logged In');
 
 // Functions
 function updateComments(comments) {

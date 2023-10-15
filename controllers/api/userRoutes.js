@@ -58,8 +58,10 @@ router.post('/login', loginHandler);
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(200).json({ message: 'Logged out successfully' });
     });
+  } else {
+    res.status(400).json({ message: 'No user to log out' });
   }
 });
 
