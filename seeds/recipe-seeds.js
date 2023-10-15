@@ -1,14 +1,13 @@
 const { Recipe } = require('../models');
 const fs = require('fs');
 const { imageToBase64 } = require('../utils/helper');
-const spaghettiBolognese = 'public/assets/recipe-images/spaghetti-bolognese.jpeg';
+const spaghettiBolognese =
+  'public/assets/recipe-images/spaghetti-bolognese.jpeg';
 const chickenAlfredo = 'public/assets/recipe-images/Chicken-Alfredo.jpg';
 const capreseSalad = 'public/assets/recipe-images/Caprese-Salad.jpg';
 const vegeStirFry = 'public/assets/recipe-images/vegetable-stir-fry.jpg';
 const chocoChipCookie = 'public/assets/recipe-images/chocolate-chip-cookie.jpg';
-const waffle = 'public/assets/recipe-images/belgian-waffles.jpg';
-
-
+const waffle = 'app/public/assets/recipe-images/belgian-waffles.jpg';
 
 const recipeData = [
   {
