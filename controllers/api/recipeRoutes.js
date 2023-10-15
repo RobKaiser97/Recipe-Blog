@@ -1,7 +1,14 @@
 const router = require('express').Router();
-const { Category, Recipe, Comment, CategoryRecipe, User } = require('../../models');
+const {
+  Category,
+  Recipe,
+  Comment,
+  CategoryRecipe,
+  User,
+} = require('../../models');
 const multer = require('multer');
 const withAuth = require('../../utils/auth');
+const path = require('path')
 
 // Configure multer for recipe image uploads
 const recipeImageStorage = multer.memoryStorage();
@@ -23,7 +30,7 @@ router.get('/:id', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['username']
+          attributes: ['username'],
         },
         {
           model: Category,
@@ -34,9 +41,9 @@ router.get('/:id', async (req, res) => {
           include: [
             {
               model: User,
-              attributes: ['username']
-            }
-          ]
+              attributes: ['username'],
+            },
+          ],
         },
       ],
     });
@@ -47,38 +54,53 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', withAuth, recipeImageUpload.single('image'), async (req, res) => {
-  console.log('\x1b[32m%s\x1b[0m', 'Initial Request File:', req.file);  // Green color
-  console.log('\x1b[33m%s\x1b[0m', 'Initial Request Session:', req.sessionID);  // Yellow color
-  console.log('\x1b[34m%s\x1b[0m', 'Initial Request Session Url:', req.session.originalUrl);  // Blue color
-  console.log('\x1b[35m%s\x1b[0m', 'Initial Request Method:', req.method);  // Magenta color
+router.post(
+  '/',
+  withAuth,
+  recipeImageUpload.single('image'),
+  async (req, res) => {
+    console.log('\x1b[32m%s\x1b[0m', 'Initial Request File:', req.file); // Green color
+    console.log('\x1b[33m%s\x1b[0m', 'Initial Request Session:', req.sessionID); // Yellow color
+    console.log(
+      '\x1b[34m%s\x1b[0m',
+      'Initial Request Session Url:',
+      req.session.originalUrl
+    ); // Blue color
+    console.log('\x1b[35m%s\x1b[0m', 'Initial Request Method:', req.method); // Magenta color
 
-  try {
-    // Create the recipe
-    const recipeData = await Recipe.create({
-      ...req.body,
-      author_id: req.session.user_id,
-      image: req.file ? req.file.buffer : null,
-    });
+    try {
+      const defaultImageURL = path.join(
+        __dirname,
+        '/public/assets/recipe-images/default_recipe_image.png'
+      );
 
-    // Get the recipe_id of the newly created recipe
-    const { recipe_id } = recipeData.get({ plain: true });
-
-    // Loop through category_id array and insert into CategoryRecipe table
-    const categoryIds = req.body.category_id;
-    for (let id of categoryIds) {
-      await CategoryRecipe.create({
-        recipe_id,
-        category_id: parseInt(id), // Make sure the category_id is an integer
+      // Create the recipe
+      const recipeData = await Recipe.create({
+        ...req.body,
+        author_id: req.session.user_id,
+        // Set default image if there is no image selected
+        image: req.file ? req.file.buffer : defaultImageURL,
       });
-    }
 
-    res.status(200).json(recipeData);
-  } catch (err) {
-    console.error('An error occurred:', err);
-    res.status(400).json(err);
+      // Get the recipe_id of the newly created recipe
+      const { recipe_id } = recipeData.get({ plain: true });
+
+      // Loop through category_id array and insert into CategoryRecipe table
+      const categoryIds = req.body.category_id;
+      for (let id of categoryIds) {
+        await CategoryRecipe.create({
+          recipe_id,
+          category_id: parseInt(id), // Make sure the category_id is an integer
+        });
+      }
+
+      res.status(200).json(recipeData);
+    } catch (err) {
+      console.error('An error occurred:', err);
+      res.status(400).json(err);
+    }
   }
-});
+);
 
 router.put(
   '/:id',
