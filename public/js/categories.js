@@ -30,9 +30,9 @@ function toggleDescription(card) {
 
     if (description.classList.contains('collapsed')) {
         description.classList.remove('collapsed');
-        readMore.innerText = 'Read Less';
+
     } else {
         description.classList.add('collapsed');
-        readMore.innerText = 'Read More...';
+        readMore.innerText = 'Read More';
     }
 }

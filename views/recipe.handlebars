@@ -31,7 +31,6 @@
     <h2 class='text-2xl mt-4 font-acme mb-2'>Tags</h2>
     <div class='recipe-tags font-indie-flower'>
       {{#each this.recipe.categories}}
-      {{log 'What is this here:::' this}}
       <a href='/categories/{{this.name}}' class='tag'>{{this.name}}</a>
       {{/each}}
     </div>
