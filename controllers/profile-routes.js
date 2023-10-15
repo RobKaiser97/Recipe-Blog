@@ -36,7 +36,9 @@ router.get('/', withAuth, async (req, res) => {
 
       // Initialize categories
       const categories = await Category.findAll();
-      const category = categories.map((category) => category.get({ plain: true }));
+      const category = categories.map(category =>
+        category.get({ plain: true })
+      );
 
       // Render profile even if the user has no recipes or comments
       return res.render('profile', {

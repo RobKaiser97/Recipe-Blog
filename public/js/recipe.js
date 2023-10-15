@@ -8,33 +8,33 @@ console.log(userId ? 'Logged in' : 'Logged Out');
 
 // Functions
 function updateComments(comments) {
-    commentsList.innerHTML = '';
+  commentsList.innerHTML = '';
 
-    if (!comments.length) {
-        commentsList.innerHTML = '<li>No comments yet.</li>';
-        return;
-    }
+  if (!comments.length) {
+    commentsList.innerHTML = '<li>No comments yet.</li>';
+    return;
+  }
 
-    comments.forEach(comment => {
-        const li = document.createElement('li');
-        li.textContent = comment;
-        commentsList.appendChild(li);
-    });
+  comments.forEach(comment => {
+    const li = document.createElement('li');
+    li.textContent = comment;
+    commentsList.appendChild(li);
+  });
 }
 
 async function submitCommentToServer(comment, recipeId) {
-    console.log(comment);
-    const response = await fetch('/api/comments', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            content: comment,
-            recipe_id: recipeId
-        }),
-    });
-    return response.json();
+  console.log(comment);
+  const response = await fetch('/api/comments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      content: comment,
+      recipe_id: recipeId,
+    }),
+  });
+  return response.json();
 }
 
 // Commented-out function
@@ -54,13 +54,15 @@ function submitComment() {
 */
 
 // Event Listeners
-submitButton.addEventListener("click", async () => {
-    const comment = document.getElementById('comment-box').value;
-    const recipeId = document.getElementById("image-container").getAttribute("data-recipe-id");
+submitButton.addEventListener('click', async () => {
+  const comment = document.getElementById('comment-box').value;
+  const recipeId = document
+    .getElementById('image-container')
+    .getAttribute('data-recipe-id');
 
-    console.log("Button clicked!");
-    console.log(JSON.stringify({ content: comment, recipe_id: recipeId }));
+  console.log('Button clicked!');
+  console.log(JSON.stringify({ content: comment, recipe_id: recipeId }));
 
-    await submitCommentToServer(comment, recipeId);
-    // Update comments or perform other actions
+  await submitCommentToServer(comment, recipeId);
+  // Update comments or perform other actions
 });
