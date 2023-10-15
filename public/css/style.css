@@ -145,6 +145,7 @@ nav {
     /* 3 columns with some margin space */
     margin: 1rem;
     float: left;
+    position: relative;
 }
 
 /* Clear the float after every third recipe card to start a new row */
@@ -162,6 +163,17 @@ nav {
     border-radius: 8px;
     /* Rounded corners */
 }
+
+.recipe-page-picture {
+    width: 100%;
+    height: auto;
+    /* Adjust as needed */
+    object-fit: cover;
+    border-radius: 8px;
+    align-content: center;
+    /* Rounded corners */
+}
+
 
 /* Style for tags */
 .recipe-tags {
@@ -189,10 +201,6 @@ nav {
     /* (1.2em * 3 lines) */
 }
 
-.read-more {
-    color: #4caf50;
-    cursor: pointer;
-}
 
 .collapsible {
     display: none;
@@ -200,14 +208,21 @@ nav {
 
 /*  */
 .read-more {
+    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #fff;
-    font-size: 1.2em;
-    opacity: 0;
-    transition: opacity 0.3s;
+    color: white;
+    /* Set the text color */
+    font-size: 18px;
+    /* Adjust the font size */
+    font-weight: bold;
+    /* Add font weight if desired */
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+    /* Add a subtle text shadow for better visibility */
+    cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .image-container:hover img {
@@ -217,6 +232,7 @@ nav {
 
 .image-container:hover .read-more {
     opacity: 1;
+    display: block;
 }
 
 /* Media query for smaller screens */

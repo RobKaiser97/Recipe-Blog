@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Recipe, Comment, CategoryRecipe } = require('../../models');
+const { Category, Recipe, Comment, CategoryRecipe, User } = require('../../models');
 const multer = require('multer');
 const withAuth = require('../../utils/auth');
 
@@ -22,11 +22,21 @@ router.get('/:id', async (req, res) => {
     const recipeData = await Recipe.findByPk(req.params.id, {
       include: [
         {
+          model: User,
+          attributes: ['username']
+        },
+        {
           model: Category,
-          attributes: ['category_id'],
+          attributes: ['category_id', 'name'],
         },
         {
           model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ['username']
+            }
+          ]
         },
       ],
     });
