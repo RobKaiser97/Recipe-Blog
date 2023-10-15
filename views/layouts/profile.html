@@ -1,250 +1,241 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Acme&family=Autour+One&family=Caveat&family=Damion&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <style>
-      /* Custom CSS for background tint */
-      body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(27, 168, 224, 0.1); /* Slight blue tint */
-        pointer-events: none; /* Ensure clicks pass through */
-      }
 
-      /* Custom CSS for card bodies */
-      .card-body {
-        background-color: #1ba8e0; /* Blue color */
-        color: white; /* Text color */
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Acme&family=Autour+One&family=Caveat&family=Damion&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* Custom CSS for background tint */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(27, 168, 224, 0.1);
+      /* Slight blue tint */
+      pointer-events: none;
+      /* Ensure clicks pass through */
+    }
 
-      /* Custom CSS for "Submit Recipe" button */
-      .submit-button {
-        background-color: #f3c655; /* Yellow color */
-      }
+    /* Custom CSS for card bodies */
+    .card-body {
+      background-color: #1ba8e0;
+      /* Blue color */
+      color: white;
+      /* Text color */
+    }
 
-      /* Custom CSS for egg circle */
-      .egg-circle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background-color: #f3c655; /* Yellow color */
-        border: 2px solid #f3c655; /* Yellow border (same color) */
-        border-radius: 50%;
-      }
+    /* Custom CSS for "Submit Recipe" button */
+    .submit-button {
+      background-color: #f3c655;
+      /* Yellow color */
+    }
 
-      /* Adjusted styles for the navigation bar */
-      nav {
-        background-color: #1ba8e0; /* Blue color */
-        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Adjusted shadow for the navigation bar */
-      }
+    /* Custom CSS for egg circle */
+    .egg-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #f3c655;
+      /* Yellow color */
+      border: 2px solid #f3c655;
+      /* Yellow border (same color) */
+      border-radius: 50%;
+    }
 
-      /* Adjusted styles for the highlighted recipe card */
-      .highlighted-recipe-card {
-        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Adjusted shadow for the highlighted recipe card */
-      }
+    /* Adjusted styles for the navigation bar */
+    nav {
+      background-color: #1ba8e0;
+      /* Blue color */
+      box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+      /* Adjusted shadow for the navigation bar */
+    }
 
-      /* Custom CSS for profile picture */
-      .profile-picture {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        margin: 0 auto;
-        background-color: #1ba8e0; /* Blue color */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+    /* Adjusted styles for the highlighted recipe card */
+    .highlighted-recipe-card {
+      box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+      /* Adjusted shadow for the highlighted recipe card */
+    }
 
-      .bg-custom-yellow {
-        background-color: #f3c655;
-      }
+    /* Custom CSS for profile picture */
+    .profile-picture {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto;
+      background-color: #1ba8e0;
+      /* Blue color */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-      .text-custom-blue {
-        color: #1ba8e0; /* Blue color */
-      }
+    .bg-custom-yellow {
+      background-color: #f3c655;
+    }
 
-      /* Custom CSS for Damion font */
-      .font-damion {
-        font-family: 'Damion', cursive;
-        /* Use the Damion font */
-      }
+    .text-custom-blue {
+      color: #1ba8e0;
+      /* Blue color */
+    }
 
-      .font-autour-one {
-        font-family: 'Autour One', cursive;
-        /* Use the Autour One font */
-      }
+    /* Custom CSS for Damion font */
+    .font-damion {
+      font-family: 'Damion', cursive;
+      /* Use the Damion font */
+    }
 
-      .font-caveat {
-        font-family: 'Caveat', cursive;
-        /* Use the Caveat font */
-      }
+    .font-autour-one {
+      font-family: 'Autour One', cursive;
+      /* Use the Autour One font */
+    }
 
-      .font-acme {
-        font-family: 'Acme', cursive;
-        /* Use the Acme font */
-      }
+    .font-caveat {
+      font-family: 'Caveat', cursive;
+      /* Use the Caveat font */
+    }
 
-      .welcome-card {
-        border: 2px dashed #1ba8e0; /* Blue dashed border */
-        border-radius: 20px; /* Rounded corners */
-        padding: 20px;
-        text-align: center;
-        width: 50%;
-        margin: auto;
-      }
-    </style>
-    <title>Cooking Website</title>
-  </head>
-  <body class="bg-gray-100">
-    <nav class="p-4">
-      <div class="container mx-auto flex justify-between items-center">
-        <!-- Oval Title -->
-        <div class="flex items-center">
-          <div class="egg-circle">
-            <i class="fas fa-utensils text-white"></i>
-            <!-- Font Awesome utensils icon -->
-          </div>
-          <h1 class="text-4xl font-damion text-black ml-2">
-            Now We're Cooking!
-          </h1>
-          <!-- Apply the Damion font -->
+    .font-acme {
+      font-family: 'Acme', cursive;
+      /* Use the Acme font */
+    }
+
+    .welcome-card {
+      border: 2px dashed #1ba8e0;
+      /* Blue dashed border */
+      border-radius: 20px;
+      /* Rounded corners */
+      padding: 20px;
+      text-align: center;
+      width: 50%;
+      margin: auto;
+    }
+  </style>
+  <title>Cooking Website</title>
+</head>
+
+<body class="bg-gray-100">
+  <nav class="p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <!-- Oval Title -->
+      <div class="flex items-center">
+        <div class="egg-circle">
+          <i class="fas fa-utensils text-white"></i>
+          <!-- Font Awesome utensils icon -->
         </div>
-        <ul class="flex space-x-4">
-          <li><a href="#" class="text-white">Home</a></li>
-          <li class="relative group">
-            <a href="#" class="text-white group-hover:text-blue-200"
-              >Categories</a
-            >
-            <!-- Dropdown menu for Categories -->
-            <ul
-              class="absolute hidden bg-white text-gray-800 pt-2 group-hover:block"
-              id="categoriesDropdown"
-            >
-              <li>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-200"
-                  >Breakfast</a
-                >
-              </li>
-              <li>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-200">Lunch</a>
-              </li>
-              <li>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-200">Dinner</a>
-              </li>
-              <li>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-200"
-                  >Dessert</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="relative group">
-            <a href="#" class="text-white group-hover:text-blue-200">
-              <i class="fas fa-user-circle text-lg"></i>
-              <!-- Font Awesome user icon -->
-            </a>
-            <!-- Dropdown menu for Profile -->
-            <ul
-              class="absolute hidden bg-white text-gray-800 pt-2 group-hover:block"
-              id="profileDropdown"
-            >
-              <li>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-200"
-                  >Profile</a
-                >
-              </li>
-              <li>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-200">Login</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <h1 class="text-4xl font-damion text-black ml-2">
+          Now We're Cooking!
+        </h1>
+        <!-- Apply the Damion font -->
       </div>
-    </nav>
+      <ul class="flex space-x-4">
+        <li><a href="#" class="text-white">Home</a></li>
+        <li class="relative group">
+          <a href="#" class="text-white group-hover:text-blue-200">Categories</a>
+          <!-- Dropdown menu for Categories -->
+          <ul class="absolute hidden bg-white text-gray-800 pt-2 group-hover:block" id="categoriesDropdown">
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-200">Breakfast</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-200">Lunch</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-200">Dinner</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-200">Dessert</a>
+            </li>
+          </ul>
+        </li>
+        <li class="relative group">
+          <a href="#" class="text-white group-hover:text-blue-200">
+            <i class="fas fa-user-circle text-lg"></i>
+            <!-- Font Awesome user icon -->
+          </a>
+          <!-- Dropdown menu for Profile -->
+          <ul class="absolute hidden bg-white text-gray-800 pt-2 group-hover:block" id="profileDropdown">
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-200">Profile</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-200">Login</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-    <!-- Custom JavaScript to toggle dropdown visibility -->
-    <script>
-      const categoriesDropdown = document.getElementById('categoriesDropdown');
-      const profileDropdown = document.getElementById('profileDropdown');
+  <!-- Custom JavaScript to toggle dropdown visibility -->
+  <script>
+    const categoriesDropdown = document.getElementById('categoriesDropdown');
+    const profileDropdown = document.getElementById('profileDropdown');
 
-      document
-        .querySelector('.group:nth-child(2)')
-        .addEventListener('mouseenter', () => {
-          categoriesDropdown.classList.remove('hidden');
-        });
+    document
+      .querySelector('.group:nth-child(2)')
+      .addEventListener('mouseenter', () => {
+        categoriesDropdown.classList.remove('hidden');
+      });
 
-      document
-        .querySelector('.group:nth-child(2)')
-        .addEventListener('mouseleave', () => {
-          categoriesDropdown.classList.add('hidden');
-        });
+    document
+      .querySelector('.group:nth-child(2)')
+      .addEventListener('mouseleave', () => {
+        categoriesDropdown.classList.add('hidden');
+      });
 
-      document
-        .querySelector('.group:nth-child(3)')
-        .addEventListener('mouseenter', () => {
-          profileDropdown.classList.remove('hidden');
-        });
+    document
+      .querySelector('.group:nth-child(3)')
+      .addEventListener('mouseenter', () => {
+        profileDropdown.classList.remove('hidden');
+      });
 
-      document
-        .querySelector('.group:nth-child(3)')
-        .addEventListener('mouseleave', () => {
-          profileDropdown.classList.add('hidden');
-        });
-    </script>
+    document
+      .querySelector('.group:nth-child(3)')
+      .addEventListener('mouseleave', () => {
+        profileDropdown.classList.add('hidden');
+      });
+  </script>
 
-    <!-- Content Section -->
-    <div class="container mx-auto p-6 mt-8">
-      <!-- Profile Picture and Username -->
-      <div class="text-center">
-        <div class="profile-picture">
-          <!-- Placeholder for profile picture -->
-          <i class="fas fa-user text-5xl text-white"></i>
-        </div>
-        <h2 class="text-6xl font-damion mt-4">Username</h2>
+  <!-- Content Section -->
+  <div class="container mx-auto p-6 mt-8">
+    <!-- Profile Picture and Username -->
+    <div class="text-center">
+      <div class="profile-picture">
+        <!-- Placeholder for profile picture -->
+        <i class="fas fa-user text-5xl text-white"></i>
       </div>
+      <h2 class="text-6xl font-damion mt-4">Username</h2>
+    </div>
 
-      <!-- About Me Section -->
+    <!-- About Me Section -->
 
-      <div class="container mx-auto p-6 mt-2">
-        <div class="welcome-card highlighted-recipe-card">
-          <h1
-            class="font-damion text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card"
-          >
-            About Me
-          </h1>
-          <p class="text-custom-blue font-caveat text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel
-            lectus id urna posuere suscipit. Phasellus euismod ultricies ipsum,
-            non finibus justo tempus sed. Proin tristique lacus at mauris
-            eleifend, nec dictum orci facilisis.
-          </p>
-        </div>
+    <div class="container mx-auto p-6 mt-2">
+      <div class="welcome-card highlighted-recipe-card">
+        <h1 class="font-damion text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card">
+          About Me
+        </h1>
+        <p class="text-custom-blue font-caveat text-xl">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel
+          lectus id urna posuere suscipit. Phasellus euismod ultricies ipsum,
+          non finibus justo tempus sed. Proin tristique lacus at mauris
+          eleifend, nec dictum orci facilisis.
+        </p>
       </div>
-      <!-- <div class="mt-8">
+    </div>
+    <!-- <div class="mt-8">
             <h3 class="text-xl font-semibold">About Me</h3>
             <p class="mt-2 text-gray-700">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel lectus id urna posuere suscipit.
@@ -257,135 +248,98 @@
             </div>
         </div> -->
 
-      <!-- My Recipes Section -->
-      <div class="mt-8 highlighted-recipe-card rounded-lg">
-        <div class="bg-custom-yellow text-white rounded-t-lg p-2">
-          <h2 class="text-2xl font-autour-one">My Recipes</h2>
-        </div>
-        <div class="card-body rounded-b-lg p-4">
-          <!-- Recipe Cards (Placeholder) -->
-          <!-- Recipe 1 -->
-          <div class="mt-4">
-            <img
-              src="food-image.jpg"
-              alt="Food Image"
-              class="mt-2 rounded-lg"
-            />
-            <h3 class="text-xl font-acme mt-2">Delicious Dish Name 1</h3>
-            <p class="text-white my-2">Description of the meal goes here.</p>
-            <a
-              href="#"
-              class="submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65"
-              >Read More</a
-            >
-          </div>
-          <!-- Recipe 2 -->
-          <div class="mt-4">
-            <img
-              src="food-image.jpg"
-              alt="Food Image"
-              class="mt-2 rounded-lg"
-            />
-            <h3 class="text-xl font-acme mt-2">Delicious Dish Name 2</h3>
-            <p class="text-white my-2">Description of the meal goes here.</p>
-            <a
-              href="#"
-              class="submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c655"
-              >Read More</a
-            >
-          </div>
-          <!-- Recipe 3 -->
-          <div class="mt-4">
-            <img
-              src="food-image.jpg"
-              alt="Food Image"
-              class="mt-2 rounded-lg"
-            />
-            <h3 class="text-xl font-acme mt-2">Delicious Dish Name 3</h3>
-            <p class="text-white my-2">Description of the meal goes here.</p>
-            <a
-              href="#"
-              class="submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65"
-              >Read More</a
-            >
-          </div>
-          <!-- Read More Button -->
-          <div class="mt-4 text-xl text-center">
-            <a
-              href="#"
-              class="submit-button text-white px-4 py-2 rounded-lg font-autour-one hover:bg-f3c655"
-              >View All Recipes</a
-            >
-          </div>
-        </div>
+    <!-- My Recipes Section -->
+    <div class="mt-8 highlighted-recipe-card rounded-lg">
+      <div class="bg-custom-yellow text-white rounded-t-lg p-2">
+        <h2 class="text-2xl font-autour-one">My Recipes</h2>
       </div>
-
-      <!-- My Comments Section -->
-      <div class="mt-8 highlighted-recipe-card rounded-lg">
-        <div class="bg-custom-yellow text-white rounded-t-lg p-2">
-          <h2 class="text-2xl font-autour-one">My Comments</h2>
+      <div class="card-body rounded-b-lg p-4">
+        <!-- Recipe Cards (Placeholder) -->
+        <!-- Recipe 1 -->
+        <div class="mt-4">
+          <img src="food-image.jpg" alt="Food Image" class="mt-2 rounded-lg" />
+          <h3 class="text-xl font-acme mt-2">Delicious Dish Name 1</h3>
+          <p class="text-white my-2">Description of the meal goes here.</p>
+          <a href="#" class="submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65">Read
+            More</a>
         </div>
-        <div class="card-body rounded-b-lg p-4">
-          <!-- Comment Cards (Placeholder) -->
-          <!-- Comment 1 -->
-          <div class="mt-4">
-            <h3 class="text-xl font-acme mt-2">Caprese Salad</h3>
-            <p class="text-lg font-caveat">"So refreshing and tasty!"</p>
-            <p class="text-sm font-acme my-1">Created on: 10/11/23</p>
-            <a
-              href="#"
-              class="submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65"
-              >Read More</a
-            >
-          </div>
-          <!-- Comment 2 -->
-          <div class="mt-6">
-            <h3 class="text-xl font-acme mt-2">Vegetable Stir-Fry</h3>
-            <p class="text-lg font-caveat">
-              "Great way to get your veggies in!"
-            </p>
-            <p class="text-sm font-acme my-1">Created on: 10/11/23</p>
-            <a
-              href="#"
-              class="submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65"
-              >Read More</a
-            >
-          </div>
-          <!-- Comment 3 -->
-          <div class="mt-6">
-            <h3 class="text-xl font-acme mt-2">Chocolate Chip Cookies</h3>
-            <p class="text-lg font-caveat">"These cookies are amazing!"</p>
-            <p class="text-sm font-acme my-1">Created on: 10/11/23</p>
-            <a
-              href="#"
-              class="submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65"
-              >Read More</a
-            >
-          </div>
-          <!-- Read More Button -->
-          <div class="mt-4 text-xl text-center">
-            <a
-              href="#"
-              class="submit-button text-white px-4 py-2 rounded-lg font-autour-one hover:bg-f3c655"
-              >View All Comments</a
-            >
-          </div>
+        <!-- Recipe 2 -->
+        <div class="mt-4">
+          <img src="food-image.jpg" alt="Food Image" class="mt-2 rounded-lg" />
+          <h3 class="text-xl font-acme mt-2">Delicious Dish Name 2</h3>
+          <p class="text-white my-2">Description of the meal goes here.</p>
+          <a href="#" class="submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c655">Read
+            More</a>
+        </div>
+        <!-- Recipe 3 -->
+        <div class="mt-4">
+          <img src="food-image.jpg" alt="Food Image" class="mt-2 rounded-lg" />
+          <h3 class="text-xl font-acme mt-2">Delicious Dish Name 3</h3>
+          <p class="text-white my-2">Description of the meal goes here.</p>
+          <a href="#" class="submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65">Read
+            More</a>
+        </div>
+        <!-- Read More Button -->
+        <div class="mt-4 text-xl text-center">
+          <a href="#" class="submit-button text-white px-4 py-2 rounded-lg font-autour-one hover:bg-f3c655">View All
+            Recipes</a>
         </div>
       </div>
     </div>
 
-    <!-- Font Awesome -->
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
+    <!-- My Comments Section -->
+    <div class="mt-8 highlighted-recipe-card rounded-lg">
+      <div class="bg-custom-yellow text-white rounded-t-lg p-2">
+        <h2 class="text-2xl font-autour-one">My Comments</h2>
+      </div>
+      <div class="card-body rounded-b-lg p-4">
+        <!-- Comment Cards (Placeholder) -->
+        <!-- Comment 1 -->
+        <div class="mt-4">
+          <h3 class="text-xl font-acme mt-2">Caprese Salad</h3>
+          <p class="text-lg font-caveat">"So refreshing and tasty!"</p>
+          <p class="text-sm font-acme my-1">Created on: 10/11/23</p>
+          <a href="#" class="submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65">Read
+            More</a>
+        </div>
+        <!-- Comment 2 -->
+        <div class="mt-6">
+          <h3 class="text-xl font-acme mt-2">Vegetable Stir-Fry</h3>
+          <p class="text-lg font-caveat">
+            "Great way to get your veggies in!"
+          </p>
+          <p class="text-sm font-acme my-1">Created on: 10/11/23</p>
+          <a href="#" class="submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65">Read
+            More</a>
+        </div>
+        <!-- Comment 3 -->
+        <div class="mt-6">
+          <h3 class="text-xl font-acme mt-2">Chocolate Chip Cookies</h3>
+          <p class="text-lg font-caveat">"These cookies are amazing!"</p>
+          <p class="text-sm font-acme my-1">Created on: 10/11/23</p>
+          <a href="#" class="submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65">Read
+            More</a>
+        </div>
+        <!-- Read More Button -->
+        <div class="mt-4 text-xl text-center">
+          <a href="#" class="submit-button text-white px-4 py-2 rounded-lg font-autour-one hover:bg-f3c655">View All
+            Comments</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Custom CSS for Damion font -->
-    <style>
-      /* Custom CSS for Damion font */
-      .font-damion {
-        font-family: 'Damion', cursive; /* Use the Damion font */
-      }
-    </style>
-  </body>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Custom CSS for Damion font -->
+  <style>
+    /* Custom CSS for Damion font */
+    .font-damion {
+      font-family: 'Damion', cursive;
+      /* Use the Damion font */
+    }
+  </style>
+</body>
+
 </html>

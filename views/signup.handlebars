@@ -3,89 +3,48 @@
   <div class='sign-up-card highlighted-recipe-card'>
 
     <div class='py-2 rounded-t-lg rounded-b-lg mb-4'>
-      <h2
-        class='font-damion text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
-      >Get Cookin!</h2>
+      <h2 class='font-damion text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>Get
+        Cookin!</h2>
     </div>
 
     <form method='POST' action='/signup' class='mb-4 signup_form'>
       <div class='mb-4'>
         <label for='email' class='block font-acme text-black'>Email</label>
-        <input
-          type='email'
-          id='email'
-          name='email'
-          class='w-full border p-2 rounded'
-          title='Enter your desired email'
-          style='text-align: center;'
-        />
+        <input type='email' id='email' name='email' class='w-full border p-2 rounded' title='Enter your desired email'
+          style='text-align: center;' />
         <span id='emailAlert' class='text-red-500'></span>
       </div>
 
       <div class='mb-4'>
-        <label
-          for='username'
-          class='block font-acme text-black'
-        >Username</label>
-        <input
-          type='text'
-          id='username'
-          name='username'
-          class='w-full border p-2 rounded'
-          title='Enter your desired username'
-          style='text-align: center;'
-          required
-        />
+        <label for='username' class='block font-acme text-black'>Username</label>
+        <input type='text' id='username' name='username' class='w-full border p-2 rounded'
+          title='Enter your desired username' style='text-align: center;' required />
         <span id='usernameAlert' class='text-red-500'></span>
       </div>
 
       <div class='mb-4'>
-        <label
-          for='password'
-          class='block font-acme text-black'
-        >Password</label>
-        <input
-          type='password'
-          id='password'
-          name='password'
-          class='w-full border p-2 rounded'
-          title='Enter your desired password'
-          style='text-align: center;'
-          required
-          minlength='8'
-        />
+        <label for='password' class='block font-acme text-black'>Password</label>
+        <input type='password' id='password' name='password' class='w-full border p-2 rounded'
+          title='Enter your desired password' style='text-align: center;' required minlength='8' />
         <span id='passwordAlert' class='text-red-500'></span>
       </div>
 
       <div class='mb-4'>
         <label for='confirmPassword' class='block font-acme text-black'>Confirm
           Password</label>
-        <input
-          type='password'
-          id='confirmPassword'
-          name='confirmPassword'
-          class='w-full border p-2 rounded'
-          title='Confirm your password'
-          style='text-align: center;'
-        />
+        <input type='password' id='confirmPassword' name='confirmPassword' class='w-full border p-2 rounded'
+          title='Confirm your password' style='text-align: center;' />
         <span id='confirmPasswordAlert' class='text-red-500'></span>
       </div>
 
       <div class='mb-4'>
         <label for='about' class='block font-acme text-black'>About Me</label>
-        <textarea
-          type='password'
-          id='about'
-          name='about'
-          class='w-full border p-2 rounded'
-          style='text-align: center;'
-        ></textarea>
+        <textarea type='password' id='about' name='about' class='w-full border p-2 rounded'
+          style='text-align: center;'></textarea>
       </div>
 
-      <button
-        type='submit'
-        class='submit-button text-white px-4 py-2 rounded-lg font-autour-one hover:bg-f3c655 mx-auto'
-      >Sign Up</button>
+      <button type='submit'
+        class='submit-button text-white px-4 py-2 rounded-lg font-autour-one hover:bg-f3c655 mx-auto'>Sign Up</button>
     </form>
 
     <div class='text-sm text-gray-500 mt-2'>

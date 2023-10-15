@@ -1,142 +1,87 @@
 <html lang='en'>
 
-  <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <link rel='preconnect' href='https://fonts.googleapis.com' />
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
-    <link
-      href='https://fonts.googleapis.com/css2?family=Acme&family=Autour+One&family=Caveat&family=Damion&family=Indie+Flower&display=swap'
-      rel='stylesheet'
-    />
-    <link
-      href='https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css'
-      rel='stylesheet'
-    />
-    <link
-      rel='stylesheet'
-      href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'
-      integrity='sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=='
-      crossorigin='anonymous'
-      referrerpolicy='no-referrer'
-    />
-    <link href='/css/style.css' rel='stylesheet' />
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <link rel='preconnect' href='https://fonts.googleapis.com' />
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+  <link
+    href='https://fonts.googleapis.com/css2?family=Acme&family=Autour+One&family=Caveat&family=Damion&family=Indie+Flower&display=swap'
+    rel='stylesheet' />
+  <link href='https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css' rel='stylesheet' />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'
+    integrity='sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=='
+    crossorigin='anonymous' referrerpolicy='no-referrer' />
+  <link href='/css/style.css' rel='stylesheet' />
 
-    <title>Cooking Website</title>
-  </head>
+  <title>Cooking Website</title>
+</head>
 
-  <body class='bg-gray-100'>
-    <!-- Navigation Bar -->
-    <nav class='p-4'>
-      <div
-        class='container mx-auto flex justify-between items-center'
-        id='nav_bar'
-      >
-        <!-- Oval Title -->
-        <div class='flex items-center'>
-          <div class='egg-circle'>
-            <i class='fas fa-utensils text-white'></i>
-            <!-- Font Awesome utensils icon -->
-          </div>
-          <h1 class='text-4xl font-damion text-black ml-2'>Now We're Cooking!</h1>
-          <!-- Apply the Damion font -->
+<body class='bg-gray-100'>
+  <!-- Navigation Bar -->
+  <nav class='p-4'>
+    <div class='container mx-auto flex justify-between items-center' id='nav_bar'>
+      <!-- Oval Title -->
+      <div class='flex items-center'>
+        <div class='egg-circle'>
+          <i class='fas fa-utensils text-white'></i>
+          <!-- Font Awesome utensils icon -->
         </div>
-        <ul class='flex space-x-4 fixed_nav'>
-          <li><a href='/' class='text-white'>Home</a></li>
-          <li class='relative group'>
-            <a
-              href='#'
-              class='text-white group-hover:text-blue-200'
-            >Categories</a>
-            <!-- Dropdown menu for Categories -->
-            <ul
-              class='absolute hidden bg-white text-gray-800 pt-2 group-hover:block'
-              id='categoriesDropdown'
-            >
-              <li><a
-                  href='/categories/breakfast'
-                  class='block px-4 py-2 hover:bg-gray-200'
-                >Breakfast</a>
-              </li>
-              <li><a
-                  href='/categories/lunch'
-                  class='block px-4 py-2 hover:bg-gray-200'
-                >Lunch</a></li>
-              <li><a
-                  href='/categories/dinner'
-                  class='block px-4 py-2 hover:bg-gray-200'
-                >Dinner</a>
-              </li>
-              <li><a
-                  href='/categories/dessert'
-                  class='block px-4 py-2 hover:bg-gray-200'
-                >Dessert</a>
-              </li>
-              <li><a
-                  href='/categories/vegetarian'
-                  class='block px-4 py-2 hover:bg-gray-200'
-                >Vegetarian</a>
-              </li>
-              <li><a
-                  href='/categories/vegan'
-                  class='block px-4 py-2 hover:bg-gray-200'
-                >Vegan</a>
-              </li>
-              <li><a
-                  href='/categories/keto'
-                  class='block px-4 py-2 hover:bg-gray-200'
-                >Keto Compliant</a>
-              </li>
-              <li><a
-                  href='/categories/gluten%20free'
-                  class='block px-4 py-2 hover:bg-gray-200'
-                >Gluten Free</a>
-              </li>
-            </ul>
-          </li>
-          <li class='relative group'>
-            <a href='#' class='text-white group-hover:text-blue-200'>
-              <i class='fas fa-user-circle text-lg'></i>
-              <!-- Font Awesome user icon -->
-            </a>
-            <!-- Dropdown menu for Profile -->
-            <ul
-              class='absolute hidden bg-white text-gray-800 pt-2 group-hover:block'
-              id='profileDropdown'
-            >
-              {{log loggedIn}}
-              {{#if loggedIn}}
-                <li><a
-                    class='block px-4 py-2 hover:bg-gray-200'
-                    id='logout-link'
-                  >Logout</a></li>
-              {{else}}
-                <li><a
-                    href='/login'
-                    class='block px-4 py-2 hover:bg-gray-200'
-                  >Login</a></li>
-              {{/if}}
-              <li><a
-                  href='/profile'
-                  class='block px-4 py-2 hover:bg-gray-200'
-                  id='profileLink'
-                >Profile</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <h1 class='text-4xl font-damion text-black ml-2'>Now We're Cooking!</h1>
+        <!-- Apply the Damion font -->
       </div>
-    </nav>
+      <ul class='flex space-x-4 fixed_nav'>
+        <li><a href='/' class='text-white'>Home</a></li>
+        <li class='relative group'>
+          <a href='#' class='text-white group-hover:text-blue-200'>Categories</a>
+          <!-- Dropdown menu for Categories -->
+          <ul class='absolute hidden bg-white text-gray-800 pt-2 group-hover:block' id='categoriesDropdown'>
+            <li><a href='/categories/breakfast' class='block px-4 py-2 hover:bg-gray-200'>Breakfast</a>
+            </li>
+            <li><a href='/categories/lunch' class='block px-4 py-2 hover:bg-gray-200'>Lunch</a></li>
+            <li><a href='/categories/dinner' class='block px-4 py-2 hover:bg-gray-200'>Dinner</a>
+            </li>
+            <li><a href='/categories/dessert' class='block px-4 py-2 hover:bg-gray-200'>Dessert</a>
+            </li>
+            <li><a href='/categories/vegetarian' class='block px-4 py-2 hover:bg-gray-200'>Vegetarian</a>
+            </li>
+            <li><a href='/categories/vegan' class='block px-4 py-2 hover:bg-gray-200'>Vegan</a>
+            </li>
+            <li><a href='/categories/keto' class='block px-4 py-2 hover:bg-gray-200'>Keto Compliant</a>
+            </li>
+            <li><a href='/categories/gluten%20free' class='block px-4 py-2 hover:bg-gray-200'>Gluten Free</a>
+            </li>
+          </ul>
+        </li>
+        <li class='relative group'>
+          <a href='#' class='text-white group-hover:text-blue-200'>
+            <i class='fas fa-user-circle text-lg'></i>
+            <!-- Font Awesome user icon -->
+          </a>
+          <!-- Dropdown menu for Profile -->
+          <ul class='absolute hidden bg-white text-gray-800 pt-2 group-hover:block' id='profileDropdown'>
+            {{#if loggedIn}}
+            <li><a class='block px-4 py-2 hover:bg-gray-200' id='logout-link'>Logout</a></li>
+            {{else}}
+            <li><a href='/login' class='block px-4 py-2 hover:bg-gray-200'>Login</a></li>
+            {{/if}}
+            <li><a href='/profile' class='block px-4 py-2 hover:bg-gray-200' id='profileLink'>Profile</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-    {{{body}}}
+  {{{body}}}
 
-    <!-- JS Links -->
-    <script src='/js/main.js'></script>
-    <script src='/js/logout.js'></script>
-    {{#if (eq currentRoute '/signup')}}
-      <script src='/js/signup.js'></script>
-    {{/if}}
+  <!-- JS Links -->
+  <script src='/js/main.js'></script>
+  <script src='/js/logout.js'></script>
+  {{#if (eq currentRoute '/signup')}}
+  <script src='/js/signup.js'></script>
+  {{/if}}
 
-  </body>
+</body>
 
 </html>

@@ -1,5 +1,4 @@
 require('dotenv').config();
-console.log('SECRET_KEY:', process.env.SECRET_KEY); // Debug: Assist in debugging routing errors
 // IMPORTANT: Remove before deployment
 const path = require('path');
 const express = require('express');
