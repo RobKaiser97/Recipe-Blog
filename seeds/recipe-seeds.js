@@ -1,13 +1,39 @@
+// const { Recipe } = require('../models');
+// const fs = require('fs');
+// const { imageToBase64 } = require('../utils/helper');
+// const spaghettiBolognese =
+//   'public/assets/recipe-images/spaghetti-bolognese.jpeg';
+// const chickenAlfredo = 'public/assets/recipe-images/Chicken-Alfredo.jpg';
+// const capreseSalad = 'public/assets/recipe-images/Caprese-Salad.jpg';
+// const vegeStirFry = 'public/assets/recipe-images/vegetable-stir-fry.jpg';
+// const chocoChipCookie = 'public/assets/recipe-images/chocolate-chip-cookie.jpg';
+// const waffle = 'public/assets/recipe-images/Belgian-Waffles.jpg';
 const { Recipe } = require('../models');
-const fs = require('fs');
-const { imageToBase64 } = require('../utils/helper');
-const spaghettiBolognese =
-  'public/assets/recipe-images/spaghetti-bolognese.jpeg';
-const chickenAlfredo = 'public/assets/recipe-images/Chicken-Alfredo.jpg';
-const capreseSalad = 'public/assets/recipe-images/Caprese-Salad.jpg';
-const vegeStirFry = 'public/assets/recipe-images/vegetable-stir-fry.jpg';
-const chocoChipCookie = 'public/assets/recipe-images/chocolate-chip-cookie.jpg';
-const waffle = 'public/assets/recipe-images/Belgian-Waffles.jpg';
+const path = require('path');
+const spaghettiBolognese = path.join(
+  __dirname,
+  '../public/assets/recipe-images/spaghetti-bolognese.jpeg'
+);
+const chickenAlfredo = path.join(
+  __dirname,
+  '../public/assets/recipe-images/Chicken-Alfredo.jpg'
+);
+const capreseSalad = path.join(
+  __dirname,
+  '../public/assets/recipe-images/Caprese-Salad.jpg'
+);
+const vegeStirFry = path.join(
+  __dirname,
+  '../public/assets/recipe-images/vegetable-stir-fry.jpg'
+);
+const chocoChipCookie = path.join(
+  __dirname,
+  '../public/assets/recipe-images/chocolate-chip-cookie.jpg'
+);
+const waffle = path.join(
+  __dirname,
+  '../public/assets/recipe-images/belgian-waffles.jpg'
+);
 
 const recipeData = [
   {
@@ -21,7 +47,7 @@ const recipeData = [
     category_id: 1,
     created_at: new Date(),
     updated_at: new Date(),
-    image: imageToBase64(spaghettiBolognese),
+    image: spaghettiBolognese,
   },
   {
     title: 'Chicken Alfredo',
@@ -34,7 +60,7 @@ const recipeData = [
     category_id: 2,
     created_at: new Date(),
     updated_at: new Date(),
-    image: imageToBase64(chickenAlfredo),
+    image: chickenAlfredo,
   },
   {
     title: 'Caprese Salad',
@@ -47,7 +73,7 @@ const recipeData = [
     category_id: 3,
     created_at: new Date(),
     updated_at: new Date(),
-    image: imageToBase64(capreseSalad),
+    image: capreseSalad,
   },
   {
     title: 'Vegetable Stir-Fry',
@@ -60,7 +86,7 @@ const recipeData = [
     category_id: 4,
     created_at: new Date(),
     updated_at: new Date(),
-    image: imageToBase64(vegeStirFry),
+    image: vegeStirFry,
   },
   {
     title: 'Chocolate Chip Cookies',
@@ -73,7 +99,7 @@ const recipeData = [
     category_id: 5,
     created_at: new Date(),
     updated_at: new Date(),
-    image: imageToBase64(chocoChipCookie),
+    image: chocoChipCookie,
   },
   {
     title: 'Waffles',
@@ -86,7 +112,7 @@ const recipeData = [
     category_id: 5,
     created_at: new Date(),
     updated_at: new Date(),
-    image: imageToBase64(waffle),
+    image: waffle,
   },
 ];
 
