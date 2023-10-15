@@ -19,7 +19,6 @@ const recipeImageUpload = multer({
 // The 'recipes' endpoint
 router.get('/:id', async (req, res) => {
   try {
-    console.log('recipe get req params: ', req.params.id); // TODO: Remove debug elements
     const recipeData = await Recipe.findByPk(req.params.id, {
       include: [
         {
@@ -41,7 +40,6 @@ router.get('/:id', async (req, res) => {
         },
       ],
     });
-    console.log('recipe get json data: ', recipeData.toJSON()); // TODO: Remove debug elements
     const recipe = recipeData.get({ plain: true });
     return res.render('recipe', { recipe });
   } catch (err) {
@@ -50,7 +48,6 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', withAuth, recipeImageUpload.single('image'), async (req, res) => {
-  console.log('\x1b[36m%s\x1b[0m', 'Initial Request Body:', req.body);  // Cyan color
   console.log('\x1b[32m%s\x1b[0m', 'Initial Request File:', req.file);  // Green color
   console.log('\x1b[33m%s\x1b[0m', 'Initial Request Session:', req.sessionID);  // Yellow color
   console.log('\x1b[34m%s\x1b[0m', 'Initial Request Session Url:', req.session.originalUrl);  // Blue color

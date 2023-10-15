@@ -3,9 +3,12 @@
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Acme&family=Autour+One&family=Caveat&family=Damion&family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Acme&family=Autour+One&family=Caveat&family=Damion&family=Indie+Flower&display=swap'
+      rel='stylesheet'
+    />
     <link
       href='https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css'
       rel='stylesheet'
@@ -91,7 +94,7 @@
               </li>
             </ul>
           </li>
-          <li class='relative group '>
+          <li class='relative group'>
             <a href='#' class='text-white group-hover:text-blue-200'>
               <i class='fas fa-user-circle text-lg'></i>
               <!-- Font Awesome user icon -->
@@ -102,18 +105,18 @@
               id='profileDropdown'
             >
               {{log loggedIn}}
-              {{#unless loggedIn}}
-                <li><a
-                    href='/login'
-                    class='block px-4 py-2 hover:bg-gray-200'
-                  >Login</a></li>
-              {{else}}
+              {{#if loggedIn}}
                 <li><a
                     href='/logout'
                     class='block px-4 py-2 hover:bg-gray-200'
                     id='logout-link'
                   >Logout</a></li>
-              {{/unless}}
+              {{else}}
+                <li><a
+                    href='/login'
+                    class='block px-4 py-2 hover:bg-gray-200'
+                  >Login</a></li>
+              {{/if}}
               <li><a
                   href='/profile'
                   class='block px-4 py-2 hover:bg-gray-200'
@@ -131,6 +134,9 @@
     <!-- JS Links -->
     <script src='/js/main.js'></script>
     <script src='/js/logout.js'></script>
+    {{#if (eq currentRoute '/signup')}}
+      <script src='/js/signup.js'></script>
+    {{/if}}
 
   </body>
 

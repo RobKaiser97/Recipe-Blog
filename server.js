@@ -20,7 +20,7 @@ const sess = {
     maxAge: 24 * 60 * 60 * 1000,
     httpOnly: true,
     secure: false,
-    sameSite: 'strict',
+    sameSite: 'lax',
   },
   resave: false,
   saveUninitialized: true,
@@ -54,7 +54,7 @@ app.use((req, res, next) => {
 
 app.use(routes);
 
-sequelize.sync({ force: false, logging: false }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   console.log("Database connected!"); // Debug: Check for DB connect on server start
   app.listen(PORT, () =>
     console.log(`Now listening on http://localhost:${PORT}`)
