@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       // Log the entered username and password
-      console.log('Username:', username);
-      console.log('Password:', password);
     } catch (error) {
       console.error('Error:', error);
     }

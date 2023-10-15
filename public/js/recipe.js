@@ -4,7 +4,6 @@ const commentsList = document.querySelector('.existing-comments ul');
 
 // Initial State
 const userId = sessionStorage.getItem('userId');
-console.log(userId ? 'Logged in' : 'Not Currently Logged In');
 
 // Functions
 function updateComments(comments) {
@@ -23,7 +22,6 @@ function updateComments(comments) {
 }
 
 async function submitCommentToServer(comment, recipeId) {
-  console.log(comment);
   const response = await fetch('/api/comments', {
     method: 'POST',
     headers: {
@@ -37,21 +35,6 @@ async function submitCommentToServer(comment, recipeId) {
   return response.json();
 }
 
-// Commented-out function
-/*
-function submitComment() {
-    console.log('HELLO');
-    // preventDefault(); // Should be event.preventDefault() if you're using it in an event listener
-
-    // Get the comment from the textarea
-    const comment = document.getElementById("comment").value;
-
-    console.log('Comment:', comment);
-
-    // Assuming you have a function to submit the comment
-    // submitCommentToServer(comment);
-}
-*/
 
 // Event Listeners
 submitButton.addEventListener('click', async () => {
@@ -60,9 +43,5 @@ submitButton.addEventListener('click', async () => {
     .getElementById('image-container')
     .getAttribute('data-recipe-id');
 
-  console.log('Button clicked!');
-  console.log(JSON.stringify({ content: comment, recipe_id: recipeId }));
-
   await submitCommentToServer(comment, recipeId);
-  // Update comments or perform other actions
 });

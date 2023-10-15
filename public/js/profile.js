@@ -31,14 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const formData = new FormData(form);
 
-    // Log FormData to debug
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + ', ' + pair[1]);
-    }
-    let emptyFields = [];
-    let ingredientsArray = [];
-    console.log('Form Data:', Array.from(formData.entries()));
-
     const title = formData.get('title');
     const description = formData.get('description');
     const instructions = formData.get('instructions');
@@ -56,22 +48,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Log to debug empty fields
     if (!title) {
-      console.log("Title is empty: ", title);
       emptyFields.push('Title');
     }
     if (!description) {
-      console.log("Description is empty: ", description);
       emptyFields.push('Description');
     }
     if (!instructions) {
-      console.log("Instructions is empty: ", instructions);
       emptyFields.push('Instructions');
     }
     if (!ingredientsArray.length) {
-      console.log("Ingredients is empty: ", ingredientsArray);
       emptyFields.push('Ingredients');
     }
-    console.log('ingredientsArray:', ingredientsArray);
     if (emptyFields.length) {
       alert(`You must fill out the following fields to submit a recipe: ${emptyFields.join(', ')}`);
       return;
@@ -137,17 +124,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (isConfirmed) {
           const deletedComment = await deleteCommentFromServer(comment_id);
-          console.log('Deleted comment:', deletedComment);
-
-          // Assuming you want to do something after successful deletion
-          // For example, you can remove the comment from the UI
-          // You might need to adjust this part based on your specific UI structure
           const commentElement = this.closest('.comment');
           commentElement.remove();
         }
       } catch (error) {
         console.error('Error deleting comment:', error.message);
-        // Handle errors, e.g., show an alert to the user
       }
     });
   });
