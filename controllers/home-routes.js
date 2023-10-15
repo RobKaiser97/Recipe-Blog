@@ -52,7 +52,6 @@ router.get('/recipes/:id', async (req, res) => {
       ],
     });
     const recipe = recipeData.get({ plain: true });
-    console.log(recipe);
     res.render('recipe', {
       recipe,
       loggedIn: req.session.loggedIn,
@@ -68,7 +67,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
-  res.render('signup');
+  res.render('signup', { currentRoute: '/signup' });
 });
 
 module.exports = router;
