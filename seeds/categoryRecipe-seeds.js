@@ -3,11 +3,11 @@ const { CategoryRecipe } = require('../models');
 const categoryRecipeData = [
   {
     recipe_id: 1,
-    category_id: 1,
+    category_id: 7,
   },
   {
     recipe_id: 2,
-    category_id: 2,
+    category_id: 7,
   },
   {
     recipe_id: 3,
