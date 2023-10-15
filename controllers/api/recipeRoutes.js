@@ -28,7 +28,7 @@ router.get('/:id', async (req, res) => {
         },
         {
           model: Category,
-          attributes: ['category_id'],
+          attributes: ['category_id', 'name'],
         },
         {
           model: Comment,
