@@ -9,61 +9,56 @@
 
   <div class="mt-4">
 
-    <div class='welcome-card highlighted-recipe-card mb-3'>
-        <!-- Recipe Image -->
-        <div id='image-container' data-recipe-id="{{recipe.recipe_id}}">
-          <img src='{{decodeBase64 recipe.image}}' {{log decodeBase64 recipe.image}} alt='{{recipe.title}}'
-            class=' recipe-page-picture bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card' />
-        </div>
-         <!-- Recipe Description -->
-         <h2
-          class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
-        >Description</h2>
-        <p class='text-custom-blue font-indie-flower text-xl'>
-          {{recipe.description}}
-        </p>
+    <div class='highlighted-recipe-card recipe-page-cards mb-3'>
+      <!-- Recipe Image -->
+      <div id='image-container' data-recipe-id="{{recipe.recipe_id}}">
+        <img src='{{decodeBase64 recipe.image}}' {{log decodeBase64 recipe.image}} alt='{{recipe.title}}'
+          class=' recipe-page-picture bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card' />
       </div>
+      <!-- Recipe Description -->
+      <h2 class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>Description
+      </h2>
+      <p class='text-custom-blue font-indie-flower text-xl'>
+        {{recipe.description}}
+      </p>
+    </div>
 
     <!-- Recipe Ingredients -->
-    <div class='welcome-card highlighted-recipe-card'>
-        <h2
-          class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
-        >Ingredients</h2>
-        <p class='text-custom-blue font-indie-flower text-xl'>
-          {{recipe.ingredients}}
-        </p>
-      </div>
+    <div class='highlighted-recipe-card recipe-page-cards'>
+      <h2 class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>Ingredients
+      </h2>
+      <p class='text-custom-blue font-indie-flower text-xl'>
+        {{recipe.ingredients}}
+      </p>
+    </div>
 
 
     <!-- Recipe Instructions -->
-    <div class='welcome-card highlighted-recipe-card'>
-        <h2
-          class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
-        >Instructions</h2>
-        <p class='text-custom-blue font-indie-flower text-xl'>
-          {{recipe.instructions}}
-        </p>
-      </div>
+    <div class='highlighted-recipe-card recipe-page-cards'>
+      <h2 class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>
+        Instructions</h2>
+      <p class='text-custom-blue font-indie-flower text-xl'>
+        {{recipe.instructions}}
+      </p>
+    </div>
 
     <!-- Tags for classification -->
-    <div class='welcome-card highlighted-recipe-card'>
-        <h2
-          class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
-        >Tags</h2>
-            <div class='recipe-tags'>
-          {{#each this.recipe.categories}}
-          <a href='/categories/{{this.name}}' class='submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65 '>{{this.name}}</a>
-          {{/each}}
-        </div>
+    <div class='highlighted-recipe-card recipe-page-cards'>
+      <h2 class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>Tags</h2>
+      <div class='recipe-tags'>
+        {{#each this.recipe.categories}}
+        <a href='/categories/{{this.name}}'
+          class='submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65 '>{{this.name}}</a>
+        {{/each}}
       </div>
-   
+    </div>
+
 
     <!-- Comments Section -->
-    <div class='welcome-card highlighted-recipe-card existing-comments'>
-        <h2
-          class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
-        >Comments</h2>
-          <!-- Comment Form -->
+    <div class='highlighted-recipe-card existing-comments recipe-page-cards'>
+      <h2 class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>Comments
+      </h2>
+      <!-- Comment Form -->
 
       <form class='comment-form'>
         <div class='container p-6'>
@@ -82,39 +77,39 @@
       </form>
 
       <!-- Check if there are existing comments -->
-    {{#if recipe.comments.length}}
-    <ul>
-      {{#each recipe.comments}}
-      <li>
-        <div class='container p-6 mt-2'>
-          <div class="bg-custom-yellow text-white rounded-t-lg p-2 text-2xl font-autour-one">
-            <p class="font-autour-one text-xl">{{this.user.username}}</p>
+      {{#if recipe.comments.length}}
+      <ul>
+        {{#each recipe.comments}}
+        <li>
+          <div class='container p-6 mt-2'>
+            <div class="bg-custom-yellow text-white rounded-t-lg p-2 text-2xl font-autour-one">
+              <p class="font-autour-one text-xl">{{this.user.username}}</p>
+            </div>
+            <div class="card-body rounded-b-lg p-4">
+              <p class="font-indie-flower text-xl">{{this.content}}</p>
+              <p class='text-sm font-acme mt-2 mb-1'>Created on:
+                {{format_date this.created_at format='MM/DD/YYYY'}}</p>
+            </div>
           </div>
-          <div class="card-body rounded-b-lg p-4">
-            <p class="font-indie-flower text-xl">{{this.content}}</p>
-            <p class='text-sm font-acme mt-2 mb-1'>Created on:
-              {{format_date this.created_at format='MM/DD/YYYY'}}</p>
-          </div>
-        </div>
 
 
-      </li>
-      <!-- Assuming there's a 'content' property in Comment model -->
-      {{/each}}
-    </ul>
-    {{else}}
-    <p class="font-indie-flower text-xl mb-4">No comments yet.</p>
-    {{/if}}
-        </div>
-      </div>
+        </li>
+        <!-- Assuming there's a 'content' property in Comment model -->
+        {{/each}}
+      </ul>
+      {{else}}
+      <p class="font-indie-flower text-xl mb-4">No comments yet.</p>
+      {{/if}}
     </div>
-
-    <!-- Display Existing Comments -->
-
-    
-
-     
   </div>
+</div>
+
+<!-- Display Existing Comments -->
+
+
+
+
+</div>
 </div>
 </div>
 </div>
