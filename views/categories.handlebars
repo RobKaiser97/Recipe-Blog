@@ -4,45 +4,29 @@
 
         <!-- Header -->
         <div class='container mx-auto p-6 mt-2'>
-    <div class='welcome-card highlighted-recipe-card'>
-        <h1
-          class='font-damion text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
-        >My Cookbook</h1>
-        <p class='text-custom-blue font-caveat text-xl'>
-          Explore and share your favorite recipes!
-        </p>
+            <div class='welcome-card highlighted-recipe-card'>
+                <h1
+                    class='font-damion text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>
+                    {{this.category.name}}</h1>
+                <p class='text-custom-blue font-caveat text-xl'>
+                    Explore and share your favorite recipes!
+                </p>
+            </div>
         </div>
-    </div>
-       
+
         <!-- Recipe Cards -->
         {{#each category.recipes as |recipe|}}
         <div class="recipe-card">
             <div class="bg-white p-4 rounded-lg shadow-md image-container">
                 <!-- Display Recipe Information -->
-                <img src="{{decodeBase64 recipe.image}}" alt="{{recipe.title}}" class="mb-2 recipe-image cardImgIdentifier"
-                    data-recipe-id="{{recipe_id}}">
+                <img src="{{decodeBase64 recipe.image}}" alt="{{recipe.title}}"
+                    class="mb-2 recipe-image cardImgIdentifier" data-recipe-id="{{recipe_id}}">
                 <div class="read-more">Read More</div>
 
                 <p class="text-gray-700 mb-2 recipe-description{{#unless expanded}} collapsed{{/unless}}">
-                    <p class="font-acme text-2xl">{{recipe.title}}</p>
-                    <p class="font-indie-flower text-xl">{{recipe.description}}</p>
+                <p class="font-acme text-2xl">{{recipe.title}}</p>
+                <p class="font-indie-flower text-xl">{{recipe.description}}</p>
                 </p>
-
-                {{!-- <!-- Tags for classification -->
-                {{#if (gt (length recipe.category_id) 0)}}
-                <div class="recipe-tags">
-                    {{#each category.recipe.category_id}}
-                    {{#with (lookup ../categoryData this)}}
-                    <span class="tag">{{name}}</span>
-                    {{/with}}
-                    {{/each}}
-                </div>
-                {{/if}}
-
-                <!-- Read More -->
-                {{#if (gt (length description) 3)}}
-                <p class="read-more collapsible">Read More...</p>
-                {{/if}} --}}
             </div>
         </div>
         {{/each}}
