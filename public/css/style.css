@@ -165,11 +165,12 @@ nav {
 }
 
 .recipe-page-picture {
-    width: 50%;
+    width: 100%;
     height: auto;
     /* Adjust as needed */
     object-fit: cover;
     border-radius: 8px;
+    align-content: center;
     /* Rounded corners */
 }
 
