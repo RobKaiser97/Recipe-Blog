@@ -100,6 +100,18 @@ nav {
     margin: auto;
 }
 
+.recipe-page-cards {
+    border: 2px dashed #1ba8e0;
+    /* Blue dashed border */
+    border-radius: 20px;
+    /* Rounded corners */
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10;
+}
+
 .fixed_nav {
     margin-right: 10%;
 }
