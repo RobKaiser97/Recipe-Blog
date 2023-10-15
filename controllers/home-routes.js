@@ -17,10 +17,10 @@ router.get('/', async (req, res) => {
     const recipes = await Recipe.findAll({
       include: [User],
     });
-    const recipeData = recipes.map((recipe) => recipe.toJSON());
+    const recipeData = recipes.map(recipe => recipe.toJSON());
 
     const categoriesFind = await Category.findAll();
-    const categories = categoriesFind.map((category) => category.toJSON());
+    const categories = categoriesFind.map(category => category.toJSON());
 
     res.render('homepage', {
       recipeData,

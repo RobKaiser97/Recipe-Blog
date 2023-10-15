@@ -2,12 +2,13 @@ const { Buffer } = require('buffer');
 const path = require('path');
 
 module.exports = {
-  format_date: (date) => {
+  format_date: date => {
     let formattedDate = new Date(date);
-    return `${formattedDate.getMonth() + 1
-      }/${formattedDate.getDate()}/${formattedDate.getFullYear()}`;
+    return `${
+      formattedDate.getMonth() + 1
+    }/${formattedDate.getDate()}/${formattedDate.getFullYear()}`;
   },
-  decodeBase64: (base64String) => {
+  decodeBase64: base64String => {
     // console.log('Before decodeBase64:', req.file.buffer);
     try {
       if (base64String === null || base64String === undefined) {
@@ -25,16 +26,16 @@ module.exports = {
       console.log(imagePath);
       return imagePath;
     } catch (error) {
-      console.error("An error occurred:", error);
+      console.error('An error occurred:', error);
       return null;
     }
   },
-  randomRecipe: (recipeData) => {
+  randomRecipe: recipeData => {
     const randomIndex = Math.floor(Math.random() * recipeData.length);
     return recipeData[randomIndex];
   },
 
-  seasonalRecipe: (recipeData) => {
+  seasonalRecipe: recipeData => {
     const specificIndex = 1;
     return recipeData[specificIndex];
   },

@@ -16,11 +16,7 @@ router.get('/:category', async (req, res) => {
             model: CategoryRecipe,
           },
           attributes: {
-            exclude: [
-              'ingredients',
-              'instructions',
-              'updated_at',
-            ],
+            exclude: ['ingredients', 'instructions', 'updated_at'],
           },
         },
       ],
@@ -33,4 +29,3 @@ router.get('/:category', async (req, res) => {
 });
 
 module.exports = router;
-

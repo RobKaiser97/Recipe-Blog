@@ -92,8 +92,8 @@ const userData = [
     email: 'test@test.com',
     about: 'Just a test user.',
     created_at: new Date(),
-    profile_picture: null
-  }
+    profile_picture: null,
+  },
 ];
 
 const seedUsers = () =>

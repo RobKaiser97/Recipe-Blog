@@ -29,7 +29,9 @@ describe('commentRoutes', () => {
   describe('POST /api/comment', () => {
     it('should create a new comment', async () => {
       const agent = request.agent(app);
-      await agent.post('/api/users/login').send({ email: 'test@test.com', password: 'password' });
+      await agent
+        .post('/api/users/login')
+        .send({ email: 'test@test.com', password: 'password' });
       const res = await agent.post('/api/comment').send({
         comment_text: 'This is a test comment',
       });
@@ -40,7 +42,9 @@ describe('commentRoutes', () => {
 
     it('should return a 400 error if the comment_text field is empty', async () => {
       const agent = request.agent(app);
-      await agent.post('/api/users/login').send({ email: 'test@test.com', password: 'password' });
+      await agent
+        .post('/api/users/login')
+        .send({ email: 'test@test.com', password: 'password' });
       const res = await agent.post('/api/comment').send({
         comment_text: '',
       });
@@ -58,8 +62,13 @@ describe('commentRoutes', () => {
   describe('DELETE /api/comment/:id', () => {
     it('should delete a comment', async () => {
       const agent = request.agent(app);
-      await agent.post('/api/users/login').send({ email: 'test@test.com', password: 'password' });
-      const [result] = await connection.query('INSERT INTO comment (comment_text, user_id) VALUES (?, ?)', ['This is a test comment', 1]);
+      await agent
+        .post('/api/users/login')
+        .send({ email: 'test@test.com', password: 'password' });
+      const [result] = await connection.query(
+        'INSERT INTO comment (comment_text, user_id) VALUES (?, ?)',
+        ['This is a test comment', 1]
+      );
       const res = await agent.delete(`/api/comment/${result.insertId}`);
       expect(res.status).toBe(200);
       const [comment] = await connection.query('SELECT * FROM comment');
@@ -68,21 +77,31 @@ describe('commentRoutes', () => {
 
     it('should return a 404 error if the comment is not found', async () => {
       const agent = request.agent(app);
-      await agent.post('/api/users/login').send({ email: 'test@test.com', password: 'password' });
+      await agent
+        .post('/api/users/login')
+        .send({ email: 'test@test.com', password: 'password' });
       const res = await agent.delete('/api/comment/999');
       expect(res.status).toBe(404);
     });
 
     it('should return a 401 error if the user is not logged in', async () => {
-      const [result] = await connection.query('INSERT INTO comment (comment_text, user_id) VALUES (?, ?)', ['This is a test comment', 1]);
+      const [result] = await connection.query(
+        'INSERT INTO comment (comment_text, user_id) VALUES (?, ?)',
+        ['This is a test comment', 1]
+      );
       const res = await request(app).delete(`/api/comment/${result.insertId}`);
       expect(res.status).toBe(401);
     });
 
     it('should return a 403 error if the user does not own the comment', async () => {
       const agent = request.agent(app);
-      await agent.post('/api/users/login').send({ email: 'test@test.com', password: 'password' });
-      const [result] = await connection.query('INSERT INTO comment (comment_text, user_id) VALUES (?, ?)', ['This is a test comment', 2]);
+      await agent
+        .post('/api/users/login')
+        .send({ email: 'test@test.com', password: 'password' });
+      const [result] = await connection.query(
+        'INSERT INTO comment (comment_text, user_id) VALUES (?, ?)',
+        ['This is a test comment', 2]
+      );
       const res = await agent.delete(`/api/comment/${result.insertId}`);
       expect(res.status).toBe(403);
     });

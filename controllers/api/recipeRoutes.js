@@ -8,7 +8,7 @@ const {
 } = require('../../models');
 const multer = require('multer');
 const withAuth = require('../../utils/auth');
-const path = require('path')
+const path = require('path');
 
 // Configure multer for recipe image uploads
 const recipeImageStorage = multer.memoryStorage();

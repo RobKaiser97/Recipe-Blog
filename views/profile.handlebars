@@ -6,10 +6,13 @@
       <div class='profile-picture'>
         <!-- User's profile picture -->
         {{#if users.profile_picture}}
-        <img src='{{decodeBase64 users.profile_picture}}' alt="{{users.username}}'s profile picture"
-          class='rounded-2xl' />
+          <img
+            src='{{decodeBase64 users.profile_picture}}'
+            alt="{{users.username}}'s profile picture"
+            class='rounded-2xl'
+          />
         {{else}}
-        <i class='fas fa-user text-5xl text-white'></i>
+          <i class='fas fa-user text-5xl text-white'></i>
         {{/if}}
       </div>
       <h2 class='text-6xl font-damion mt-4'>{{users.username}}</h2>
@@ -19,24 +22,28 @@
 
     <div class='container mx-auto p-6 mt-2'>
       <div class='welcome-card highlighted-recipe-card'>
-        <h1 class='font-damion text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>About
-          Me</h1>
+        <h1
+          class='font-damion text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
+        >About Me</h1>
         {{#if users.about}}
-        <p class='text-custom-blue font-caveat text-xl'>
-          {{users.about}}
-        </p>
+          <p class='text-custom-blue font-caveat text-xl'>
+            {{users.about}}
+          </p>
         {{/if}}
         <div class='mt-2 space-x-6'>
           <button
-            class='submit-button text-white px-4 py-2 rounded-lg font-autour-one highlighted-recipe-card hover:bg-f3c655'>Edit
-            Profile</button>
+            class='submit-button text-white px-4 py-2 rounded-lg font-autour-one highlighted-recipe-card hover:bg-f3c655'
+          >Edit Profile</button>
         </div>
       </div>
     </div>
     <div style='display: flex;'>
       {{log 'loggedIn' loggedIn}}
       {{log 'user_id' user_id}}
-      <div style='flex-grow: 1; margin-right: 5%;' class='w-1/2 mt-8 highlighted-recipe-card rounded-lg'>
+      <div
+        style='flex-grow: 1; margin-right: 5%;'
+        class='w-1/2 mt-8 highlighted-recipe-card rounded-lg'
+      >
         <div class='bg-custom-yellow text-white rounded-t-lg p-2'>
           <h2 class='text-2xl font-autour-one'>Submit a Recipe</h2>
         </div>
@@ -44,21 +51,47 @@
           <!-- Apply custom styles to card body -->
 
           <form enctype='multipart/form-data'>
-            <label class='block text-white text-sm text-xl font-acme mb-2' for='dishName'>Dish Name</label>
-            <input type='text' id='dishName' name='dishName' class='border rounded-lg w-full p-2 mb-4 text-gray-700'
-              placeholder='Enter Dish Name' />
+            <label
+              class='block text-white text-sm text-xl font-acme mb-2'
+              for='dishName'
+            >Dish Name</label>
+            <input
+              type='text'
+              id='dishName'
+              name='dishName'
+              class='border rounded-lg w-full p-2 mb-4 text-gray-700'
+              placeholder='Enter Dish Name'
+            />
 
-            <label class='block text-white text-sm text-xl font-acme mb-2'>Description</label>
-            <textarea id='description' name='description' class='border rounded-lg w-full p-2 mb-4 text-gray-700'
-              placeholder='Enter Description'></textarea>
+            <label
+              class='block text-white text-sm text-xl font-acme mb-2'
+            >Description</label>
+            <textarea
+              id='description'
+              name='description'
+              class='border rounded-lg w-full p-2 mb-4 text-gray-700'
+              placeholder='Enter Description'
+            ></textarea>
 
-            <label class='block text-white text-sm text-xl font-acme mb-2'>Instructions</label>
-            <textarea id='instructions' name='instructions' class='border rounded-lg w-full p-2 mb-4 text-gray-700'
-              placeholder='Enter Instructions'></textarea>
+            <label
+              class='block text-white text-sm text-xl font-acme mb-2'
+            >Instructions</label>
+            <textarea
+              id='instructions'
+              name='instructions'
+              class='border rounded-lg w-full p-2 mb-4 text-gray-700'
+              placeholder='Enter Instructions'
+            ></textarea>
 
-            <label class='block text-white text-sm text-xl font-acme mb-2'>Ingredients</label>
+            <label
+              class='block text-white text-sm text-xl font-acme mb-2'
+            >Ingredients</label>
             <div class='block items-center mb-4' id='ingredientsContainer'>
-              <input type='number' class='border rounded-lg w-1/6 p-2 mr-2 text-gray-700' placeholder='Qty' />
+              <input
+                type='number'
+                class='border rounded-lg w-1/6 p-2 mr-2 text-gray-700'
+                placeholder='Qty'
+              />
               <select class='border rounded-lg w-1/4 p-2 mr-2 text-gray-700'>
                 <option value='whole'>whole</option>
                 <option value='slice(s)'>slice(s)</option>
@@ -73,32 +106,48 @@
                 <option value='pound(s)'>pound(s)</option>
                 <!-- Add more units as needed -->
               </select>
-              <input type='text' class='border rounded-lg flex-grow p-2 mr-2 text-gray-700'
-                placeholder='Ingredient Name' />
-              <button type='button'
-                class='submit-button p-2 rounded-lg hover:bg-f3c655 plus-button font-autour-one mb-2'>New
-                Ingredient</button>
+              <input
+                type='text'
+                class='border rounded-lg flex-grow p-2 mr-2 text-gray-700'
+                placeholder='Ingredient Name'
+              />
+              <button
+                type='button'
+                class='submit-button p-2 rounded-lg hover:bg-f3c655 plus-button font-autour-one mb-2'
+              >New Ingredient</button>
             </div>
 
             <label class='block text-white text-xl font-acme mb-2'>Tags</label>
 
-            <div class='grid grid-cols-2 gap-2 text-lg font-caveat' id='categories'>
+            <div
+              class='grid grid-cols-2 gap-2 text-lg font-caveat'
+              id='categories'
+            >
               {{log 'categories #################################' category}}
               {{#each category as |category|}}
 
-              <label class='flex items-center'>
-                <input type='checkbox' name='category_id' value='{{category.category_id}}' class='mr-2' />
-                {{category.name}}
-              </label>
+                <label class='flex items-center'>
+                  <input
+                    type='checkbox'
+                    name='category_id'
+                    value='{{category.category_id}}'
+                    class='mr-2'
+                  />
+                  {{category.name}}
+                </label>
               {{/each}}
             </div>
 
-            <label class='block text-white text-sm text-xl font-acme my-2' for='image'>Upload Image</label>
+            <label
+              class='block text-white text-sm text-xl font-acme my-2'
+              for='image'
+            >Upload Image</label>
             <input type='file' id='image' name='image' class='mb-4' />
 
-            <button type='submit'
-              class='submit-button text-white px-4 py-2 rounded-lg font-autour-one hover:bg-f3c655'>Submit
-              Recipe</button>
+            <button
+              type='submit'
+              class='submit-button text-white px-4 py-2 rounded-lg font-autour-one hover:bg-f3c655'
+            >Submit Recipe</button>
             <!-- Apply custom styles to the button -->
           </form>
         </div>
@@ -120,9 +169,11 @@
                 <p
                   class='text-white mt-2 mb-1 font-indie-flower text-xl'
                 >{{this.description}}</p>
-                <a href='/api/recipes/{{recipe_id}}'
-                class='submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65'
-                id='recipe-page-button'>Read More</a>
+                <a
+                  href='/api/recipes/{{recipe_id}}'
+                  class='submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65'
+                  id='recipe-page-button'
+                >Read More</a>
               </div>
             {{/each}}
           </div>
@@ -135,16 +186,18 @@
           </div>
           <div class='card-body rounded-b-lg p-4'>
             {{#each users.comments}}
-            <div class='comment'>
-              <p class='text-4xl mt-3 font-acme'>{{this.content}}</p>
-              <p class='text-white mt-1 mb-1 font-indie-flower text-xl'>On recipe:
-                {{this.recipe.title}}</p>
-              <p class='text-sm font-acme mt-2 mb-1'>Created on:
-                {{format_date this.created_at format='MM/DD/YYYY'}}</p>
-              <a href='/api/recipes/{{this.recipe.recipe_id}}'
-                class='submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65'>Read
-                More</a>
-            </div>
+              <div class='comment'>
+                <p class='text-4xl mt-3 font-acme'>{{this.content}}</p>
+                <p class='text-white mt-1 mb-1 font-indie-flower text-xl'>On
+                  recipe:
+                  {{this.recipe.title}}</p>
+                <p class='text-sm font-acme mt-2 mb-1'>Created on:
+                  {{format_date this.created_at format='MM/DD/YYYY'}}</p>
+                <a
+                  href='/api/recipes/{{this.recipe.recipe_id}}'
+                  class='submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65'
+                >Read More</a>
+              </div>
             {{/each}}
           </div>
         </div>

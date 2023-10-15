@@ -24,7 +24,7 @@ const categoryRecipeData = [
   {
     recipe_id: 6,
     category_id: 5,
-  }
+  },
 ];
 
 const seedCategoryRecipe = () => CategoryRecipe.bulkCreate(categoryRecipeData);

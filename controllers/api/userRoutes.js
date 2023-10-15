@@ -41,7 +41,6 @@ router.post('/signup', async (req, res) => {
 
       res.redirect('/profile');
     });
-
   } catch (error) {
     console.log('error:', error);
     res.status(500).json(error);
@@ -49,9 +48,6 @@ router.post('/signup', async (req, res) => {
   console.log('Exiting route: ', req.originalUrl);
   console.log('Response:', res.statusCode); // Debug
 });
-
-
-
 
 router.post('/login', async (req, res) => {
   console.log('Entering route: ', req.originalUrl);
@@ -75,12 +71,12 @@ router.post('/login', async (req, res) => {
     }
 
     // const user = userData.get({ plain: true });
-    console.log("User Data ID:", userData.user_id);
+    console.log('User Data ID:', userData.user_id);
 
     req.session.save(() => {
-      req.session.user_id = userData.user_id,
-        req.session.username = userData.username,
-        req.session.loggedIn = true,
+      (req.session.user_id = userData.user_id),
+        (req.session.username = userData.username),
+        (req.session.loggedIn = true),
         res.json(userData);
     });
   } catch (error) {
