@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-  
   function addIngredient() {
-    const ingredientsContainer = document.getElementById('ingredientsContainer');
+    const ingredientsContainer = document.getElementById(
+      'ingredientsContainer'
+    );
     const newIngredientRow = document.createElement('div');
     newIngredientRow.className = 'flex mb-2 block';
     newIngredientRow.innerHTML = `
@@ -24,22 +25,22 @@ document.addEventListener('DOMContentLoaded', function () {
       `;
     ingredientsContainer.appendChild(newIngredientRow);
   }
-  
+
   const form = document.querySelector('form');
-  
+
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
-  
+
     const formData = new FormData(form);
-  
+
     // Debugging: Log FormData before sending it
     console.log('FormData:', formData);
-  
+
     // More debugging: Iterate through FormData entries
     for (var pair of formData.entries()) {
       console.log(pair[0] + ': ' + pair[1]);
     }
-  
+
     const title = document.getElementById('dishName').value.trim();
     const description = document.getElementById('description').value.trim();
     const instructions = document.getElementById('instructions').value.trim();
@@ -47,19 +48,43 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll(
         '#ingredientsContainer input[type="number"], #ingredientsContainer select, #ingredientsContainer input[type="text"]'
       )
-    ).map((element) => element.value);
-  
+    ).map(element => element.value);
+
     // Query all checked checkboxes with a certain name
-    const checkedCheckboxes = document.querySelectorAll('input[name="category_id"]:checked');
+    const checkedCheckboxes = document.querySelectorAll(
+      'input[name="category_id"]:checked'
+    );
     const array = Array.from(checkedCheckboxes);
-    const category_id = array.map((element) => element.value);
-  
+    const category_id = array.map(element => element.value);
+
     const image = document.getElementById('image').value;
-  
+
     // Concatenate ingredients and tags
     const ingredientsString = ingredients.join(', ');
-    // const tagsString = category_id.join(', ');
-  
+
+    // Alert to tell user what values are empty in form
+    if (
+      !title ||
+      !description ||
+      !instructions ||
+      !ingredients.length ||
+      !category_id.length
+    ) {
+      let emptyFields = [];
+      if (!title) emptyFields.push('Title');
+      if (!description) emptyFields.push('Description');
+      if (!instructions) emptyFields.push('Instructions');
+      if (!ingredients.length) emptyFields.push('Ingredients');
+      if (!category_id.length) emptyFields.push('Category');
+
+      alert(
+        `You must fill out the following fields to submit a recipe: ${emptyFields.join(
+          ', '
+        )}`
+      );
+      return;
+    }
+
     try {
       const response = await fetch('/api/recipes', {
         method: 'POST',
@@ -73,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
+
       if (response.ok) {
         document.location.replace('/');
       } else {
@@ -83,11 +108,8 @@ document.addEventListener('DOMContentLoaded', function () {
       console.error('Error:', error);
     }
   });
-  
-  
-  document.querySelector('.plus-button').addEventListener('click', addIngredient);
-  
 
-
+  document
+    .querySelector('.plus-button')
+    .addEventListener('click', addIngredient);
 });
-
