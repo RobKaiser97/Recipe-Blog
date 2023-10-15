@@ -1,40 +1,56 @@
-// Async function to handle user login
+console.log('signup.js loaded')
+
 const signupHandler = async (event) => {
     event.preventDefault();
-
-    // Grab username and password
     const username = document.querySelector("#username").value.trim();
     const email = document.querySelector("#email").value.trim();
     const password = document.querySelector("#password").value.trim();
     const about = document.querySelector("#about").value.trim();
     const confirmPass = document.querySelector("#confirmPassword").value.trim();
 
-    // Check for empty fields
+    const usernameAlert = document.querySelector("#usernameAlert");
+    const emailAlert = document.querySelector("#emailAlert");
+    const passwordAlert = document.querySelector("#passwordAlert");
+    const confirmPasswordAlert = document.querySelector("#confirmPasswordAlert");
+
     if (!username) {
-        alert("Please enter a username");
+        usernameAlert.textContent = "Please enter a username";
         return;
+    } else {
+        usernameAlert.textContent = "";
     }
 
-    if (!email || !password) {
-        alert("Please enter an email or password");
+    if (!email) {
+        emailAlert.textContent = "Please enter an email";
         return;
+    } else {
+        emailAlert.textContent = "";
+    }
+
+    if (!password) {
+        passwordAlert.textContent = "Please enter a password";
+        return;
+    } else {
+        passwordAlert.textContent = "";
     }
 
     if (password !== confirmPass) {
-        alert("Passwords do not match");
+        confirmPasswordAlert.textContent = "Passwords do not match";
         return;
+    } else {
+        confirmPasswordAlert.textContent = "";
     }
 
-    // Make an API call for login
     const response = await fetch("/api/users/signup", {
         method: "POST",
         body: JSON.stringify({ email, username, password, about }),
         headers: { "Content-Type": "application/json" },
     });
 
-    // Redirect to homepage if login is successful
-    response.ok ? document.location.replace("/") : alert("Failed to Signup!");
+    response.ok ? document.location.replace("/profile") : window.alert("Failed to Signup!");
 };
 
-// Add event listener for login form submission
-document.querySelector('.signup_form').addEventListener('submit', signupHandler);
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector('.signup_form').addEventListener('submit', signupHandler);
+});
+
