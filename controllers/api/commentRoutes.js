@@ -13,7 +13,6 @@ router.post('/', withAuth, async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
-  console.log("this is req body", req.body);
 });
 
 router.delete('/:id', withAuth, async (req, res) => {
