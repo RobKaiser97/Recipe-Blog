@@ -35,3 +35,4 @@ function toggleDescription(card) {
     readMore.innerText = 'Read More';
   }
 }
+// TODO: For some reason, if the toggleDescription is removed the images no longer are clickable. Not my highest priority, but it would be nice to figure out why this is happening.
