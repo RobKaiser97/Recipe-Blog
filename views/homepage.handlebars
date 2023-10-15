@@ -27,7 +27,7 @@
           <div class='card-body highlighted-recipe-card rounded-b-lg p-4'>
             <h3 class='text-xl font-acme'>{{randomRecipe.title}}</h3>
             <img
-              src='{{decodeBase64 randomRecipe.image}}'
+              src='{{randomRecipe.image}}'
               alt='{{randomRecipe.title}}'
               class='mt-2 max-w-xs rounded-lg'
             />
@@ -54,7 +54,7 @@
             <div class='flex flex-col justify-center items-center'>
               <h3 class='text-xl mt-2 font-acme'>{{seasonalRecipe.title}}</h3>
               <img
-                src='{{decodeBase64 seasonalRecipe.image}}'
+                src='{{seasonalRecipe.image}}'
                 alt='{{seasonalRecipe.title}}'
                 class='mt-2 max-w-xs rounded-lg'
               />

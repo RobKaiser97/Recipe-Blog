@@ -15,8 +15,7 @@
       <!-- Recipe Image -->
       <div id='image-container' data-recipe-id='{{recipe.recipe_id}}'>
         <img
-          src='{{decodeBase64 recipe.image}}'
-          {{log decodeBase64 recipe.image}}
+          src='{{recipe.image}}'
           alt='{{recipe.title}}'
           class='recipe-page-picture bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
         />

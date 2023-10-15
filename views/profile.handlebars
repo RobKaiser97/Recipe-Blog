@@ -7,7 +7,7 @@
         <!-- User's profile picture -->
         {{#if users.profile_picture}}
           <img
-            src='{{decodeBase64 users.profile_picture}}'
+            src='{{users.profile_picture}}'
             alt="{{users.username}}'s profile picture"
             class='rounded-2xl'
           />
@@ -50,7 +50,7 @@
         <div class='card-body rounded-b-lg p-4'>
           <!-- Apply custom styles to card body -->
 
-          <form enctype='multipart/form-data'>
+          <form enctype='multipart/form-data' id='recipeForm'>
             <label
               class='block text-white text-sm text-xl font-acme mb-2'
               for='dishName'
@@ -58,7 +58,7 @@
             <input
               type='text'
               id='dishName'
-              name='dishName'
+              name='title'
               class='border rounded-lg w-full p-2 mb-4 text-gray-700'
               placeholder='Enter Dish Name'
             />
@@ -87,30 +87,39 @@
               class='block text-white text-sm text-xl font-acme mb-2'
             >Ingredients</label>
             <div class='block items-center mb-4' id='ingredientsContainer'>
-              <input
-                type='number'
-                class='border rounded-lg w-1/6 p-2 mr-2 text-gray-700'
-                placeholder='Qty'
-              />
-              <select class='border rounded-lg w-1/4 p-2 mr-2 text-gray-700'>
-                <option value='whole'>whole</option>
-                <option value='slice(s)'>slice(s)</option>
-                <option value='teaspoon(s)'>teaspoon(s)</option>
-                <option value='tablespoon(s)'>tablespoon(s)</option>
-                <option value='cup(s)'>cup(s)</option>
-                <option value='pint(s)'>pint(s)</option>
-                <option value='quart(s)'>quart(s)</option>
-                <option value='gallon(s)'>gallon(s)</option>
-                <option value='ounce(s)'>ounce(s)</option>
-                <option value='fluid ounce(s)'>fluid ounce(s)</option>
-                <option value='pound(s)'>pound(s)</option>
-                <!-- Add more units as needed -->
-              </select>
-              <input
-                type='text'
-                class='border rounded-lg flex-grow p-2 mr-2 text-gray-700'
-                placeholder='Ingredient Name'
-              />
+              <div class='ingredient-row'>
+                <!-- New div wrapper -->
+                <input
+                  type='number'
+                  class='border rounded-lg w-1/6 p-2 mr-2 text-gray-700'
+                  placeholder='Qty'
+                  name='qty'
+                />
+                <select
+                  class='border rounded-lg w-1/4 p-2 mr-2 text-gray-700'
+                  name='unit'
+                >
+                  <option value='' disabled selected>unit</option>
+                  <option value='whole'>whole</option>
+                  <option value='slice(s)'>slice(s)</option>
+                  <option value='teaspoon(s)'>teaspoon(s)</option>
+                  <option value='tablespoon(s)'>tablespoon(s)</option>
+                  <option value='cup(s)'>cup(s)</option>
+                  <option value='pint(s)'>pint(s)</option>
+                  <option value='quart(s)'>quart(s)</option>
+                  <option value='gallon(s)'>gallon(s)</option>
+                  <option value='ounce(s)'>ounce(s)</option>
+                  <option value='fluid ounce(s)'>fluid ounce(s)</option>
+                  <option value='pound(s)'>pound(s)</option>
+                </select>
+                <input
+                  type='text'
+                  class='border rounded-lg flex-grow p-2 mr-2 text-gray-700'
+                  placeholder='Ingredient Name'
+                  name='ingredientName'
+                />
+              </div>
+              <!-- End new div wrapper -->
               <button
                 type='button'
                 class='submit-button p-2 rounded-lg hover:bg-f3c655 plus-button font-autour-one mb-2'
