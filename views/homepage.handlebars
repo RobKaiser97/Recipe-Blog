@@ -2,36 +2,38 @@
 
   <!-- Content Section -->
   <div class='container mx-auto p-6 mt-2'>
-  <div class='welcome-card highlighted-recipe-card'>
-    <h1 class='font-damion text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>Welcome
-    </h1>
-    <p class='text-custom-blue font-caveat text-xl'>
-      Welcome to our kitchen! We're delighted to have you here. Take a
-      moment to explore the delicious recipes created by our community or
-      share your own culinary masterpiece. It's all about sharing the love
-      for cooking and baking.
-    </p>
-  </div>
-  <!-- Updated flex classes -->
-  <div class='flex flex-col md:flex-row md:space-x-6'>
-    <!-- Highlighted Recipe Card -->
-    <div class='w-full md:w-1/4 mt-8 rounded-lg'>
+    <div class='welcome-card highlighted-recipe-card'>
+      <h1 class='font-damion text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>Welcome
+      </h1>
+      <p class='text-custom-blue font-caveat text-xl'>
+        Welcome to our kitchen! We're delighted to have you here. Take a
+        moment to explore the delicious recipes created by our community or
+        share your own culinary masterpiece. It's all about sharing the love
+        for cooking and baking.
+      </p>
+    </div>
+    <!-- Updated flex classes -->
+    <div class='flex flex-col md:flex-row md:space-x-6'>
+      <!-- Highlighted Recipe Card -->
+      <div class='w-full md:w-1/4 mt-8 rounded-lg'>
         <div class='bg-custom-yellow highlighted-recipe-card text-white rounded-t-lg p-2'>
           <h2 class=' mq-100 text-2xl font-autour-one'>Highlighted Recipe</h2>
         </div>
         {{#with (randomRecipe recipeData) as |randomRecipe|}}
         <div class='card-body highlighted-recipe-card rounded-b-lg p-4'>
           <h3 class='text-xl font-acme'>{{randomRecipe.title}}</h3>
-          <img class='highlighted-recipe-image' src='{{randomRecipe.image}}' alt='{{randomRecipe.title}}'
-            class='mt-2 max-w-xs rounded-lg' />
-          <p class='text-xl mt-4 font-indie-flower'>{{randomRecipe.description}}</p>
+          <div class='image-container'>
+            <img class='highlighted-recipe-image cardImgIdentifier' src='{{randomRecipe.image}}'
+              alt='{{randomRecipe.title}}' class='mt-2 max-w-xs rounded-lg' data-recipe-id='{{this.recipe_id}}' />
+          </div>
+          <p class=' text-xl mt-4 font-indie-flower'>{{randomRecipe.description}}</p>
         </div>
         {{/with}}
 
       </div>
 
       <!-- Seasonal Treats Card -->
-    <div class='w-full md:w-3/4 mt-8 rounded-lg'>
+      <div class='w-full md:w-3/4 mt-8 rounded-lg'>
         <div class='bg-custom-yellow highlighted-recipe-card text-white rounded-t-lg p-2'>
           <h2 class=' mq-100 text-2xl font-autour-one'>Seasonal Treats</h2>
         </div>
@@ -42,8 +44,11 @@
             October</p>
           <div class='flex flex-col justify-center items-center'>
             <h3 class='text-xl mt-2 font-acme'>{{seasonalRecipe.title}}</h3>
-            <img src='{{seasonalRecipe.image}}' alt='{{seasonalRecipe.title}}' class=' mq-100 mt-2 max-w-xs rounded-lg' />
-            <p class='text-xl mt-4 font-caveat'>{{seasonalRecipe.description}}</p>
+            <div class='image-container'>
+              <img src='{{seasonalRecipe.image}}' alt='{{seasonalRecipe.title}}' data-recipe-id='{{this.recipe_id}}'
+                class=' mq-100 mt-2 max-w-xs rounded-lg cardImgIdentifier' />
+            </div>
+            <!--  <p class='text-xl mt-4 font-caveat'>{{seasonalRecipe.description}}</p>  -->
           </div>
           <p class='text-xl mt-2 font-indie-flower'>Let me tell you why
             Chicken Alfredo is just perfect for the cozy month of October! You
@@ -78,4 +83,4 @@
   </div>
 </div>
 
-<script src='/js/index.js'></script>
+<script src='/js/homepage.js'></script>
