@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
   function addIngredient() {
     const ingredientsContainer = document.getElementById('ingredientsContainer');
     const newIngredientRow = document.createElement('div');
-    newIngredientRow.className = 'ingredient-row';
+    newIngredientRow.className = 'ingredient-row mb-2';
     newIngredientRow.innerHTML = `
-      <input type="number" class="border rounded-lg w-1/6 p-2 mr-2 text-gray-700" placeholder="Qty">
-      <select class="border rounded-lg w-1/4 p-2 mr-2 text-gray-700">
+      <input type="number" class=" ingredient-input border rounded-lg w-1/6 p-2 mr-2 text-gray-700" placeholder="Qty">
+      <select class=" ingredient-input border rounded-lg w-1/4 p-2 mr-2 text-gray-700">
         <option value="" disabled selected>unit</option>
         <option value="whole">whole</option>
         <option value="slice(s)">slice(s)</option>
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <option value='fluid ounce(s)'>fluid ounce(s)</option>
         <option value='pound(s)'>pound(s)</option>
       </select>
-      <input type="text" class="border rounded-lg flex-grow p-2 mr-2 text-gray-700" placeholder="Ingredient Name">
+      <input type="text" class="ingredient-input border rounded-lg flex-grow p-2 mr-2 text-gray-700 ing_name" placeholder="Ingredient Name">
     `;
     ingredientsContainer.appendChild(newIngredientRow);
   }
