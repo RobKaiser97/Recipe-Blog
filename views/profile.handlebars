@@ -33,11 +33,11 @@
       </div>
     </div>
     <div style='display: flex;'>
-      <div style='flex-grow: 1; margin-right: 5%;' class='w-1/2 mt-8 highlighted-recipe-card rounded-lg'>
+      <div style='flex-grow: 1; margin-right: 5%;' class='w-1/2 mt-8  rounded-lg'>
         <div class='bg-custom-yellow text-white rounded-t-lg p-2'>
           <h2 class='text-2xl font-autour-one'>Submit a Recipe</h2>
         </div>
-        <div class='card-body rounded-b-lg p-4'>
+        <div class='card-body highlighted-recipe-card rounded-b-lg p-4'>
           <!-- Apply custom styles to card body -->
 
           <form enctype='multipart/form-data' id='recipeForm'>
@@ -54,12 +54,15 @@
               placeholder='Enter Instructions'></textarea>
 
             <label class='block text-white text-sm text-xl font-acme mb-2'>Ingredients</label>
+             <button type='button'
+                class='submit-button p-2 rounded-lg hover:bg-f3c655 plus-button font-autour-one mb-2'>New
+                Ingredient</button>
             <div class='block items-center mb-4' id='ingredientsContainer'>
-              <div class='ingredient-row'>
+              <div class='ingredient-row mb-2'>
                 <!-- New div wrapper -->
-                <input type='number' class='border rounded-lg w-1/6 p-2 mr-2 text-gray-700' placeholder='Qty'
+                <input type='number' min='0' class=' ingredient-input border rounded-lg w-1/6 p-2 mr-2 text-gray-700' placeholder='Qty'
                   name='qty' />
-                <select class='border rounded-lg w-1/4 p-2 mr-2 text-gray-700' name='unit'>
+                <select class=' ingredient-input border rounded-lg w-1/4 p-2 mr-2 text-gray-700' name='unit'>
                   <option value='' disabled selected>unit</option>
                   <option value='whole'>whole</option>
                   <option value='slice(s)'>slice(s)</option>
@@ -73,13 +76,11 @@
                   <option value='fluid ounce(s)'>fluid ounce(s)</option>
                   <option value='pound(s)'>pound(s)</option>
                 </select>
-                <input type='text' class='border rounded-lg flex-grow p-2 mr-2 text-gray-700'
+                <input type='text' class=' ingredient-input border rounded-lg flex-grow p-2 mr-2 text-gray-700 ing_name'
                   placeholder='Ingredient Name' name='ingredientName' />
               </div>
               <!-- End new div wrapper -->
-              <button type='button'
-                class='submit-button p-2 rounded-lg hover:bg-f3c655 plus-button font-autour-one mb-2'>New
-                Ingredient</button>
+             
             </div>
 
             <label class='block text-white text-xl font-acme mb-2'>Tags</label>
@@ -108,7 +109,7 @@
       <div style='flex-grow: 1; display: flex; flex-direction: column;'>
         <!-- My Recipes Section -->
 
-        <div class='profile mt-8 highlighted-recipe-card rounded-lg'>
+        <div class='profile max-w-sm mt-8 highlighted-recipe-card rounded-lg'>
           <div class='bg-custom-yellow text-white rounded-t-lg p-2'>
             <h2 class='text-2xl font-autour-one'>My Recipes</h2>
           </div>
@@ -126,7 +127,7 @@
 
         </div>
 
-        <div class='profile mt-8 highlighted-recipe-card rounded-lg'>
+        <div class='profile max-w-sm mt-8 highlighted-recipe-card rounded-lg'>
           <div class='bg-custom-yellow text-white rounded-t-lg p-2'>
             <h2 class='text-2xl font-autour-one'>My Comments</h2>
           </div>
