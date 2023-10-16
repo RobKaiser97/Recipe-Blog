@@ -26,7 +26,7 @@
           class='font-damion text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
         >About Me</h1>
         {{#if users.about}}
-          <p class='text-custom-blue font-caveat text-xl'>
+          <p class='text-custom-blue font-caveat text-3xl'>
             {{users.about}}
           </p>
         {{/if}}
@@ -37,16 +37,12 @@
         </div>
       </div>
     </div>
-    <div style='display: flex;'>
-      <div
-        style='flex-grow: 1; margin-right: 5%;'
-        class='w-1/2 mt-8 rounded-lg'
-      >
+    <div class='flex'>
+      <div class='flex-grow mr-5 w-1/2 mt-8 rounded-lg'>
         <div class='bg-custom-yellow text-white rounded-t-lg p-2'>
           <h2 class='text-2xl font-autour-one'>Submit a Recipe</h2>
         </div>
         <div class='card-body highlighted-recipe-card rounded-b-lg p-4'>
-          <!-- Apply custom styles to card body -->
 
           <form enctype='multipart/form-data' id='recipeForm'>
             <label
@@ -134,7 +130,7 @@
             >
               {{#each category as |category|}}
 
-                <label class='flex items-center'>
+                <label class='flex items-center text-xl'>
                   <input
                     type='checkbox'
                     name='category_id'
@@ -156,12 +152,11 @@
               type='submit'
               class='submit-button text-white px-4 py-2 rounded-lg font-autour-one hover:bg-f3c655'
             >Submit Recipe</button>
-            <!-- Apply custom styles to the button -->
           </form>
         </div>
       </div>
 
-      <div style='flex-grow: 1; display: flex; flex-direction: column;'>
+      <div class='flex-grow flex-col'>
         <!-- My Recipes Section -->
 
         <div class='profile max-w-sm mt-8 highlighted-recipe-card rounded-lg'>
@@ -192,12 +187,12 @@
           </div>
           <div class='card-body rounded-b-lg p-4'>
             {{#each users.comments}}
+                <p
+                  class='text-white mt-1 mb-1 font-indie-flower text-2xl text-center'
+                >{{this.recipe.title}}</p>
               <div class='comment' data-comment-id='{{comment_id}}'>
-                <p class='text-4xl mt-3 font-acme'>{{this.content}}</p>
-                <p class='text-white mt-1 mb-1 font-indie-flower text-xl'>On
-                  recipe:
-                  {{this.recipe.title}}</p>
-                <p class='text-sm font-acme mt-2 mb-1'>Created on:
+                <p class='text-2xl mt-3 font-acme'>{{this.content}}</p>
+                <p class='text-md font-acme mt-2 mb-1'>Created on:
                   {{format_date this.created_at format='MM/DD/YYYY'}}</p>
                 <a
                   href='/api/recipes/{{this.recipe.recipe_id}}'
