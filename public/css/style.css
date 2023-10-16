@@ -1,286 +1,284 @@
 /* Fonts */
 .font-damion {
-    font-family: 'Damion', cursive;
-  }
-  
-  .font-autour-one {
-    font-family: 'Autour One', cursive;
-  }
-  
-  .font-caveat {
-    font-family: 'Caveat', cursive;
-  }
-  
-  .font-acme {
-    font-family: 'Acme', cursive;
-  }
-  
-  .font-indie-flower {
-    font-family: 'Indie Flower', cursive;
-  }
-  
-  /* Colors */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(27, 168, 224, 0.1);
-    pointer-events: none;
-  }
-  
-  .card-body {
-    background-color: #1ba8e0;
-    color: white;
-  }
-  
-  .bg-custom-yellow {
-    background-color: #f3c655;
-  }
-  
-  .text-custom-blue {
-    color: #1ba8e0;
-  }
-  
-  .submit-button, .delete-button {
-    background-color: #f3c655;
-  }
+  font-family: 'Damion', cursive;
+}
 
-  
-  .egg-circle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: #f3c655;
-    border: 2px solid #f3c655;
-    border-radius: 50%;
-  }
-  
-  nav {
-    background-color: #1ba8e0;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .profile-picture {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin: 0 auto;
-    background-color: #1ba8e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Cards */
-  .welcome-card,
-  .recipe-page-cards,
-  .sign-up-card {
-    border: 2px dashed #1ba8e0;
-    border-radius: 20px;
-    padding: 20px;
-    text-align: center;
-    width: 50%;
-    margin: auto;
-  }
-  
-  .season-card {
-    border: 2px dashed #fff;
-    border-radius: 20px;
-    padding: 20px;
-    text-align: center;
-    width: 50%;
-    margin: auto;
-  }
+.font-autour-one {
+  font-family: 'Autour One', cursive;
+}
 
+.font-caveat {
+  font-family: 'Caveat', cursive;
+}
+
+.font-acme {
+  font-family: 'Acme', cursive;
+}
+
+.font-indie-flower {
+  font-family: 'Indie Flower', cursive;
+}
+
+/* Colors */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(27, 168, 224, 0.1);
+  pointer-events: none;
+}
+
+.card-body {
+  background-color: #1ba8e0;
+  color: white;
+}
+
+.bg-custom-yellow {
+  background-color: #f3c655;
+}
+
+.text-custom-blue {
+  color: #1ba8e0;
+}
+
+.submit-button,
+.delete-button {
+  background-color: #f3c655;
+}
+
+
+.egg-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #f3c655;
+  border: 2px solid #f3c655;
+  border-radius: 50%;
+}
+
+nav {
+  background-color: #1ba8e0;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background-color: #1ba8e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cards */
+.welcome-card,
+.recipe-page-cards,
+.sign-up-card {
+  border: 2px dashed #1ba8e0;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
+
+.season-card {
+  border: 2px dashed #fff;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
+
+
+.recipe-page-cards {
+  margin-bottom: 10;
+}
+
+.sign-up-card {
+  width: 23rem;
+}
+
+.highlighted-recipe-card {
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Images */
+.highlighted-recipe-image,
+.recipe-image,
+.recipe-page-picture {
+  max-width: 100%;
+  max-height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: auto;
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+  max-height: 120px;
+}
+
+.recipe-page-picture {
+  align-content: center;
+}
+
+.image-container:hover img {
+  filter: brightness(70%);
+}
+
+
+/* Other */
+#categoriesDropdown {
+  z-index: 4;
+}
+
+.fixed_nav {
+  margin-right: 10%;
+}
+
+.recipe-card {
+  width: calc(33.33% - 2rem);
+  margin: 1rem;
+  float: left;
+  position: relative;
+}
+
+.clear-float {
+  clear: both;
+}
+
+.recipe-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  color: #666;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-description {
+  color: #333;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  line-height: 1.2em;
+  max-height: 3.6em;
+}
+
+.collapsed .description-content {
+  display: none;
+}
+
+.egg-circle {
+  width: 3rem;
+  height: 3rem;
+  /* additional styling here, like background-color and border-radius */
+}
+
+
+
+/* Media queries */
+@media (max-width: 768px) {
 
   .recipe-page-cards {
-    margin-bottom: 10;
+    width: 90%;
   }
-  
-  .sign-up-card {
-    width: 23rem;
+
+  .mq-100 {
+    max-width: 100%;
   }
-  
-  .highlighted-recipe-card {
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+
+
+  .tiny-text {
+    font-size: x-large;
   }
-  
-  /* Images */
-  .highlighted-recipe-image,
-  .recipe-image,
-  .recipe-page-picture {
+
+  .ingredient-input {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+
+
+  .recipe-card {
+    width: calc(50% - 2rem);
+  }
+
+  .highlighted-recipe-image {
     max-width: 100%;
     max-height: auto;
-    object-fit: cover;
-    border-radius: 8px;
   }
-  
-  .recipe-image {
+
+  .text-6xl {
+    font-size: xx-large;
+  }
+
+  .welcome-card {
     width: 100%;
-    height: auto;
-    max-height: 120px;
   }
-  
-  .recipe-page-picture {
-    align-content: center;
-  }
-  
-  .image-container:hover img {
-    filter: brightness(70%);
-  }
-  
-  .image-container:hover .read-more {
-    opacity: 1;
-    display: block;
-  }
-  
-  /* Other */
-  #categoriesDropdown {
-      z-index: 4 ;
-  }
-  
-  .fixed_nav {
-    margin-right: 10%;
-  }
-  
-  .recipe-card {
-    width: calc(33.33% - 2rem);
-    margin: 1rem;
-    float: left;
-    position: relative;
-  }
-  
-  .clear-float {
-    clear: both;
-  }
-  
-  .recipe-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  
-  .tag {
-    color: #666;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    display: inline-block;
-    margin-bottom: 0.5rem;
-  }
-  
-  .recipe-description {
-    color: #333;
-    margin-bottom: 1rem;
-    overflow: hidden;
-    line-height: 1.2em;
-    max-height: 3.6em;
-  }
-  
-  .collapsed .description-content {
-    display: none;
-  }
-  
+}
+
+@media screen and (max-width: 550px) {
   .egg-circle {
     width: 3rem;
     height: 3rem;
-    /* additional styling here, like background-color and border-radius */
+    /* or any size you'd like */
   }
-  
-
-
-  /* Media queries */
-  @media (max-width: 768px) {
-
-    .recipe-page-cards {
-        width: 90%;
-    }
-
-    .mq-100 {
-        max-width: 100%;
-    }
-
-    
-    .tiny-text {
-        font-size: x-large;
-    }
-    
-    .ingredient-input {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
-      }
+}
 
 
 
-    .recipe-card {
-      width: calc(50% - 2rem);
-    }
+@media (max-width: 480px) {
 
-    .highlighted-recipe-image {
-      max-width: 100%;
-      max-height: auto;
-    }
-
-    .text-6xl {
-        font-size: xx-large;
-    }
-    
-    .welcome-card {
-        width: 100%;
-    }
+  .recipe-page-cards {
+    width: 90%;
   }
 
-  @media screen and (max-width: 550px) {
-    .egg-circle {
-      width: 3rem;
-      height: 3rem;
-      /* or any size you'd like */
-    }
+  .mq-100 {
+    max-width: 100%;
   }
-  
-    
 
-  @media (max-width: 480px) {
-
-    .recipe-page-cards {
-        width: 90%;
-    }
-   
-    .mq-100 {
-        max-width: 100%;
-    }
-
-    .tiny-text {
-        font-size: x-large;
-    }
-
-    .ingredient-input {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
-      }
-
-    .recipe-card {
-      width: calc(100% - 2rem);
-    }
-
-    .highlighted-recipe-image {
-      max-width: 100%;
-      max-height: auto;
-    }
-
-    .ing_name {
-     max-width: 100%;
-    }
-
-    
-    .welcome-card {
-        width: 100%;
-    }
+  .tiny-text {
+    font-size: x-large;
   }
+
+  .ingredient-input {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .recipe-card {
+    width: calc(100% - 2rem);
+  }
+
+  .highlighted-recipe-image {
+    max-width: 100%;
+    max-height: auto;
+  }
+
+  .ing_name {
+    max-width: 100%;
+  }
+
+
+  .welcome-card {
+    width: 100%;
+  }
+}
