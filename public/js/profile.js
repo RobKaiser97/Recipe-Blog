@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   function addIngredient() {
-    const ingredientsContainer = document.getElementById('ingredientsContainer');
+    const ingredientsContainer = document.getElementById(
+      'ingredientsContainer'
+    );
     const newIngredientRow = document.createElement('div');
     newIngredientRow.className = 'ingredient-row mb-2';
     newIngredientRow.innerHTML = `
@@ -38,15 +40,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const instructions = formData.get('instructions');
     const category_id = formData.getAll('category_id');
     // Collect ingredient data dynamically
-    document.querySelectorAll('#ingredientsContainer > div').forEach((ingredientRow) => {
-      const qty = ingredientRow.querySelector('input[type="number"]').value;
-      const unit = ingredientRow.querySelector('select').value;
-      const name = ingredientRow.querySelector('input[type="text"]').value;
+    document
+      .querySelectorAll('#ingredientsContainer > div')
+      .forEach(ingredientRow => {
+        const qty = ingredientRow.querySelector('input[type="number"]').value;
+        const unit = ingredientRow.querySelector('select').value;
+        const name = ingredientRow.querySelector('input[type="text"]').value;
 
-      // Concatenate quantity, unit, and name and add to the array
-      const ingredientString = `${qty} ${unit} ${name}`;
-      ingredientsArray.push(ingredientString);
-    });
+        // Concatenate quantity, unit, and name and add to the array
+        const ingredientString = `${qty} ${unit} ${name}`;
+        ingredientsArray.push(ingredientString);
+      });
 
     // Log to debug empty fields
     if (!title) {
@@ -62,7 +66,11 @@ document.addEventListener('DOMContentLoaded', function () {
       emptyFields.push('Ingredients');
     }
     if (emptyFields.length) {
-      alert(`You must fill out the following fields to submit a recipe: ${emptyFields.join(', ')}`);
+      alert(
+        `You must fill out the following fields to submit a recipe: ${emptyFields.join(
+          ', '
+        )}`
+      );
       return;
     }
 
@@ -72,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
       const response = await fetch('/api/recipes', {
         method: 'POST',
-        body: formData,  // Use FormData directly here
+        body: formData, // Use FormData directly here
       });
 
       if (response.ok) {
@@ -89,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
     .querySelector('.plus-button')
     .addEventListener('click', addIngredient);
 });
-
 
 async function deleteCommentFromServer(comment_id) {
   try {
@@ -117,10 +124,13 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         // Get the comment_id from the data-comment-id attribute
-        const comment_id = this.closest('.comment').getAttribute('data-comment-id');
+        const comment_id =
+          this.closest('.comment').getAttribute('data-comment-id');
 
         // Ask for confirmation
-        const isConfirmed = confirm('Are you sure you want to delete this comment?');
+        const isConfirmed = confirm(
+          'Are you sure you want to delete this comment?'
+        );
 
         if (isConfirmed) {
           const deletedComment = await deleteCommentFromServer(comment_id);

@@ -28,8 +28,12 @@ const signupHandler = async event => {
   if (!password) {
     passwordAlert.textContent = 'Please enter a password';
     return;
-  } else if (!/\d/.test(password) || !/[!@#$%^&*()_+[\]{};':"\\|,.<>?`~]/.test(password)) {
-    passwordAlert.textContent = 'Password must contain at least one number and one symbol';
+  } else if (
+    !/\d/.test(password) ||
+    !/[!@#$%^&*()_+[\]{};':"\\|,.<>?`~]/.test(password)
+  ) {
+    passwordAlert.textContent =
+      'Password must contain at least one number and one symbol';
     return;
   } else {
     passwordAlert.textContent = '';
