@@ -1,5 +1,4 @@
 const { User } = require('../models');
-const fs = require('fs');
 const { imageToBase64 } = require('../utils/helper');
 const defaultImage = imageToBase64(
   '/public/assets/profile-images/default-profile.jpg'
