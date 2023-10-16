@@ -7,7 +7,6 @@ const {
   User,
 } = require('../../models');
 const { upload, imageToBase64, binaryToBase64 } = require('../../utils/helper');
-const path = require('path');
 
 const defaultImageURL = imageToBase64(
   'public/assets/recipe-images/default_recipe_image.png'
@@ -77,6 +76,7 @@ router.post('/', upload.single('image'), async (req, res) => {
   }
 });
 
+// Edit the profile
 router.put('/:id', upload.single('image'), async (req, res) => {
   try {
     // Initialize update data with request body

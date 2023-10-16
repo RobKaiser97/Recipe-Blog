@@ -79,4 +79,28 @@ router.put('/recipes/edit/:id', withAuth, async (req, res) => {
   }
 });
 
+router.get('/edit', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+     
+    });
+    // Check if userData exists
+    if (userData) {
+      // Convert userData to plain object
+      const users = userData.get({ plain: true });
+      // Render profile even if the user has no recipes or comments
+      return res.render('edit-profile', {
+        users,
+        loggedIn: req.session.loggedIn,
+        user_id: req.session.user_id,
+      });
+    } else {
+      return res.status(404).send('User not found');
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

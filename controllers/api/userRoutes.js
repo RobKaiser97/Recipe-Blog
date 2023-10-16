@@ -1,7 +1,14 @@
 const router = require('express').Router();
 const { User } = require('../../models');
-const { upload, imageToBase64, binaryToBase64, validateSignupData } = require('../../utils/helper');
-const defaultProfileImg = imageToBase64('public/assets/profile-images/default-profile.jpg');
+const {
+  upload,
+  imageToBase64,
+  binaryToBase64,
+  validateSignupData,
+} = require('../../utils/helper');
+const defaultProfileImg = imageToBase64(
+  'public/assets/profile-images/default-profile.jpg'
+);
 
 const signupHandler = async (req, res) => {
   try {
@@ -9,14 +16,14 @@ const signupHandler = async (req, res) => {
     const userData = {
       ...req.body,
       // Set to default image
-      profile_picture: defaultProfileImg, 
+      profile_picture: defaultProfileImg,
     };
     const createdUser = await User.create(userData);
     // Use req.session.save() to make sure session is saved before redirecting
     req.session.save(() => {
-      req.session.user_id = createdUser.user_id,
-        req.session.username = createdUser.username,
-        req.session.loggedIn = true,
+      (req.session.user_id = createdUser.user_id),
+        (req.session.username = createdUser.username),
+        (req.session.loggedIn = true),
         res.redirect('/profile');
     });
   } catch (error) {
@@ -44,9 +51,9 @@ const loginHandler = async (req, res) => {
       return;
     }
     req.session.save(() => {
-      req.session.user_id = userData.user_id,
-        req.session.username = userData.username,
-        req.session.loggedIn = true,
+      (req.session.user_id = userData.user_id),
+        (req.session.username = userData.username),
+        (req.session.loggedIn = true),
         res.json(userData);
     });
   } catch (error) {
@@ -66,31 +73,37 @@ router.post('/logout', (req, res) => {
   }
 });
 
-// Put route to update User model, used for updating profile picture, username, email, and password
-router.put('/profile/:id', upload.single('profile_picture'), async (req, res) => {
-  try {
-    const updatedUserData = { ...req.body };
-    // Only update the profile_picture if a new file is provided.
-    if (req.file) {
-      // Get the mime type of the file
-      const mimeType = req.file.mimetype; 
-      updatedUserData.profile_picture = binaryToBase64(req.file.buffer, mimeType);
+// // Put route to update User model, used for updating profile picture, username, email, and password
+router.put(
+  '/profile/:id',
+  upload.single('profile_picture'),
+  async (req, res) => {
+    try {
+      const updatedUserData = { ...req.body };
+
+      // Only update the profile_picture if a new file is provided.
+      // if (req.body.profile_picture) {
+      //   // Get the mime type of the file
+      //   const mimeType = req.file.mimetype;
+      //   updatedUserData.profile_picture = binaryToBase64(
+      //     req.file.buffer,
+      //     mimeType
+      //   );
+      // } else {
+      //   updatedUserData.profile_picture = null;
+      // }
+
+      const updateProfile = await User.update(updatedUserData, {
+        where: {
+          user_id: req.params.id,
+        },
+      });
+      res.json(updateProfile);
+    } catch (error) {
+      res.status(500).json(error);
     }
-    const userData = await User.update(updatedUserData, {
-      where: {
-        user_id: req.params.id,
-      },
-    });
-    res.status(200).json(userData);
-    return res.render('edit-profile', {
-      recipe,
-      loggedIn: req.session.loggedIn,
-      user_id: req.session.user_id,
-    });
-  } catch (error) {
-    res.status(500).json(error);
   }
-});
+);
 
 // Error handling middleware
 router.use((err, req, res, next) => {
