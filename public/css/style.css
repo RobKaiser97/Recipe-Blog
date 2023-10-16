@@ -197,6 +197,10 @@
   /* Media queries */
   @media (max-width: 768px) {
 
+    .recipe-page-cards {
+        width: 90%;
+    }
+
     .mq-100 {
         max-width: 100%;
     }
@@ -243,6 +247,10 @@
     
 
   @media (max-width: 480px) {
+
+    .recipe-page-cards {
+        width: 90%;
+    }
    
     .mq-100 {
         max-width: 100%;
