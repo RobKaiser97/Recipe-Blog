@@ -49,7 +49,6 @@ body::before {
   background-color: #f3c655;
 }
 
-
 .egg-circle {
   display: inline-flex;
   align-items: center;
@@ -98,7 +97,6 @@ nav {
   margin: auto;
 }
 
-
 .recipe-page-cards {
   margin-bottom: 10;
 }
@@ -135,7 +133,6 @@ nav {
 .image-container:hover img {
   filter: brightness(70%);
 }
-
 
 /* Other */
 #categoriesDropdown {
@@ -190,11 +187,8 @@ nav {
   /* additional styling here, like background-color and border-radius */
 }
 
-
-
 /* Media queries */
 @media (max-width: 768px) {
-
   .recipe-page-cards {
     width: 90%;
   }
@@ -202,7 +196,6 @@ nav {
   .mq-100 {
     max-width: 100%;
   }
-
 
   .tiny-text {
     font-size: x-large;
@@ -213,8 +206,6 @@ nav {
     margin-right: 0;
     margin-bottom: 10px;
   }
-
-
 
   .recipe-card {
     width: calc(50% - 2rem);
@@ -242,10 +233,7 @@ nav {
   }
 }
 
-
-
 @media (max-width: 480px) {
-
   .recipe-page-cards {
     width: 90%;
   }
@@ -276,7 +264,6 @@ nav {
   .ing_name {
     max-width: 100%;
   }
-
 
   .welcome-card {
     width: 100%;

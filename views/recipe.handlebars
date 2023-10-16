@@ -1,7 +1,9 @@
 <div class='recipe-container'>
 
   <!-- Recipe Title -->
-  <h1 class='font-damion text-4xl text-white bg-custom-yellow p-2 mb-4 highlighted-recipe-card'>{{recipe.title}}
+  <h1
+    class='font-damion text-4xl text-white bg-custom-yellow p-2 mb-4 highlighted-recipe-card'
+  >{{recipe.title}}
     by
     {{recipe.user.username}}
   </h1>
@@ -11,11 +13,16 @@
     <div class='highlighted-recipe-card recipe-page-cards mb-3'>
       <!-- Recipe Image -->
       <div id='image-container' data-recipe-id='{{recipe.recipe_id}}'>
-        <img src='{{recipe.image}}' alt='{{recipe.title}}'
-          class='recipe-page-picture bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card' />
+        <img
+          src='{{recipe.image}}'
+          alt='{{recipe.title}}'
+          class='recipe-page-picture bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
+        />
       </div>
       <!-- Recipe Description -->
-      <h2 class=' font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>Description
+      <h2
+        class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
+      >Description
       </h2>
       <p class='text-custom-blue font-indie-flower text-xl'>
         {{recipe.description}}
@@ -24,7 +31,9 @@
 
     <!-- Recipe Ingredients -->
     <div class='highlighted-recipe-card recipe-page-cards'>
-      <h2 class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>Ingredients
+      <h2
+        class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
+      >Ingredients
       </h2>
       <p class='text-custom-blue font-indie-flower text-xl'>
         {{recipe.ingredients}}
@@ -33,7 +42,9 @@
 
     <!-- Recipe Instructions -->
     <div class='highlighted-recipe-card recipe-page-cards'>
-      <h2 class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>
+      <h2
+        class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
+      >
         Instructions</h2>
       <p class='text-custom-blue font-indie-flower text-xl'>
         {{recipe.instructions}}
@@ -42,58 +53,76 @@
 
     <!-- Tags for classification -->
     <div class='highlighted-recipe-card recipe-page-cards'>
-      <h2 class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>Tags</h2>
+      <h2
+        class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
+      >Tags</h2>
       <div class='recipe-tags'>
         {{#each this.recipe.categories}}
-        <a href='/categories/{{this.name}}'
-          class='submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65'>{{this.name}}</a>
+          <a
+            href='/categories/{{this.name}}'
+            class='submit-button text-white px-1 py-0.5 rounded-lg font-autour-one hover:bg-f3c65'
+          >{{this.name}}</a>
         {{/each}}
       </div>
     </div>
 
     <!-- Comments Section -->
     <div class='highlighted-recipe-card existing-comments recipe-page-cards'>
-      <h2 class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'>Comments
+      <h2
+        class='font-acme text-4xl text-white bg-custom-yellow rounded-lg p-2 mb-4 highlighted-recipe-card'
+      >Comments
       </h2>
       <!-- Comment Form -->
 
       <form class='comment-form'>
         <div class='container p-6'>
-          <div class='bg-custom-yellow text-white rounded-t-lg p-2 text-2xl font-autour-one'>
+          <div
+            class='bg-custom-yellow text-white rounded-t-lg p-2 text-2xl font-autour-one'
+          >
             <label for='comment'>Leave a comment</label>
           </div>
           <div class='card-body pt-4'>
-            <textarea id='comment-box' name='comment' rows='4' class='text-gray-600 w-4/5 pt-2 rounded'></textarea>
+            <textarea
+              id='comment-box'
+              name='comment'
+              rows='4'
+              class='text-gray-600 w-4/5 pt-2 rounded'
+            ></textarea>
           </div>
           <!-- Smaller Submit Button -->
           <div class='card-body rounded-b-lg p-4'>
-            <button type='submit' class='submit-button text-white px-2 py-1 rounded-lg font-autour-one hover:bg-f3c65'
-              id='submit-button'>Submit</button>
+            <button
+              type='submit'
+              class='submit-button text-white px-2 py-1 rounded-lg font-autour-one hover:bg-f3c65'
+              id='submit-button'
+            >Submit</button>
           </div>
         </div>
       </form>
 
       <!-- Check if there are existing comments -->
       {{#if recipe.comments.length}}
-      <ul>
-        {{#each recipe.comments}}
-        <li>
-          <div class='container p-6 mt-2'>
-            <div class='bg-custom-yellow text-white rounded-t-lg p-2 text-2xl font-autour-one'>
-              <p class='font-autour-one text-xl'>{{this.user.username}}</p>
-            </div>
-            <div class='card-body rounded-b-lg p-4'>
-              <p class='font-indie-flower text-xl'>{{this.content}}</p>
-              <p class='text-sm font-acme mt-2 mb-1'>Created on:
-                {{format_date this.created_at format='MM/DD/YYYY'}}</p>
-            </div>
-          </div>
+        <ul>
+          {{#each recipe.comments}}
+            <li>
+              <div class='container p-6 mt-2'>
+                <div
+                  class='bg-custom-yellow text-white rounded-t-lg p-2 text-2xl font-autour-one'
+                >
+                  <p class='font-autour-one text-xl'>{{this.user.username}}</p>
+                </div>
+                <div class='card-body rounded-b-lg p-4'>
+                  <p class='font-indie-flower text-xl'>{{this.content}}</p>
+                  <p class='text-sm font-acme mt-2 mb-1'>Created on:
+                    {{format_date this.created_at format='MM/DD/YYYY'}}</p>
+                </div>
+              </div>
 
-        </li>
-        {{/each}}
-      </ul>
+            </li>
+          {{/each}}
+        </ul>
       {{else}}
-      <p class='font-indie-flower text-xl mb-4'>No comments yet.</p>
+        <p class='font-indie-flower text-xl mb-4'>No comments yet.</p>
       {{/if}}
     </div>
   </div>

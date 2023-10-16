@@ -29,7 +29,9 @@ router.get('/', withAuth, async (req, res) => {
       const users = userData.get({ plain: true });
       // Initialize categories
       const categories = await Category.findAll();
-      const category = categories.map(category => category.get({ plain: true }));
+      const category = categories.map(category =>
+        category.get({ plain: true })
+      );
       // Render profile even if the user has no recipes or comments
       return res.render('profile', {
         users,
@@ -81,9 +83,7 @@ router.put('/recipes/edit/:id', withAuth, async (req, res) => {
 
 router.get('/edit', withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.session.user_id, {
-     
-    });
+    const userData = await User.findByPk(req.session.user_id, {});
     // Check if userData exists
     if (userData) {
       // Convert userData to plain object

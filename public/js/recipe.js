@@ -35,7 +35,6 @@ async function submitCommentToServer(comment, recipeId) {
   return response.json();
 }
 
-
 // Event Listeners
 submitButton.addEventListener('click', async () => {
   const comment = document.getElementById('comment-box').value;
