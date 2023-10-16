@@ -1,12 +1,13 @@
 # Recipe-Blog
 
+![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 ## Table of Contents
 
 - [Description](#description)
-- [Installation](#installation)
-- [Usage](#usage)
+- [Deployed Application](#deployed-application)
 - [License](#license)
-- [Contributing](#contributing)
+- [Contribution](#contribution)
 - [Tests](#tests)
 - [Questions](#questions)
 
@@ -19,8 +20,6 @@ discover, and celebrate the joy of cooking and baking. Our mission is to provide
 a welcoming digital kitchen where individuals from all backgrounds can unite in
 their love for food.
 
-### What We Learned
-
 Our journey in building "Now We're Cooking!" has been a valuable learning
 experience. Here's what we gained throughout this project:
 
@@ -28,8 +27,8 @@ experience. Here's what we gained throughout this project:
    combining our unique skills and talents to create a well-rounded platform.
 
 2. **Web Development Skills:** Our proficiency in web development, including
-   HTML, CSS, JavaScript, and Handlebars.js, expanded as we tackled real-world
-   challenges.
+   CSS, Tailwind, JavaScript, Node.js, MySQL, Sequelize, .env, Authentication,
+   and Handlebars.js expanded as we tackled real-world challenges.
 
 3. **Design and User Experience:** We prioritized designing an intuitive and
    aesthetically pleasing website, ensuring a user-friendly experience on
@@ -52,40 +51,19 @@ experience. Here's what we gained throughout this project:
    for sharing ideas, providing feedback, and maintaining clarity in our
    project's vision.
 
+9. **Deployment:** You can access the deployed application on Heroku via
+   *https://nowwerecooking-494c285649f9.herokuapp.com/*.
+
 Our journey with "Now We're Cooking!" is not just about building a recipe blog
 but about learning, growing, and sharing our passion with a global community. We
 hope our project inspires others to follow their passions and collaborate to
 create something meaningful.
 
-## Installation
+## Deployed Application
 
-Clone this repository into your local machine, open up the intregrated terminal
-by right clicking on the "db" folder, then do the following command:
-
-`mysql -u root -p`
-
-After you type in your password, you will want to source your file using the
-command:
-
-`source schema.sql`
-
-Finally, you will want to right click on server.js and open a new integrated
-terminal. From here, use the following commands to populate the database, and
-set up your node modules:
-
-`npm run seed`
-
-`npm i`
-
-## Usage
-
-To use this project on your local machine, use your server.js integrated
-terminal, and type in the following command:
-
-`npm run start`
-
-Alternatively, you can visited the hosted Heroku website found at
-[This Link](https://nowwerecooking-494c285649f9.herokuapp.com/)
+Click the lightning bolt
+[⚡](https://nowwerecooking-494c285649f9.herokuapp.com/) to go to "Now We're
+Cooking!" on Heroku!
 
 Click
 [This Link](https://drive.google.com/file/d/1e44mUYs5hKyb_BL55IAEuaziVqt2zqz_/view)
@@ -93,8 +71,7 @@ to watch a helpful demonstration video on how to use the website!
 
 ## License
 
-![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg) This project
-is licensed under the terms of the
+This project is licensed under the terms of the
 **[MIT License](https://opensource.org/licenses/MIT)**
 
 ## Contribution
@@ -114,5 +91,5 @@ contact us:
   [@dmerk2](http://github.com/dmerk2),
   [@jeslocascio](http://github.com/jeslocascio),
   [@Jp0st](http://github.com/Jp0st)
-- Email: paintballmanrob@gmail.com, Dan.Merkin@gmail.com, locascioje@gmail.com,
+- Email: paintballmanrob@gmail.com, dan.Merkin@gmail.com, locascioje@gmail.com,
   jpost2010@gmail.com
