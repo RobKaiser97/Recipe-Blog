@@ -1,0 +1,100 @@
+<div class='profile mt-8 highlighted-recipe-card rounded-lg w-1/2 mx-auto'>
+  <div class='bg-custom-yellow text-white rounded-t-lg p-2'>
+    <h2 class='text-2xl font-autour-one'>Edit Profile</h2>
+  </div>
+  <div class='card-body rounded-b-lg p-4'>
+    <form enctype='multipart/form-data' class='form'>
+      <!-- Username -->
+      <div class='mb-4'>
+        <label
+          class='block text-white text-lg font-bold mb-2'
+          for='username'
+        >
+          Username
+        </label>
+        <textarea
+          class='form-input rounded-lg border border-gray-400 p-2 w-full text-gray-700'
+          id='username'
+          name='username'
+          type='text'
+          placeholder='Username'
+        >{{users.username}}</textarea>
+      </div>
+
+      <!-- About Section -->
+      <div class='mb-4'>
+        <label class='block text-white text-lg font-bold mb-2' for='about'>
+          About
+        </label>
+        {{log 'about' users.about}}
+        <textarea
+          class='form-input rounded-lg border border-gray-400 p-2 w-full text-gray-700'
+          id='about'
+          name='about'
+          rows='4'
+          placeholder='Tell us about yourself'
+        >{{users.about}}</textarea>
+      </div>
+
+      {{! FUTURE DEVELOPMENT }}
+      <!-- Password -->
+      {{! <div class='mb-4'>
+        <label
+          class='block text-gray-700 text-sm font-bold mb-2'
+          for='password'
+        >
+          Password
+        </label>
+        <input
+          class='form-input rounded-lg border border-gray-400 p-2 w-full'
+          id='password'
+          name='password'
+          type='password'
+          placeholder='Password'
+          style='color: slategrey'
+        />
+      </div> }}
+
+      {{! FUTURE DEVELOPMENT }}
+      <!-- Profile Image -->
+      {{!-- <div class='profile-picture'>
+        <!-- User's profile picture -->
+        {{#if users.profile_picture}}
+          <img
+            src='{{users.profile_picture}}'
+            alt="{{users.username}}'s profile picture"
+            class='rounded-2xl'
+          />
+        {{else}}
+          <i class='fas fa-user text-5xl text-white'></i>
+        {{/if}}
+      </div>
+      <div class='mb-4'>
+        <label
+          class='block text-gray-700 text-sm font-bold mb-2'
+          for='profileImage'
+        >
+          Profile Image
+        </label>
+        <input
+          class='form-input rounded-lg border border-gray-400 p-2 w-full'
+          id='profileImage'
+          name='profileImage'
+          type='file'
+        />
+      </div> --}}
+
+      <!-- Submit Button -->
+      <button
+        data-id='{{user_id}}'
+        type='submit'
+        id='edit-profile'
+        class='flex mx-auto submit-button text-white px-4 py-2 rounded-lg font-autour-one bg-custom-yellow hover:bg-f3c65'
+      >
+        Save Changes
+      </button>
+    </form>
+  </div>
+</div>
+
+<script src='/js/edit-profile.js'></script>

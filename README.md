@@ -66,7 +66,7 @@ Click the lightning bolt
 Cooking!" on Heroku!
 
 Click
-[This Link](https://drive.google.com/file/d/1e44mUYs5hKyb_BL55IAEuaziVqt2zqz_/view)
+[here](https://drive.google.com/file/d/1e44mUYs5hKyb_BL55IAEuaziVqt2zqz_/view)
 to watch a helpful demonstration video on how to use the website!
 
 ## License
@@ -76,7 +76,7 @@ This project is licensed under the terms of the
 
 ## Contribution
 
-Robert Kaiser Daniel Merkin Jesse LoCascio John Post
+Robert Kaiser, Daniel Merkin, Jesse LoCascio, John Post
 
 ## Tests
 
@@ -91,5 +91,5 @@ contact us:
   [@dmerk2](http://github.com/dmerk2),
   [@jeslocascio](http://github.com/jeslocascio),
   [@Jp0st](http://github.com/Jp0st)
-- Email: paintballmanrob@gmail.com, dan.Merkin@gmail.com, locascioje@gmail.com,
+- Email: paintballmanrob@gmail.com, dan.merkin@gmail.com, locascioje@gmail.com,
   jpost2010@gmail.com
