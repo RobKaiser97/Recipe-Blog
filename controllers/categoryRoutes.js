@@ -22,7 +22,11 @@ router.get('/:category', async (req, res) => {
       ],
     });
     const category = categoryData.get({ plain: true });
-    return res.render('categories', { category });
+    return res.render('categories', {
+      category,
+      loggedIn: req.session.loggedIn,
+      user_id: req.session.user_id,
+    });
   } catch (err) {
     res.status(500).json(err);
   }

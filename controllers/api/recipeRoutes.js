@@ -1,10 +1,17 @@
 const router = require('express').Router();
-const { Category, Recipe, Comment, CategoryRecipe, User, } = require('../../models');
+const {
+  Category,
+  Recipe,
+  Comment,
+  CategoryRecipe,
+  User,
+} = require('../../models');
 const { upload, imageToBase64, binaryToBase64 } = require('../../utils/helper');
 const path = require('path');
 
-const defaultImageURL = imageToBase64('public/assets/recipe-images/default_recipe_image.png');
-
+const defaultImageURL = imageToBase64(
+  'public/assets/recipe-images/default_recipe_image.png'
+);
 
 // The 'recipes' endpoint
 router.get('/:id', async (req, res) => {
@@ -31,7 +38,11 @@ router.get('/:id', async (req, res) => {
       ],
     });
     const recipe = recipeData.get({ plain: true });
-    return res.render('recipe', { recipe });
+    return res.render('recipe', {
+      recipe,
+      loggedIn: req.session.loggedIn,
+      user_id: req.session.user_id,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -64,8 +75,7 @@ router.post('/', upload.single('image'), async (req, res) => {
     console.error('An error occurred:', err);
     res.status(400).json(err);
   }
-}
-);
+});
 
 router.put('/:id', upload.single('image'), async (req, res) => {
   try {
@@ -92,7 +102,6 @@ router.put('/:id', upload.single('image'), async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 router.delete('/:id', async (req, res) => {
   try {

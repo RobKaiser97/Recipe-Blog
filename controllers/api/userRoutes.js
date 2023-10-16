@@ -82,6 +82,11 @@ router.put('/profile/:id', upload.single('profile_picture'), async (req, res) =>
       },
     });
     res.status(200).json(userData);
+    return res.render('edit-profile', {
+      recipe,
+      loggedIn: req.session.loggedIn,
+      user_id: req.session.user_id,
+    });
   } catch (error) {
     res.status(500).json(error);
   }
